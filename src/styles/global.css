@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+    --color-verde-lord: #00b938;
+    --color-naranja-lord: #ec8221
+}
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+* {
+    overflow-x: hidden;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: black !important ;
+}

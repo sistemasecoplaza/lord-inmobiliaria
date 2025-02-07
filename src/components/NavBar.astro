@@ -1,0 +1,50 @@
+---
+import { Image } from "astro:assets";
+import logo from "../assets/logo.svg";
+const { selected } = Astro.props;
+let selectedClass = `hidden  flex-col text-2xl text-center lg:text-lg p-10 w-screen lg:w-fit bg-white lg:static scroll-none lg:flex lg:flex-row gap-10 [&>li]:duration-200 [&>li]:hover:text-verde-lord`;
+let color_inicio = selected == "1" ? "#00b938" : "#000";
+let color_nosotros = selected == "2" ? "#00b938" : "#000";
+let color_proyectos = selected == "3" ? "#00b938" : "#000";
+let color_blog = selected == "4" ? "#00b938" : "#000";
+let color_contactanos = selected == "5" ? "#00b938" : "#000";
+---
+
+<nav
+  class="flex z-[100] sticky top-px flex-col lg:flex-row select-none items-center h-fit justify-between overflow-hidden lg:justify-evenly py-2 w-screen bg-white shadow-md"
+>
+  <div class="flex flex-row justify-between items-center w-screen lg:w-fit">
+    <Image
+      src={logo}
+      alt="logo"
+      loading="eager"
+      class="w-[70px] lg:w-[90px] mx-10 lg:mx-0"
+    />
+    <svg
+      id="menuOppener"
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 fill-naranja-lord lg:hidden mx-14 cursor-pointer"
+      fill="#000"
+      viewBox="400 -800 160 640"
+      ><path
+        d="M480-160q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm0-240q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm0-240q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Z"
+      ></path></svg
+    >
+  </div>
+  <ul class={selectedClass}>
+    <li><a href="/" style=`color: ${color_inicio};`>Inicio</a></li>
+    <li>
+      <a href="/nosotros" style=`color: ${color_nosotros};`>Nosotros</a>
+    </li>
+    <li>
+      <a href="/proyectos" style=`color: ${color_proyectos};`>Proyectos</a>
+    </li>
+    <li>
+      <a href="/blog" style=`color: ${color_blog};`>Blog</a>
+    </li>
+    <li>
+      <a href="/contactanos" style=`color: ${color_contactanos};`>Contáctanos</a
+      >
+    </li>
+  </ul>
+</nav>

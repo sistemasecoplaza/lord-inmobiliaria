@@ -1,0 +1,74 @@
+---
+import { WORDPRESS_URL } from "astro:env/client";
+import { arrImageFetch } from "../assets/arrImageFetch";
+import Layout from "../layouts/Layout.astro";
+import { Image, Picture } from "astro:assets";
+const res = await (await fetch(WORDPRESS_URL + "inicio")).json();
+const data = res[0].acf;
+
+const images_desktop = await arrImageFetch(data.slider_header.slider_desktop);
+const images_mobile = await arrImageFetch(data.slider_header.slider_mobil);
+---
+
+<Layout selected="1" title="Inicio | Lord Inmobiliaria">
+  <div
+    style="--swiper-navigation-color: #009439; --swiper-pagination-color: #009439"
+    class="swiper mySwiperHeadInicioDesktop mx-0 lg:mx-10 hidden lg:block"
+  >
+    <div class="swiper-wrapper">
+      {
+        images_desktop.map((el) => {
+          return (
+            <div class="swiper-slide">
+              <Picture
+                loading="lazy"
+                pictureAttributes={{
+                  class: "*:w-full *:px-0 *:lg:px-20 *:xl:px-40 *:h-auto",
+                }}
+                src={el}
+                inferSize
+                alt=""
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <div class="swiper mySwiperHeadInicioDesktop mx-0 hidden lg:block">
+    <div class="swiper-wrapper">
+      {
+        images_desktop.map((el) => {
+          return (
+            <div class="swiper-slide">
+              <Image loading="eager" src={el} class="w-full" inferSize alt="" />
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+  <div class="swiper mySwiperHeadInicioMobil block lg:hidden">
+    <div class="swiper-wrapper">
+      {
+        images_mobile.map((el: any) => {
+          return (
+            <div class="swiper-slide">
+              <Image loading="eager" src={el} class="w-full" inferSize alt="" />
+            </div>
+          );
+        })
+      }
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
+</Layout>

@@ -1,0 +1,25 @@
+{
+  "name": "lord-inmobiliaria",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/vercel": "^8.0.5",
+    "@tailwindcss/vite": "^4.0.3",
+    "aos": "^2.3.4",
+    "appwrite": "^16.1.0",
+    "astro": "^5.2.5",
+    "embla-carousel": "^8.5.2",
+    "swiper": "^11.2.1",
+    "tailwindcss": "^4.0.3"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.7"
+  }
+}
