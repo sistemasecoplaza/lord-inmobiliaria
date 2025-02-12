@@ -1,0 +1,253 @@
+---
+import { Image } from "astro:assets";
+import { arrImageFetch } from "../js/ArrImageFetch";
+import { getPosts } from "../js/getPosts";
+import Layout from "../layouts/Layout.astro";
+import Form from "../components/Form.astro";
+import ProyectoCard from "../components/ProyectoCard.astro";
+import coronamin from "../assets/coronamin.svg";
+const inicio = await getPosts("inicio");
+const proyectos = (await getPosts("proyectos")).proyectos;
+const slider_desktop = await arrImageFetch(inicio.slider_header.slider_desktop);
+const slider_mobil = await arrImageFetch(inicio.slider_header.slider_mobil);
+const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
+---
+
+<Layout>
+  <section
+    class="w-screen relative hidden xl:block"
+    id="embla"
+    style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 20px;  --button-size: 60px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+  >
+    <div class="" id="embla__viewport">
+      <div
+        class="flex"
+        style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+      >
+        {
+          slider_desktop.map((e) => {
+            return (
+              <div
+                class="embla__slide min-w-0 translate-3d"
+                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+              >
+                <Image src={e} class="w-full" inferSize alt="" />
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <div class="flex w-full justify-between">
+      <div
+        class="flex justify-between pointer-events-none items-center absolute w-full h-full top-0 z-50"
+      >
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--prev"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-left: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+            ></path>
+          </svg>
+        </button>
+
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--next"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-right: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="absolute bottom-1 flex flex-row justify-center w-screen"
+        id="embla__dots"
+      >
+      </div>
+    </div>
+  </section>
+  <section
+    class="w-screen relative hidden md:block xl:hidden"
+    id="embla"
+    style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 20px;  --button-size: 40px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+  >
+    <div class="" id="embla__viewport">
+      <div
+        class="flex"
+        style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+      >
+        {
+          slider_tablet.map((e) => {
+            return (
+              <div
+                class="embla__slide min-w-0 translate-3d"
+                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+              >
+                <Image src={e} inferSize alt="" />
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <div class="flex w-full justify-between">
+      <div
+        class="flex justify-between pointer-events-none items-center absolute w-full h-full top-0 z-50"
+      >
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--prev"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-left: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+            ></path>
+          </svg>
+        </button>
+
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--next"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-right: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="absolute bottom-1 flex flex-row justify-center w-screen"
+        id="embla__dots"
+      >
+      </div>
+    </div>
+  </section>
+  <section
+    class="w-screen relative md:hidden"
+    id="embla"
+    style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 20px;  --button-size: 30px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+  >
+    <div class="" id="embla__viewport">
+      <div
+        class="flex"
+        style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+      >
+        {
+          slider_mobil.map((e) => {
+            return (
+              <div
+                class="embla__slide min-w-0 translate-3d"
+                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+              >
+                <Image src={e} inferSize alt="" />
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+
+    <div class="flex w-full justify-between">
+      <div
+        class="flex justify-between pointer-events-none items-center absolute w-full h-full top-0 z-50"
+      >
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--prev"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-left: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+            ></path>
+          </svg>
+        </button>
+
+        <button
+          class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+          id="embla__button--next"
+          type="button"
+        >
+          <svg
+            style="width: var(--button-size); margin-right: var(--buton-margin);"
+            viewBox="0 0 532 532"
+          >
+            <path
+              fill="currentColor"
+              d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+            ></path>
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="absolute bottom-1 flex flex-row justify-center w-screen"
+        id="embla__dots"
+      >
+      </div>
+    </div>
+  </section>
+  <div class="my-20 relative">
+    <div
+      class="w-screen h-0 z-10 flex flex-row justify-center items-center sticky top-0"
+    >
+      <Image src={coronamin} class="w-[70%] mt-[50svh]" alt="" />
+    </div>
+    <h1
+      class="flex flex-col z-40 relative items-center justify-center text-4xl font-extrabold text-verde-lord"
+    >
+      <p class="text-[15px] text-black font-medium tracking-[0]">
+        CONOCE LO QUE ESPERA POR TI
+      </p>
+      Nuestros Lotes
+    </h1>
+    <div
+      class="flex z-30 relative flex-row flex-wrap justify-center items-center w-screen p-10"
+    >
+      <ProyectoCard data={proyectos[0]} />
+      <ProyectoCard data={proyectos[1]} />
+      <ProyectoCard data={proyectos[2]} />
+    </div>
+    <div class="flex justify-center p-2">
+      <a
+        class="bg-naranja-lord rounded-xl cursor-pointer hover:scale-110 duration-200 ease-in-out text-white py-3 text-lg px-13 font-semibold"
+        href="">Conoce nuestros proyectos</a
+      >
+    </div>
+    <Form proyectos={proyectos} />
+  </div>
+</Layout>

@@ -1,0 +1,61 @@
+---
+const { proyectos } = Astro.props;
+
+const nombres: string[] = proyectos.map((e: any) => {
+  return e.card.nombre;
+});
+---
+
+<form
+  class="w-fit flex flex-col bg-white p-8 rounded-[20px] gap-3.5"
+  style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
+>
+  <p class="text-verde-lord text-2xl font-extrabold">¿Cómo podemos ayudarte?</p>
+  <p>Déjanos tus datos y un asesor se contactará a la brevedad posible</p>
+  <div class="flex flex-row gap-2 w-full">
+    <input
+      required
+      type="text"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      placeholder="Nombres*"
+    />
+    <input
+      required
+      type="text"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      placeholder="Apellidos*"
+    />
+  </div>
+  <div class="flex flex-row gap-2 w-full">
+    <input
+      required
+      type="text"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      placeholder="Dni*"
+    />
+    <input
+      required
+      type="text"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      placeholder="Celular*"
+    />
+  </div>
+  <input
+    required
+    type="email"
+    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px]"
+    placeholder="Correo electrónico*"
+  />
+  <select
+    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px]"
+    name=""
+    id=""
+  >
+    {
+      nombres.map((e) => {
+        return <option value={e}>{e}</option>;
+      })
+    }
+  </select>
+</form>

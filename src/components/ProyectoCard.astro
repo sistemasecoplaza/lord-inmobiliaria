@@ -1,0 +1,54 @@
+---
+import { Image } from "astro:assets";
+import { imageFetch } from "../js/ImageFetch";
+
+import enconstruccion from "../assets/enconstruccion.svg";
+import entregado from "../assets/entregado.svg";
+import preventa from "../assets/preventa.svg";
+import arrow from "../assets/arrow.svg";
+
+const { data } = Astro.props;
+const img = await imageFetch(data.card.img);
+let estado: any;
+switch (data.card.estado) {
+  case "PREVENTA":
+    estado = preventa;
+    break;
+  case "ENTREGADO":
+    estado = entregado;
+    break;
+  case "EN CONSTRUCCIÓN":
+    estado = enconstruccion;
+    break;
+}
+---
+
+<div
+  class="w-[350px] cursor-pointer opacity-0 translate-y-20 intersect:translate-0 intersect:opacity-100 duration-700 rounded-2xl bg-white shadow-2xl m-5"
+>
+  <div
+    class="absolute bg-[#0006] z-40 *:scale-[0.2] opacity-0 duration-500 rounded-2xl *:duration-500 ease-in-out hover:opacity-100 pointer-events-auto hover:*:scale-100 text-white font-medium text-xl flex flex-col justify-center items-center w-full h-[320px]"
+  >
+    <p>Sepáralo desde</p><p
+      class="text-3xl font-bold bg-naranja-lord border-white border-2 rounded-2xl px-7 py-2"
+    >
+      {data.card.separar_desde}
+    </p>
+  </div>
+  <Image class="absolute" src={estado} alt="" inferSize />
+  <Image
+    class="rounded-t-2xl h-[320px] w-full object-center object-cover"
+    src={img}
+    alt=""
+    inferSize
+  />
+  <div class="p-5 flex flex-col gap-2.5">
+    <h2 class="text-[17px] text-nowrap text-verde-lord font-bold">
+      {data.card.nombre}
+    </h2>
+    <p class="text-sm flex flex-row flex-nowrap items-center gap-2.5">
+      <Image src={arrow} class="w-6" alt="" />
+      {data.card.ubi}
+    </p>
+  </div>
+</div>
