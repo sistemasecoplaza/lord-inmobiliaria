@@ -10,14 +10,14 @@ const nombres: string[] = proyectos.map((e: any) => {
 ---
 
 <form
-  class="w-fit flex flex-col bg-white p-8 z-30 relative rounded-[20px]"
+  class="w-fit flex flex-col bg-white p-8 mx-2 z-30 relative rounded-[20px]"
   style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
 >
   <p class="text-verde-lord text-2xl mb-3.5 font-extrabold">
     ¿Cómo podemos ayudarte?
   </p>
   <p>Déjanos tus datos y un asesor se contactará a la brevedad posible</p>
-  <div class="flex mt-3.5 flex-row gap-2 w-full">
+  <div class="flex mt-3.5 flex-col md:flex-row gap-2 w-full">
     <input
       required
       type="text"
@@ -32,7 +32,7 @@ const nombres: string[] = proyectos.map((e: any) => {
       placeholder="Apellidos*"
     />
   </div>
-  <div class="flex flex-row gap-2 w-full">
+  <div class="flex flex-col md:flex-row gap-2 w-full">
     <input
       required
       type="text"

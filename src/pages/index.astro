@@ -6,11 +6,13 @@ import Layout from "../layouts/Layout.astro";
 import Form from "../components/Form.astro";
 import ProyectoCard from "../components/ProyectoCard.astro";
 import coronamin from "../assets/coronamin.svg";
+import { imageFetch } from "../js/ImageFetch";
 const inicio = await getPosts("inicio");
 const proyectos = (await getPosts("proyectos")).proyectos;
 const slider_desktop = await arrImageFetch(inicio.slider_header.slider_desktop);
 const slider_mobil = await arrImageFetch(inicio.slider_header.slider_mobil);
 const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
+const img_form = await imageFetch(inicio.img_form);
 ---
 
 <Layout>
@@ -223,12 +225,13 @@ const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
   </section>
   <div class="my-20 relative">
     <div
-      class="w-screen h-0 z-10 flex flex-row justify-center items-center sticky top-0"
+      class="w-screen mt-[50svh] h-px z-10 flex flex-row justify-center items-center sticky top-[50svh]"
     >
-      <Image src={coronamin} class="w-[70%] mt-[50svh]" alt="" />
+      <Image src={coronamin} class="w-[70%]" alt="" />
     </div>
     <h1
       class="flex flex-col z-40 relative items-center justify-center text-4xl font-extrabold text-verde-lord"
+      style="margin-top: calc(-50svh + 60px);"
     >
       <p class="text-[15px] text-black font-medium tracking-[0]">
         CONOCE LO QUE ESPERA POR TI
@@ -236,20 +239,37 @@ const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
       Nuestros Lotes
     </h1>
     <div
-      class="flex z-30 relative flex-row flex-wrap justify-center items-center w-screen p-10"
+      class="flex z-30 relative flex-row flex-wrap justify-center items-center w-screen"
     >
       <ProyectoCard data={proyectos[0]} />
       <ProyectoCard data={proyectos[1]} />
       <ProyectoCard data={proyectos[2]} />
     </div>
-    <div class="flex justify-center p-2">
+    <div
+      class="flex justify-center opacity-0 translate-y-20 intersect:translate-0 intersect:opacity-100 duration-700 z-30 relative p-2"
+    >
       <a
         class="bg-naranja-lord rounded-xl cursor-pointer hover:scale-110 duration-200 ease-in-out text-white py-3 text-lg px-13 font-semibold"
         href="">Conoce nuestros proyectos</a
       >
     </div>
-    <div class="flex flex-row justify-center items-start">
-      <div class="flex flex-col"></div>
+    <div class="flex flex-row my-16 justify-center gap-16 items-start">
+      <div class="lg:flex flex-col hidden relative z-30">
+        <Image
+          src={img_form}
+          class="h-[590px] object-contain mt-14"
+          inferSize
+          alt=""
+        />
+        <p
+          class="text-white bg-verde-lord border-[#01ca60] border-[6px] text-3xl xl:text-4xl p-5 font-medium rounded-[20px]"
+        >
+          Ellos ya <br />
+          <font class="font-extrabold text-4xl xl:text-5xl">confían</font> en <font
+            class="font-extrabold text-4xl xl:text-5xl">nosotros</font
+          >
+        </p>
+      </div>
       <Form proyectos={proyectos} />
     </div>
   </div>
