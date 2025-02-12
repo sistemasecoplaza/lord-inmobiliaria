@@ -7,6 +7,7 @@
   --font-display: "Montserrat", serif;
   --color-verde-lord: #04b71e;
   --color-naranja-lord: #ec8221;
+  --shadow-form: 0px 0px 20px 0px rgba(0,0,0,.2);
 }
 
 @keyframes fade-in {
