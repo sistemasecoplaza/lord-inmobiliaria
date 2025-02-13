@@ -7,15 +7,26 @@ import Form from "../components/Form.astro";
 import ProyectoCard from "../components/ProyectoCard.astro";
 import coronamin from "../assets/coronamin.svg";
 import { imageFetch } from "../js/ImageFetch";
+import financia from "../assets/Soporte-2.png";
+import familia_lord from "../assets/familia-lord.webp";
 const inicio = await getPosts("inicio");
 const proyectos = (await getPosts("proyectos")).proyectos;
 const slider_desktop = await arrImageFetch(inicio.slider_header.slider_desktop);
 const slider_mobil = await arrImageFetch(inicio.slider_header.slider_mobil);
 const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
 const img_form = await imageFetch(inicio.img_form);
+
+const testimonios = await Promise.all(
+  inicio.slider_testimonios.map(async (e: any) => {
+    return {
+      texto: e.texto,
+      img: await imageFetch(e.img),
+    };
+  })
+);
 ---
 
-<Layout>
+<Layout selected="1">
   <section
     class="w-screen relative hidden xl:block"
     id="embla"
@@ -30,7 +41,7 @@ const img_form = await imageFetch(inicio.img_form);
           slider_desktop.map((e) => {
             return (
               <div
-                class="embla__slide min-w-0 translate-3d"
+                class="embla__slide min-w-0 translate-3d relative"
                 style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
               >
                 <Image src={e} class="w-full" inferSize alt="" />
@@ -246,15 +257,17 @@ const img_form = await imageFetch(inicio.img_form);
       <ProyectoCard data={proyectos[2]} />
     </div>
     <div
-      class="flex justify-center opacity-0 translate-y-20 intersect:translate-0 intersect:opacity-100 duration-700 z-30 relative p-2"
+      class="flex justify-center opacity-0 translate-y-20 intersect-once intersect:translate-0 intersect:opacity-100 duration-700 z-30 relative p-2"
     >
       <a
         class="bg-naranja-lord rounded-xl cursor-pointer hover:scale-110 duration-200 ease-in-out text-white py-3 text-lg px-13 font-semibold"
         href="">Conoce nuestros proyectos</a
       >
     </div>
-    <div class="flex flex-row my-16 justify-center gap-16 items-start">
-      <div class="lg:flex flex-col hidden relative z-30">
+    <div class="flex flex-row my-16 relative justify-center gap-10 items-start">
+      <div
+        class="lg:flex flex-col hidden -translate-x-full opacity-0 intersect:translate-x-0 intersect:opacity-100 duration-700 drop-shadow-xl select-none items-center justify-center relative z-50"
+      >
         <Image
           src={img_form}
           class="h-[590px] object-contain mt-14"
@@ -262,7 +275,7 @@ const img_form = await imageFetch(inicio.img_form);
           alt=""
         />
         <p
-          class="text-white bg-verde-lord border-[#01ca60] border-[6px] text-3xl xl:text-4xl p-5 font-medium rounded-[20px]"
+          class="text-white bg-verde-lord border-[#01ca60] w-fit border-[6px] text-3xl xl:text-4xl p-5 font-medium rounded-[20px]"
         >
           Ellos ya <br />
           <font class="font-extrabold text-4xl xl:text-5xl">confían</font> en <font
@@ -271,6 +284,252 @@ const img_form = await imageFetch(inicio.img_form);
         </p>
       </div>
       <Form proyectos={proyectos} />
+    </div>
+    <div class="w-screen flex justify-center">
+      <p
+        class="text-white lg:hidden bg-verde-lord border-[#01ca60] relative mb-20 z-50 w-fit border-[6px] text-[28px] xl:text-4xl p-5 font-medium rounded-[20px]"
+      >
+        Ellos ya <br />
+        <font class="font-extrabold text-3xl xl:text-5xl">confían</font> en <font
+          class="font-extrabold text-3xl xl:text-5xl">nosotros</font
+        >
+      </p>
+    </div>
+    <div
+      class="lg:border-y-1 relative lg:border-gray-700 bg-white flex flex-row justify-center -mt-32 py-24"
+    >
+      <div
+        class="left-0 top-0 h-[100%] absolute z-40 bg-white"
+        style="width: calc(15vw);"
+      >
+      </div>
+      <section
+        class="w-screen mx-[10%] relative md:hidden"
+        id="embla_start"
+        style="--slide-height: auto; --slide-spacing: 10px; --dot-size: 20px;  --button-size: 40px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+      >
+        <div class="w-[70vw] h-fit m-auto" id="embla__viewport">
+          <div
+            class="flex"
+            style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+          >
+            {
+              testimonios.map((e) => {
+                return (
+                  <div
+                    class="min-w-0  relative"
+                    style="flex: 0 0 var(--slide-size); width: calc(var(--slide-size)) ; padding-left: var(--slide-spacing);"
+                  >
+                    <div
+                      style="width: calc(100% - var(--slide-spacing));"
+                      class="bg-[#0006] h-full items-center justify-center select-none text-white text-center px-5  opacity-0 hover:opacity-100 duration-300 ease-in-out font-medium drop-shadow-xl flex absolute rounded-2xl"
+                    >
+                      {e.texto}
+                    </div>
+                    <Image
+                      src={e.img}
+                      class="w-full rounded-2xl h-auto"
+                      inferSize
+                      alt=""
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex w-screen justify-between">
+          <div
+            class="flex justify-between pointer-events-none items-center absolute w-full h-full top-0 z-50"
+          >
+            <button
+              class="pointer-events-auto cursor-pointer text-verde-lord"
+              id="embla__button--prev"
+              type="button"
+            >
+              <svg
+                style="width: var(--button-size); margin-left: var(--buton-margin);"
+                viewBox="0 0 532 532"
+              >
+                <path
+                  fill="currentColor"
+                  d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                ></path>
+              </svg>
+            </button>
+
+            <button
+              class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+              id="embla__button--next"
+              type="button"
+            >
+              <svg
+                style="width: var(--button-size); margin-right: var(--buton-margin);"
+                viewBox="0 0 532 532"
+              >
+                <path
+                  fill="currentColor"
+                  d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        class="w-screen mx-[10%] relative hidden md:block xl:hidden"
+        id="embla_start"
+        style="--slide-height: auto; --slide-spacing: 10px; --dot-size: 20px;  --button-size: 50px; --buton-margin: 10vw; --slide-size: calc(100% / 2);"
+      >
+        <div class="w-[70vw] h-fit m-auto" id="embla__viewport">
+          <div
+            class="flex"
+            style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+          >
+            {
+              testimonios.map((e) => {
+                return (
+                  <div
+                    class="min-w-0  relative"
+                    style="flex: 0 0 var(--slide-size); width: calc(var(--slide-size)) ; padding-left: var(--slide-spacing);"
+                  >
+                    <div
+                      style="width: calc(100% - var(--slide-spacing));"
+                      class="bg-[#0006] h-full items-center justify-center select-none text-white text-center px-5  opacity-0 hover:opacity-100 duration-300 ease-in-out font-medium drop-shadow-xl flex absolute rounded-2xl"
+                    >
+                      {e.texto}
+                    </div>
+                    <Image
+                      src={e.img}
+                      class="w-full rounded-2xl h-auto"
+                      inferSize
+                      alt=""
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex w-screen justify-between">
+          <div
+            class="flex justify-center pointer-events-none items-center absolute w-full h-full top-0 z-50"
+            style="gap: 75%;"
+          >
+            <button
+              class="pointer-events-auto cursor-pointer text-verde-lord"
+              id="embla__button--prev"
+              type="button"
+            >
+              <svg style="width: var(--button-size);" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                ></path>
+              </svg>
+            </button>
+
+            <button
+              class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+              id="embla__button--next"
+              type="button"
+            >
+              <svg style="width: var(--button-size);" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      <section
+        class="w-screen mx-[10%] relative hidden xl:block"
+        id="embla_start"
+        style="--slide-height: auto; --slide-spacing: 10px; --dot-size: 20px;  --button-size: 50px; --buton-margin: 10vw; --slide-size: calc(100% / 3);"
+      >
+        <div class="w-[70vw] h-fit m-auto" id="embla__viewport">
+          <div
+            class="flex"
+            style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+          >
+            {
+              testimonios.map((e) => {
+                return (
+                  <div
+                    class="min-w-0  relative"
+                    style="flex: 0 0 var(--slide-size); width: calc(var(--slide-size)) ; padding-left: var(--slide-spacing);"
+                  >
+                    <div
+                      style="width: calc(100% - var(--slide-spacing));"
+                      class="bg-[#0006] h-full items-center justify-center select-none text-white text-center px-5  opacity-0 hover:opacity-100 duration-300 ease-in-out font-medium drop-shadow-xl flex absolute rounded-2xl"
+                    >
+                      {e.texto}
+                    </div>
+                    <Image
+                      src={e.img}
+                      class="w-full rounded-2xl h-auto"
+                      inferSize
+                      alt=""
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex w-screen justify-between">
+          <div
+            class="flex justify-center pointer-events-none items-center absolute w-full h-full top-0 z-50"
+            style="gap: 75%;"
+          >
+            <button
+              class="pointer-events-auto cursor-pointer text-verde-lord"
+              id="embla__button--prev"
+              type="button"
+            >
+              <svg style="width: var(--button-size);" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                ></path>
+              </svg>
+            </button>
+
+            <button
+              class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+              id="embla__button--next"
+              type="button"
+            >
+              <svg style="width: var(--button-size);" viewBox="0 0 532 532">
+                <path
+                  fill="currentColor"
+                  d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+      <div
+        class="right-0 top-0 h-[100%] absolute z-40 bg-white"
+        style="width: calc(15vw);"
+      >
+      </div>
+    </div>
+    <div class="h-fit w-screen relative">
+      <div class="w-screen h-full flex-col relative z-40 justify-center">
+        <Image src={familia_lord} alt="" />
+      </div>
+      <Image
+        src={financia}
+        class="w-screen h-[90%] object-top object-cover absolute bottom-0"
+        alt=""
+      />
     </div>
   </div>
 </Layout>
