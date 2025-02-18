@@ -1,0 +1,64 @@
+---
+import { Image } from "astro:assets";
+import logolord from "../assets/logolord.svg";
+import yt from "../assets/yt.svg";
+import fb from "../assets/fb.svg";
+import ig from "../assets/ig.svg";
+---
+
+<footer
+  class="bg-[#252324] text-white font-medium relative flex flex-row justify-center gap-10 flex-wrap w-screen py-14 px-3"
+>
+  <div class="flex px-2 flex-col items-center text-center gap-5 max-w-[250px]">
+    <Image src={logolord} class="w-28" alt="" />
+    <p>
+      Somos una inmobiliaria que cuenta con proyectos en zonas rentables y
+      exclusivas.
+    </p>
+  </div>
+  <div class="px-2">
+    <ul class="">
+      <li class="hover:text-verde-lord py-2 transition-colors">
+        <a href="/nosotros">¿Quiénes somos?</a>
+      </li>
+      <li class="hover:text-verde-lord py-2 transition-colors">
+        <a href="/#proyectos">Lotes</a>
+      </li>
+      <li class="hover:text-verde-lord py-2 transition-colors">
+        <a href="/blog">Blog</a>
+      </li>
+      <li class="hover:text-verde-lord py-2 transition-colors">
+        <a href="/politicas-de-privacidad">Politicas de privacidad</a>
+      </li>
+    </ul>
+  </div>
+  <div class="px-2 w-[250px]">
+    <p>
+      Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco
+    </p>
+    <p>940 923 345</p>
+    <p>atencion@lordinmobiliaria.pe</p>
+  </div>
+  <div class="px-2 flex flex-col gap-4">
+    <p>Síguenos en:</p>
+    <div class="flex flex-row gap-3">
+      <a href="https://www.facebook.com/lordinmobiliaria.peru" target="_blank"
+        ><Image class="w-10" src={fb} alt="" /></a
+      >
+      <a href="https://www.instagram.com/lord.inmobiliaria/" target="_blank">
+        <Image class="w-10" src={ig} alt="" /></a
+      >
+      <a
+        href="https://www.youtube.com/channel/UCyZoF78Je9kbWQ8jQK__vhA"
+        target="_blank"
+      >
+        <Image class="w-10" src={yt} alt="" />
+      </a>
+    </div>
+  </div>
+</footer>
+<div
+  class="bg-naranja-lord px-20 py-6 text-center md:text-start text-white text-lg font-medium"
+>
+  <p>© 2023 lordinmobiliaria.pe | Todos los derechos Reservados.</p>
+</div>

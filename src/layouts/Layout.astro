@@ -2,6 +2,7 @@
 import { ClientRouter } from "astro:transitions";
 import NavBar from "../components/NavBar.astro";
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 const { title, selected } = Astro.props;
 ---
 
@@ -48,6 +49,7 @@ const { title, selected } = Astro.props;
   <body class="relative bg-gray-50 font-display w-screen">
     <NavBar selected={selected} />
     <slot />
+    <Footer />
     <script src="../js/index.ts"></script>
     <script>
       import { Observer } from "tailwindcss-intersect";

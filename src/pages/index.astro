@@ -8,13 +8,19 @@ import ProyectoCard from "../components/ProyectoCard.astro";
 import coronamin from "../assets/coronamin.svg";
 import { imageFetch } from "../js/ImageFetch";
 import financia from "../assets/Soporte-2.png";
-import familia_lord from "../assets/familia-lord.webp";
+import familia_lord from "../assets/familia-lord.png";
+import arriba from "../assets/arriba.svg";
+import check from "../assets/check.svg";
+import izquierda from "../assets/izquierda.svg";
+import { marked } from "marked";
 const inicio = await getPosts("inicio");
+
 const proyectos = (await getPosts("proyectos")).proyectos;
 const slider_desktop = await arrImageFetch(inicio.slider_header.slider_desktop);
 const slider_mobil = await arrImageFetch(inicio.slider_header.slider_mobil);
 const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
 const img_form = await imageFetch(inicio.img_form);
+const beneficios = inicio.financia.beneficios;
 
 const testimonios = await Promise.all(
   inicio.slider_testimonios.map(async (e: any) => {
@@ -42,7 +48,7 @@ const testimonios = await Promise.all(
             return (
               <div
                 class="embla__slide min-w-0 translate-3d relative"
-                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+                style="flex: 0 0 var(--slide-size); transform: translate3d(0, 0, 0); padding-left: var(--slide-spacing);"
               >
                 <Image src={e} class="w-full" inferSize alt="" />
               </div>
@@ -111,7 +117,7 @@ const testimonios = await Promise.all(
             return (
               <div
                 class="embla__slide min-w-0 translate-3d"
-                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+                style="flex: 0 0 var(--slide-size); transform: translate3d(0, 0, 0); padding-left: var(--slide-spacing);"
               >
                 <Image src={e} inferSize alt="" />
               </div>
@@ -234,7 +240,9 @@ const testimonios = await Promise.all(
       </div>
     </div>
   </section>
+
   <div class="my-20 relative">
+    <div class="absolute -top-[calc(50svh+100px)]" id="proyectos"></div>
     <div
       class="w-screen mt-[50svh] h-px z-10 flex flex-row justify-center items-center sticky top-[50svh]"
     >
@@ -264,9 +272,11 @@ const testimonios = await Promise.all(
         href="">Conoce nuestros proyectos</a
       >
     </div>
-    <div class="flex flex-row my-16 relative justify-center gap-10 items-start">
+    <div
+      class="flex flex-row py-16 relative justify-center gap-10 items-start overflow-hidden"
+    >
       <div
-        class="lg:flex flex-col hidden -translate-x-full opacity-0 intersect:translate-x-0 intersect:opacity-100 duration-700 drop-shadow-xl select-none items-center justify-center relative z-50"
+        class="lg:flex flex-col hidden h-full -translate-x-full opacity-0 intersect:translate-x-0 intersect:opacity-100 duration-700 drop-shadow-xl select-none items-center justify-center relative z-50"
       >
         <Image
           src={img_form}
@@ -283,7 +293,7 @@ const testimonios = await Promise.all(
           >
         </p>
       </div>
-      <Form proyectos={proyectos} />
+      <Form />
     </div>
   </div>
   <div class="w-screen flex justify-center">
@@ -297,7 +307,7 @@ const testimonios = await Promise.all(
     </p>
   </div>
   <div
-    class="lg:border-y-1 relative lg:border-gray-700 bg-white flex flex-row z-30 justify-center -mt-32 py-24"
+    class="lg:border-t-1 relative lg:border-t-gray-700 bg-white flex flex-row z-30 justify-center -mt-32 py-24"
   >
     <div
       class="left-0 top-0 h-[100%] absolute z-40 bg-white"
@@ -522,19 +532,60 @@ const testimonios = await Promise.all(
     >
     </div>
   </div>
-  <div class="h-fit w-screen relative">
-    <div class="w-screen h-full flex-col relative z-40 justify-center">
-      <Image src={familia_lord} alt="" />
-    </div>
+  <div
+    class="h-fit overflow-hidden w-screen flex flex-col xl:flex-row items-center justify-center relative"
+  >
+    <Image
+      class="h-full z-20 pl-5 opacity-0 -translate-x-full duration-1000 intersect:translate-0 intersect:opacity-100"
+      src={familia_lord}
+      alt=""
+    />
+
     <div
-      class="relative z-30 flex flex-row justify-center rounded-2xl py-3 text-white mx-2 text-start text-nowrap text-xl bg-verde-lord"
+      class="flex flex-col translate-x-[80%] opacity-0 z-30 w-fit intersect:opacity-100 intersect:translate-0 duration-1000 mb-10 gap-3"
     >
-      <div>
-        ¡No esperes más! <br />
-        <font class="font-bold">Financia</font> tu lote <font class="font-bold"
-          >HOY MISMO</font
-        >
+      <div
+        class="xl:mt-14 flex relative w-fit px-8 flex-row self-center justify-center rounded-2xl py-4 text-white text-start text-nowrap text-xl bg-verde-lord"
+      >
+        <div>
+          <Image
+            class="absolute bottom-full xl:hidden mx-auto z-50 w-10 left-0 right-0"
+            src={arriba}
+            alt=""
+          />
+          <Image
+            src={izquierda}
+            class="absolute right-full hidden xl:block my-auto w-fit h-10 top-0 bottom-0"
+            alt=""
+          />
+          <div class="xl:text-2xl">
+            ¡No esperes más! <br />
+            <font class="font-bold">Financia tu lote HOY MISMO</font>
+          </div>
+        </div>
       </div>
+      {
+        beneficios.map((e: any) => {
+          return (
+            <div
+              class="flex px-3 text-sm flex-row gap-1 flex-nowrap"
+              style="color: rgba(82, 104, 64, 0.75);"
+            >
+              <Image src={check} class="w-5" alt="" />
+              <div
+                set:html={marked.parse(e.texto)}
+                class="flex xl:text-lg **:w-fit w-fit items-center"
+              />
+            </div>
+          );
+        })
+      }
+      <a
+        class="py-3 mt-3 ml-10 text-white rounded-lg font-medium px-10 bg-naranja-lord text-center w-fit self-start"
+        href=""
+      >
+        Solicitar información
+      </a>
     </div>
     <Image
       src={financia}

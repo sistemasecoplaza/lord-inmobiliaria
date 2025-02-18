@@ -12,6 +12,9 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
+  experimental: {
+    svg: true,
+  },
   env: {
     schema: {
       WORDPRESS_URL: envField.string({ context: "client", access: "public" }),

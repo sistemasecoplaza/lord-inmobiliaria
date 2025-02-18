@@ -1,0 +1,170 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../layouts/Layout.astro";
+import { getPosts } from "../js/getPosts";
+import { imageFetch } from "../js/ImageFetch";
+import hoja1 from "../assets/hoja1.png";
+import hoja2 from "../assets/hoja2.png";
+import diana from "../assets/diana.svg";
+import { marked } from "marked";
+import check from "../assets/check.svg";
+import LordCentroMitadInferior from "../assets/lordcentromitadinferior.svg";
+import Familias from "../assets/familias.svg";
+import AreasVerdes from "../assets/areas-verdes.svg";
+import Experiencia from "../assets/experiencia.svg";
+const nosotros = await getPosts("nosotros");
+const fondo = await imageFetch(nosotros.fondo_img);
+const img_objetivo = await imageFetch(nosotros.img_objetivo);
+const proyectos = nosotros.proyectos.proyectos.map((e: any) => {
+  return e.nombre;
+});
+
+const imagen_mapa = await imageFetch(nosotros.proyectos.imagen_mapa);
+const imagen_modelo = await imageFetch(nosotros.proyectos.imagen_modelo);
+---
+
+<Layout selected="2">
+  <div class="relative text-[#898888]">
+    <Image
+      src={fondo}
+      class="w-screen h-[500px] object-cover object-center"
+      alt=""
+      inferSize
+    />
+    <div
+      class="container relative mx-auto px-10 py-14 rounded-b-4xl mb-5 bg-white shadow-xl"
+    >
+      <h1 class="text-verde-lord text-3xl mb-8 font-extrabold">
+        {nosotros.conocenos.titulo}
+      </h1>
+      <p>{nosotros.conocenos.descripcion}</p>
+      <Image
+        src={hoja1}
+        class="absolute -bottom-14 left-1 lg:-left-7 size-20 lg:size-28 animate-wiggle"
+        alt=""
+      />
+    </div>
+    <div
+      class="my-14 p-5 flex flex-row flex-wrap gap-10 w-screen items-center justify-center"
+    >
+      <div
+        class="[&>iframe]:rounded-2xl [&>iframe]:w-[90vw] [&>iframe]:max-w-[600px] [&>iframe]:h-auto [&>iframe]:aspect-video"
+        set:html={nosotros.video_yt}
+      />
+      <div>
+        <div class="border-b-[#ababab] border-b-[1px] px-3 max-w-[500px] py-5">
+          <h2 class="text-verde-lord text-2xl font-semibold">Misión</h2>
+          <p class="text-[#898888]">{nosotros.mision}</p>
+        </div>
+        <div class="border-b-[#ababab] border-b-[1px] px-3 max-w-[500px] py-5">
+          <h2 class="text-verde-lord text-2xl font-semibold">Visión</h2>
+          <p class="text-[#898888]">{nosotros.vision}</p>
+        </div>
+        <div class="px-3 max-w-[500px] py-5">
+          <h2 class="text-verde-lord text-2xl font-semibold">Valores</h2>
+          <p class="text-[#898888]">{nosotros.valores}</p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="flex flex-row flex-wrap justify-center items-start gap-10 px-4 my-10"
+    >
+      <div
+        class="flex flex-col bg-white shadow-2xl rounded-3xl p-9 lg:py-13 lg:px-16 w-[600px] -mt-10 lg:translate-x-20 z-30"
+      >
+        <Image src={diana} alt="" />
+        <h2 class="text-verde-lord text-2xl mb-3 font-semibold">
+          Nuestro Objetivo
+        </h2>
+        <p>{nosotros.objetivo}</p>
+      </div>
+      <div class="w-fit relative">
+        <Image src={img_objetivo} class="rounded-3xl" inferSize alt="" />
+        <Image
+          src={hoja2}
+          class="absolute size-20 lg:size-28 animate-wiggle -bottom-12 right-1 md:-right-5"
+          alt=""
+        />
+      </div>
+    </div>
+    <div
+      class="flex flex-row flex-wrap px-2 justify-center items-start gap-10 mt-20"
+    >
+      <div class="flex flex-col gap-5 w-fit">
+        <p class="text-verde-lord text-4xl font-bold">Nuestros proyectos</p>
+        <div class="flex flex-col gap-2">
+          {
+            proyectos.map((e: string) => {
+              return (
+                <div class=" flex flex-row gap-1 flex-nowrap items-center">
+                  <Image src={check} alt="" />
+                  <p class="text-[#7B8C6F]" set:html={marked.parse(e)} />
+                </div>
+              );
+            })
+          }
+        </div>
+        <div
+          class="flex flex-row justify-end w-[350px] border-r-[5px] border-y-[5px] border-r-white border-y-white shadow-2xl bg-[#F3B301] rounded-r-2xl py-2 text-2xl text-white"
+        >
+          <div class="flex [&p]:leading-1 mr-13 flex-col w-fit">
+            <p>Tenemos</p>
+            <p class="text-3xl font-extrabold">Presencia</p>
+            <p class="ml-10">
+              en el <font class="text-3xl font-extrabold">Pais</font>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-row justify-center w-fit self-end">
+        <Image
+          class="w-[45vw] md:w-[200px] lg:w-[250px] xl:w-[300px] -mr-5"
+          src={imagen_mapa}
+          alt=""
+          inferSize
+        />
+        <Image
+          class="w-[50vw] md:w-[250px] lg:w-[300px] xl:w-[350px]"
+          src={imagen_modelo}
+          alt=""
+          inferSize
+        />
+      </div>
+    </div>
+    <div
+      class="bg_verde_gradient relative py-14 flex-wrap flex flex-row justify-center px-2 items-center gap-10"
+    >
+      <LordCentroMitadInferior
+        width={150}
+        class="absolute z-10 top-0 mx-auto left-0 right-0"
+      />
+      <div
+        class="w-[350px] flex flex-row gap-3 z-20 justify-start items-center"
+      >
+        <Experiencia width={100} />
+        <div class="flex flex-col text-white text-lg">
+          <p class="text-3xl font-extrabold">7</p>
+          <p>Años de experiencia</p>
+        </div>
+      </div>
+      <div
+        class="w-[350px] flex flex-row z-20 gap-3 justify-start items-center"
+      >
+        <Familias width={100} />
+        <div class="flex flex-col text-white text-lg">
+          <p class="text-3xl font-extrabold">+500</p>
+          <p>Familias satisfechas</p>
+        </div>
+      </div>
+      <div
+        class="w-[350px] flex flex-row z-20 gap-3 justify-start items-center"
+      >
+        <AreasVerdes width={100} />
+        <div class="flex flex-col text-white text-lg">
+          <p class="text-3xl font-extrabold">+20mil</p>
+          <p>m² áreas verdes</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</Layout>
