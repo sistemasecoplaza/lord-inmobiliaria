@@ -14,22 +14,24 @@ const nombres: string[] = proyectos.map((e: any) => {
   class="w-fit flex flex-col h-fit bg-white p-8 mx-1 translate-x-[90%] intersect:translate-0 intersect:opacity-100 ease-in-out delay-100 duration-700 opacity-0 z-40 relative rounded-[20px]"
   style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
 >
-  <p class="text-verde-lord text-2xl mb-3.5 font-extrabold">
+  <p class="text-verde-lord text-[20px] 2xl:text-2xl mb-3.5 font-extrabold">
     ¿Cómo podemos ayudarte?
   </p>
-  <p>Déjanos tus datos y un asesor se contactará a la brevedad posible</p>
+  <p class="text-[15px] 2xl:text-[16px]">
+    Déjanos tus datos y un asesor se contactará a la brevedad posible
+  </p>
   <div class="flex mt-3.5 flex-col md:flex-row gap-2 w-full">
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
       placeholder="Nombres*"
     />
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
       placeholder="Apellidos*"
     />
   </div>
@@ -37,24 +39,24 @@ const nombres: string[] = proyectos.map((e: any) => {
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
       placeholder="Dni*"
     />
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
+      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px] w-full"
       placeholder="Celular*"
     />
   </div>
   <input
     required
     type="email"
-    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px]"
+    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[10px]"
     placeholder="Correo electrónico*"
   />
   <select
-    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[15px] font-medium rounded-xl appearance-none text-[#666]"
+    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666]"
     name=""
     id=""
   >
@@ -64,7 +66,7 @@ const nombres: string[] = proyectos.map((e: any) => {
       })
     }
   </select>
-  <p class="my-6 w-[90%]">
+  <p class="my-6 w-[90%] text-[15px] 2xl:text-[16px]">
     Al enviar este formulario estás aceptando nuestras <font
       class="text-verde-lord"
     >
@@ -73,12 +75,12 @@ const nombres: string[] = proyectos.map((e: any) => {
   </p>
   <button
     type="submit"
-    class="bg-naranja-lord rounded-2xl text-lg font-semibold hover:shadow-form duration-300 cursor-pointer py-3 text-white"
+    class="bg-naranja-lord rounded-2xl text-[16px] 2xl:text-lg font-semibold hover:shadow-form duration-300 cursor-pointer py-3 text-white"
     >Envíar datos</button
   >
   <a
     href=""
-    class="bg-[#25d366] rounded-2xl mb-6 my-2.5 justify-center gap-2 hover:shadow-form duration-300 text-center flex items-center text-lg font-semibold cursor-pointer py-3 text-white"
+    class="bg-[#25d366] rounded-2xl mb-6 my-2.5 justify-center gap-2 hover:shadow-form duration-300 text-center flex items-center text-[16px] 2xl:text-lg font-semibold cursor-pointer py-3 text-white"
     ><Image src={whatsapp} class="h-5 w-fit" alt="" />Contáctanos por Whatsapp.</a
   >
 </form>

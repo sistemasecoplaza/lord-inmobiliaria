@@ -8,27 +8,33 @@ import beneficios_modelo from "../assets/beneficios_modelo.webp";
 ---
 
 <Layout selected="5">
-  <div class="relative w-full h-full z-50">
-    <Image
-      src={hoja2}
-      alt=""
-      class="absolute z-50 animate-wiggle w-32 -top-24"
-    />
-    <Image
-      src={hoja1}
-      class="absolute z-50 animate-wiggle block w-16 bottom-5"
-      alt=""
-    />
-    <Image
-      src={hoja1}
-      class="absolute z-50 animate-wiggle w-16 hidden lg:block right-10 bottom-0 top-0 my-auto -rotate-90"
-      alt=""
-    />
-  </div>
-  <div
-    class="bg_form pt-5 lg:px-5 relative z-10 flex flex-row flex-wrap-reverse justify-center"
-  >
-    <div class="my-auto"><Form /></div>
-    <Image src={beneficios_modelo} alt="" />
+  <div class="relative">
+    <div class="absolute h-full w-full z-50">
+      <Image
+        src={hoja2}
+        alt=""
+        class="absolute z-50 animate-wiggle w-32 -top-24"
+      />
+      <Image
+        src={hoja1}
+        class="absolute z-50 animate-wiggle block w-16 bottom-5"
+        alt=""
+      />
+      <Image
+        src={hoja1}
+        class="absolute z-50 animate-wiggle w-16 hidden lg:block right-10 bottom-0 top-0 my-auto -rotate-90"
+        alt=""
+      />
+    </div>
+    <div
+      class="bg_form pt-5 overflow-hidden lg:px-5 relative xl:gap-10 z-10 flex flex-row flex-wrap-reverse justify-center"
+    >
+      <div class="xl:my-auto mb-20 xl:w-[40%] fade-left-full"><Form /></div>
+      <Image
+        src={beneficios_modelo}
+        class="w-[90%] fade-right-full xl:w-[50%] max-w-[690px]"
+        alt=""
+      />
+    </div>
   </div>
 </Layout>

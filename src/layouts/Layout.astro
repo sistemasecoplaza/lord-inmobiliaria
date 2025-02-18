@@ -24,12 +24,14 @@ const { title, selected } = Astro.props;
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <title>{title}</title>
+    <ClientRouter />
     <script
+      is:inline
       src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"
     ></script>
-    <title>{title}</title>
-    <script>
-      function toggleMenu() {
+    <script is:inline>
+      document.addEventListener("astro:page-load", () => {
         const menu = document.getElementById("menuOppener");
         const nav = document.querySelector("ul");
         menu?.addEventListener("click", () => {
@@ -37,10 +39,8 @@ const { title, selected } = Astro.props;
             ? nav?.classList.replace("hidden", "flex")
             : nav?.classList.replace("flex", "hidden");
         });
-      }
-      toggleMenu();
+      });
     </script>
-    <ClientRouter />
     <script
       is:inline
       src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"

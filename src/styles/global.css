@@ -58,6 +58,32 @@ html {
     transform: translateY(0);
   }
 }
+@keyframes fade-left-full {
+  0% {
+    opacity: 0;
+    transform: translateX(-90%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+@keyframes fade-right-full {
+  0% {
+    opacity: 0;
+    transform: translateX(90%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+.fade-right-full {
+  animation: fade-right-full 2s ease-in-out;
+}
+.fade-left-full {
+  animation: fade-left-full 2s ease-in-out;
+}
 .fade-up {
   animation: fade-up 1s ease-in-out;
 }
@@ -71,8 +97,21 @@ html {
     transform: translateY(0);
   }
 }
+@keyframes fade-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .fade-down {
   animation: fade-down 1s ease-in-out;
+}
+.fade-down-full {
+  animation: fade-down-full 2s ease-in-out;
 }
 .embla__dot {
   -webkit-tap-highlight-color: rgba(var(--text-high-contrast-rgb-value), 0.5);

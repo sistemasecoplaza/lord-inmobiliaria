@@ -1,0 +1,150 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import familia1 from "../../assets/familia-1.png";
+import { Image } from "astro:assets";
+import { getPosts } from "../../js/getPosts";
+import { imageFetch } from "../../js/ImageFetch";
+import slug from "slug";
+import Calendar from "../../assets/calendar.svg";
+let blogs: any = [];
+
+for (const e of (await getPosts("blog")).posts) {
+  blogs.push({
+    slug: slug(e.titulo),
+    titulo: e.titulo,
+    descripcion: e.descripcion,
+    fecha: e.fecha,
+    img: await imageFetch(e.img),
+    post: e.post,
+  });
+}
+blogs = blogs.reverse();
+console.log("%csrc/pages/blog/index.astro:8 blogs", "color: #007acc;", blogs); // enseña un array vacio
+---
+
+<Layout selected="4">
+  <div class="relative overflow-x-hidden">
+    <div
+      class="flex flex-row justify-center gap-4 flex-wrap pt-14 bg-verde-lord px-5"
+    >
+      <div
+        class="max-w-[550px] flex my-auto fade-left-full flex-col gap-4 text-white"
+      >
+        <h1 class="text-3xl font-bold">
+          Mantente informado en nuestro
+          <br />
+          <font class="bg-naranja-lord py-1 mt-1 block w-fit"
+            >&nbsp;&nbsp;&nbsp;blog&nbsp;</font
+          >
+        </h1>
+        <p>
+          En esta sección, hablaremos de temas relacionados con las inversiones
+          inmobiliarias. Exploraremos las diferentes opciones de inversión
+          disponibles, los factores que hay que tener en cuenta a la hora de
+          invertir en bienes raíces, y los consejos para tener éxito en esta
+          actividad.
+        </p>
+      </div>
+      <Image
+        class="max-w-[500px] fade-right-full w-full"
+        src={familia1}
+        alt=""
+      />
+    </div>
+    <div class="flex flex-col gap-14 py-20">
+      <div class="flex flex-row flex-wrap items-center justify-center gap-10">
+        <Image
+          src={blogs[0].img}
+          class="rounded-2xl object-cover object-center max-w-[600px] w-[90%] aspect-3/2"
+          alt=""
+          inferSize
+        />
+        <div class="flex flex-col gap-5 max-w-[500px] w-[90%]">
+          <div
+            class="flex flex-row text-verde-lord font-semibold items-center gap-5"
+          >
+            <Calendar width={25} />
+            {blogs[0].fecha}
+          </div>
+          <p class="text-2xl font-bold">{blogs[0].titulo}</p>
+          <p class="text-gray-500 text-sm">{blogs[0].descripcion}</p>
+          <a
+            href=`/blog/${blogs[0].slug}`
+            class="bg-naranja-lord py-3 px-10 w-fit hover:scale-110 duration-500 ease-in-out text-white font-semibold rounded-xl"
+            >Saber más</a
+          >
+        </div>
+      </div>
+      <div
+        class="flex flex-row flex-wrap-reverse items-center justify-center gap-10"
+      >
+        <div
+          class="flex flex-col gap-5 max-w-[500px] -translate-x-[90%] opacity-0 duration-1000 ease-in-out intersect:translate-0 intersect:opacity-100 w-[90%]"
+        >
+          <div
+            class="flex flex-row text-verde-lord font-semibold items-center gap-5"
+          >
+            <Calendar width={25} />
+            {blogs[1].fecha}
+          </div>
+          <p class="text-2xl font-bold">{blogs[1].titulo}</p>
+          <p class="text-gray-500 text-sm">{blogs[1].descripcion}</p>
+          <a
+            href=`/blog/${blogs[1].slug}`
+            class="bg-naranja-lord py-3 px-10 hover:scale-110 duration-500 ease-in-out w-fit text-white font-semibold rounded-xl"
+            >Saber más</a
+          >
+        </div>
+        <Image
+          src={blogs[1].img}
+          class="rounded-2xl object-cover object-center max-w-[600px] w-[90%] aspect-3/2 translate-x-[90%] opacity-0 duration-1000 ease-in-out intersect:translate-0 intersect:opacity-100"
+          alt=""
+          inferSize
+        />
+      </div>
+      <div
+        class="flex flex-row gap-5 justify-center drop-shadow-xl items-center flex-wrap"
+      >
+        <a
+          href=`/blog/${blogs[2].slug}`
+          class="flex flex-col gap-3 max-w-[390px] -translate-x-[90%] opacity-0 intersect:translate-0 intersect:hover:-translate-y-5 intersect:opacity-100 w-[90%] ease-in-out duration-700 p-4 h-fit bg-white rounded-2xl"
+        >
+          <Image
+            src={blogs[2].img}
+            class="object-cover object-center rounded-2xl"
+            alt=""
+            inferSize
+          />
+          <p class="font-semibold w-[90%]">{blogs[2].titulo}</p>
+          <p class="font-semibold text-verde-lord">{blogs[2].fecha}</p>
+        </a>
+        <a
+          href=`/blog/${blogs[3].slug}`
+          class="flex flex-col gap-3 max-w-[390px] scale-75 opacity-0 intersect:opacity-100 intersect:scale-100 w-[90%] hover:-translate-y-5 ease-in-out duration-700 p-4 h-fit bg-white rounded-2xl"
+        >
+          <Image
+            src={blogs[3].img}
+            class="object-cover object-center rounded-2xl"
+            alt=""
+            inferSize
+          />
+          <p class="font-semibold w-[90%]">{blogs[3].titulo}</p>
+          <p class="font-semibold text-verde-lord">{blogs[3].fecha}</p>
+        </a>
+        <a
+          href=`/blog/${blogs[4].slug}`
+          class="flex flex-col gap-3 max-w-[390px] translate-x-[90%] opacity-0 intersect:translate-0 intersect:opacity-100 intersect:hover:-translate-y-5 ease-in-out duration-700 w-[90%] p-4 h-fit bg-white rounded-2xl"
+        >
+          <Image
+            src={blogs[4].img}
+            class="object-cover object-center rounded-2xl"
+            alt=""
+            inferSize
+          />
+          <p class="font-semibold w-[90%]">{blogs[4].titulo}</p>
+          <p class="font-semibold text-verde-lord">{blogs[4].fecha}</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
