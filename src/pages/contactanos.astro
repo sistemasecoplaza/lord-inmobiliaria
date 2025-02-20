@@ -4,7 +4,12 @@ import Layout from "../layouts/Layout.astro";
 import hoja1 from "../assets/hoja1.png";
 import hoja2 from "../assets/hoja2.png";
 import { Image } from "astro:assets";
-import beneficios_modelo from "../assets/beneficios_modelo.webp";
+import beneficios_modelo from "../assets/beneficios_modelo.png";
+import campo from "../assets/campo.svg";
+import carro from "../assets/carro.svg";
+import parque from "../assets/parque.svg";
+import piscina from "../assets/piscina.svg";
+import foco from "../assets/foco.svg";
 ---
 
 <Layout selected="5">
@@ -30,11 +35,34 @@ import beneficios_modelo from "../assets/beneficios_modelo.webp";
       class="bg_form pt-5 overflow-hidden lg:px-5 relative xl:gap-10 z-10 flex flex-row flex-wrap-reverse justify-center"
     >
       <div class="xl:my-auto mb-20 xl:w-[40%] fade-left-full"><Form /></div>
-      <Image
-        src={beneficios_modelo}
-        class="w-[90%] fade-right-full xl:w-[50%] max-w-[690px]"
-        alt=""
-      />
+      <div class="h-fit w-fit fade-right-full relative">
+        <div
+          class="bg-icon rotate-12 top-[3%] right-[20%] rounded-[12%] icon-campo w-[12%] h-auto"
+        >
+          <Image src={campo} class="z-20 w-full" alt="" />
+        </div>
+        <div
+          class="bg-icon icon-carro right-[8%] top-[30%] rounded-[8%] w-[10%] h-auto"
+        >
+          <Image src={carro} class="z-20 w-full" alt="" />
+        </div>
+        <div
+          class="bg-icon icon-parque w-[9%] h-auto bottom-[23%] rounded-[10%] left-[19%] rotate-6"
+        >
+          <Image src={parque} class="z-20 w-full" alt="" />
+        </div>
+        <div
+          class="bg-icon w-[16%] icon-campo h-auto top-[5%] rounded-[12%] -rotate-12 left-[28%]"
+        >
+          <Image src={piscina} class="z-20 w-full" alt="" />
+        </div>
+        <div
+          class="bg-icon icon-parque rounded-[10%] top-[30%] -rotate-12 left-[7%] h-auto w-[9%]"
+        >
+          <Image src={foco} class="z-20 w-full" alt="" />
+        </div>
+        <Image src={beneficios_modelo} class="w-[700px] mt-20" alt="" />
+      </div>
     </div>
   </div>
 </Layout>

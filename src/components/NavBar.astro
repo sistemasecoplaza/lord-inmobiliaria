@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import logo from "../assets/logo.svg";
 const { selected } = Astro.props;
-let selectedClass = `hidden  flex-col text-2xl text-center lg:text-lg p-10 w-screen lg:w-fit bg-white lg:static scroll-none lg:flex lg:flex-row gap-10 [&>li]:duration-200 [&>li]:hover:text-verde-lord`;
+let selectedClass = ``;
 let color_inicio = selected == "1" ? "#00b938" : "#000";
 let color_nosotros = selected == "2" ? "#00b938" : "#000";
 let color_proyectos = selected == "3" ? "#00b938" : "#000";
@@ -19,7 +19,7 @@ let color_contactanos = selected == "5" ? "#00b938" : "#000";
         src={logo}
         alt="logo"
         loading="eager"
-        class="w-[70px] lg:w-[90px] fade-in mx-10 lg:mx-0"
+        class="w-[60px] xl:w-[75px] 2xl:w-[90px] fade-in mx-10 lg:mx-0"
       />
     </a>
     <svg
@@ -33,7 +33,9 @@ let color_contactanos = selected == "5" ? "#00b938" : "#000";
       ></path></svg
     >
   </div>
-  <ul class={selectedClass}>
+  <ul
+    class="hidden flex-col text-2xl text-center lg:text-lg p-6 xl:p-7 2xl:p-9 w-screen lg:w-fit bg-white lg:static scroll-none lg:flex lg:flex-row gap-10 [&>li]:duration-200 [&>li]:hover:text-verde-lord"
+  >
     <li><a href="/" style=`color: ${color_inicio};`>Inicio</a></li>
     <li>
       <a href="/nosotros" style=`color: ${color_nosotros};`>Nosotros</a>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #04b71e;
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #fff;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: none;
+      }
+
+      .cls-2, .cls-4 {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 40px;
+      }
+
+      .cls-3 {
+        stroke-dasharray: 0 0 55.79 55.79;
+        stroke-miterlimit: 10;
+        stroke-width: 52px;
+      }
+
+      .cls-4 {
+        stroke: #026c28;
+      }
+    </style>
+  </defs>
+  <g id="carro">
+    <g>
+      <rect class="cls-1" width="1080" height="1080" rx="133.88" ry="133.88"/>
+      <g>
+        <rect class="cls-4" x="89.07" y="554.97" width="895.99" height="360.96"/>
+        <line class="cls-4" x1="319.61" y1="915.93" x2="641.56" y2="554.97"/>
+        <line class="cls-4" x1="470.4" y1="915.93" x2="785.95" y2="554.97"/>
+        <line class="cls-4" x1="589.17" y1="915.93" x2="928" y2="554.97"/>
+        <line class="cls-4" x1="728.89" y1="915.93" x2="985.06" y2="627.55"/>
+        <line class="cls-4" x1="89.07" y1="664.09" x2="540" y2="664.09"/>
+        <line class="cls-4" x1="89.07" y1="788.24" x2="433.51" y2="788.24"/>
+        <rect class="cls-4" x="159.12" y="256.11" width="116.44" height="227.44" rx="33.33" ry="33.33"/>
+        <path class="cls-4" d="M396.66,285.61l-50.9,114.51c-7.78,17.51-6.75,37.89,3.47,54.1,10.84,17.19,28.62,26.79,52.86,29.33,25.98-2.21,43.76-13.81,54.41-33.58,8.38-15.56,8.19-34.36-.01-50.02l-59.83-114.34Z"/>
+        <line class="cls-4" x1="217.34" y1="483.56" x2="217.34" y2="554.97"/>
+        <line class="cls-4" x1="402.09" y1="483.56" x2="402.09" y2="554.97"/>
+      </g>
+      <circle class="cls-2" cx="731.22" cy="312" r="62.88"/>
+      <circle class="cls-3" cx="731.22" cy="312" r="142.05" transform="translate(-6.45 608.43) rotate(-45)"/>
+    </g>
+  </g>
+</svg>

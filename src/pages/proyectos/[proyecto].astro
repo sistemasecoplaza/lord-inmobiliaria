@@ -1,0 +1,244 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getPosts } from "../../js/getPosts";
+import Layout from "../../layouts/Layout.astro";
+import slug from "slug";
+import { imageFetch } from "../../js/ImageFetch";
+import { Image } from "astro:assets";
+import Pdf from "../../assets/pdf.svg";
+import LordMitadInferior from "../../assets/lordcentromitadinferior.svg";
+import Location from "../../assets/location.svg";
+import { marked } from "marked";
+import Form from "../../components/Form.astro";
+import ConoceTuHogar from "../../assets/conocetuhogar.svg";
+import { callSafely } from "astro:actions";
+export const getStaticPaths = (async () => {
+  const proyectos = (await getPosts("proyectos")).proyectos;
+  return proyectos.map((proyecto: any) => ({
+    params: {
+      proyecto: slug(proyecto.card.nombre),
+    },
+    props: { proyecto: proyecto },
+  }));
+}) satisfies GetStaticPaths;
+const { proyecto } = Astro.props as { proyecto: any };
+const fondo_head = await imageFetch(proyecto.pag.fondo_head);
+const brochure = await imageFetch(proyecto.pag.brochure);
+function capitalizar(str: string) {
+  return str.replace(/\w\S*/g, function (txt) {
+    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+  });
+}
+const slider = [];
+
+for (const el of proyecto.pag.slider) {
+  slider.push(await imageFetch(el));
+}
+const logo = await imageFetch(proyecto.pag.logo);
+const iconoUbicacion = await imageFetch(proyecto.pag.ventajas.ubicacion.icono);
+const iconoTamaño = await imageFetch(proyecto.pag.ventajas.tamano.icono);
+const iconoLocalizacion = await imageFetch(
+  proyecto.pag.ventajas.localizacion.icono
+);
+
+let beneficios: any = [];
+for (const el of proyecto.pag.beneficios.beneficio) {
+  beneficios.push({
+    icon: await imageFetch(el.icon),
+    text: el.text,
+  });
+}
+
+let mitad = Math.ceil(beneficios.length / 2);
+let inicio = beneficios.slice(0, mitad);
+let final = beneficios.slice(mitad);
+---
+
+<Layout>
+  <header class="relative flex flex-row justify-center items-end">
+    <Image
+      src={fondo_head}
+      alt=""
+      class="w-screen h-[450px] object-cover object-center"
+      inferSize
+    />
+    <div
+      class="w-[80vw] absolute bottom-5 flex justify-between flex-wrap gap-5"
+    >
+      <a
+        href=`${brochure}`
+        target="_blank"
+        class="bg-white py-3 px-10 cursor-pointer flex rounded-xl items-center select-none flex-row flex-nowrap gap-2 font-bold"
+      >
+        <Pdf width={30} />
+        <p>Descargar Brochure</p>
+      </a>
+      <a
+        href=""
+        class="bg-verde-lord text-white font-bold py-3 right-0 flex flex-row items-center justify-center rounded-xl px-10"
+        >Adquirir ¡AHORA!</a
+      >
+    </div>
+  </header>
+  <div
+    class="bg-verde-proyecto relative py-5 flex flex-row justify-center items-center"
+  >
+    <LordMitadInferior
+      width={200}
+      class="absolute top-0 left-0 z-10 right-0 mx-auto"
+    />
+    <div
+      class="flex flex-row justify-between gap-5 flex-wrap items-center z-20 w-[80vw] max-w-[1000px]"
+    >
+      <div class="flex flex-col gap-3">
+        <h1 class="text-nowrap text-3xl lg:text-4xl font-medium text-white">
+          proyecto <br />
+          <font class="font-extrabold">{proyecto.pag.titulo}</font>
+        </h1>
+        <p
+          class="text-white font-semibold py-3 px-7 bg-red-500 rounded-xl w-fit"
+        >
+          {capitalizar(proyecto.card.estado)}
+        </p>
+      </div>
+      <div class="flex flex-row justify-start w-fit h-fit gap-2 text-white">
+        <Location width={20} />
+        <p class="w-fit h-fit text-lg font-medium">{proyecto.card.ubi}</p>
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex flex-row overflow-hidden flex-wrap justify-center items-center gap-10 px-4 lg:px-10 py-16"
+  >
+    <div
+      class="flex flex-col justify-center items-center gap-5 w-[85%] lg:w-[45%] max-w-[500px] [&>p]:text-gray-700 [&>p]:text-start"
+    >
+      <Image src={logo} class="w-[70%]" alt="" inferSize />
+      <p set:html={marked(proyecto.pag.descripcion)} />
+    </div>
+    <Form />
+  </div>
+  <div class="flex relative justify-center">
+    <div
+      class="text-center flex flex-col justify-center items-center gap-5 [&>p]:w-[90%] lg:[&>p]:w-[80%] max-w-[1200px] [&>p]:text-gray-700 [&>p]:text-lg [&>p]:text-start"
+    >
+      <h2 class="text-4xl font-bold text-verde-lord">
+        {proyecto.pag.ventajas.titulo}
+      </h2>
+      <p set:html={marked(proyecto.pag.ventajas.descripcion)} />
+      <div class="flex flex-row flex-wrap w-[80%] justify-between gap-5">
+        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+          <Image src={iconoUbicacion} alt="" inferSize />
+          <div class="text-gray-500 font-normal text-lg text-start">
+            {proyecto.pag.ventajas.ubicacion.texto}
+          </div>
+        </div>
+        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+          <Image src={iconoTamaño} alt="" inferSize />
+          <div class="text-gray-500 font-normal text-lg text-start">
+            {proyecto.pag.ventajas.tamano.texto}
+          </div>
+        </div>
+        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+          <Image src={iconoLocalizacion} alt="" inferSize />
+          <div class="text-gray-500 font-normal text-lg text-start">
+            {proyecto.pag.ventajas.localizacion.texto}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-10 px-5">
+    <p class="text-4xl font-bold text-verde-lord">
+      {proyecto.pag.beneficios.titulo}
+    </p>
+    <p class="text-2xl mt-2 mb-10">{proyecto.pag.beneficios.sub_titulo}</p>
+    <div class="flex flex-col gap-7">
+      <div class="flex flex-row flex-wrap justify-center gap-7 lg:gap-10">
+        {
+          inicio.map((e: any) => {
+            return (
+              <div class="flex flex-col w-[170px] h-[150px] rounded-2xl bg-[#8DD267] gap-2 p-2 items-center justify-center">
+                <Image
+                  src={e.icon}
+                  alt=""
+                  inferSize
+                  class="h-[70px] w-[70px] object-contain object-center"
+                />
+                <p class="text-sm text-gray-600">{e.text}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+      <div class="flex flex-row flex-wrap justify-center gap-7 lg:gap-10">
+        {
+          final.map((e: any) => {
+            return (
+              <div class="flex flex-col w-[170px] h-[150px] rounded-2xl bg-[#8DD267] gap-2 p-2 items-center justify-center">
+                <Image
+                  src={e.icon}
+                  alt=""
+                  inferSize
+                  class="h-[70px] w-[70px] object-contain object-center"
+                />
+                <p class="text-sm text-gray-600">{e.text}</p>
+              </div>
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+  <div
+    class="flex [&>p]:w-[95%] [&>p]:text-[17px] lg:[&>p]:w-[80%] flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16"
+  >
+    <h2 class="text-center text-4xl font-bold text-verde-lord mt-10">
+      {proyecto.pag.razon_de_inversion.titulo}
+    </h2>
+    <p set:html={marked(proyecto.pag.razon_de_inversion.descripcion)} />
+  </div>
+  <div class="border-t-8 pt-10 border-t-verde-lord w-screen">
+    <div class="overflow-hidden">
+      <ConoceTuHogar width={250} />
+      <section
+        class="w-[90vw] lg:w-[50vw] mx-5 relative"
+        id="embla"
+        style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 20px;  --button-size: 30px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+      >
+        <div class="" id="embla__viewport">
+          <div
+            class="flex"
+            style="touch-action: pan-y pinch-zoom; margin-left: calc(var(--slide-spacing) * -1);"
+          >
+            {
+              slider.map((e) => {
+                return (
+                  <div
+                    class="embla__slide min-w-0 translate-3d"
+                    style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+                  >
+                    <Image
+                      src={e}
+                      class=" w-[90vw] lg:w-[50vw] rounded-2xl"
+                      inferSize
+                      alt=""
+                    />
+                  </div>
+                );
+              })
+            }
+          </div>
+        </div>
+
+        <div class="flex w-full justify-between">
+          <div
+            class="absolute bottom-1 flex flex-row justify-center w-[90vw] lg:w-[50vw]"
+            id="embla__dots"
+          >
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</Layout>

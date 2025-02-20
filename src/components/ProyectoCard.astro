@@ -6,12 +6,13 @@ import enconstruccion from "../assets/enconstruccion.svg";
 import entregado from "../assets/entregado.svg";
 import preventa from "../assets/preventa.svg";
 import arrow from "../assets/arrow.svg";
+import slug from "slug";
 
 const { data } = Astro.props;
 const img = await imageFetch(data.card.img);
 let estado: any;
 switch (data.card.estado) {
-  case "PREVENTA":
+  case "PRE VENTA":
     estado = preventa;
     break;
   case "ENTREGADO":
@@ -23,7 +24,8 @@ switch (data.card.estado) {
 }
 ---
 
-<div
+<a
+  href=`/proyectos/${slug(data.card.nombre)}`
   class="w-[350px] mb-10 cursor-pointer opacity-0 translate-y-20 intersect:translate-0 intersect:opacity-100 duration-700 rounded-2xl bg-white shadow-2xl m-5"
 >
   <div
@@ -51,4 +53,4 @@ switch (data.card.estado) {
       {data.card.ubi}
     </p>
   </div>
-</div>
+</a>
