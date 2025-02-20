@@ -11,7 +11,8 @@ import Location from "../../assets/location.svg";
 import { marked } from "marked";
 import Form from "../../components/Form.astro";
 import ConoceTuHogar from "../../assets/conocetuhogar.svg";
-import { callSafely } from "astro:actions";
+import Arriba from "../../assets/arriba.svg";
+import modelo from "../../assets/modelodedoscruzados.webp";
 export const getStaticPaths = (async () => {
   const proyectos = (await getPosts("proyectos")).proyectos;
   return proyectos.map((proyecto: any) => ({
@@ -198,13 +199,17 @@ let final = beneficios.slice(mitad);
     </h2>
     <p set:html={marked(proyecto.pag.razon_de_inversion.descripcion)} />
   </div>
-  <div class="border-t-8 pt-10 border-t-verde-lord w-screen">
-    <div class="overflow-hidden">
-      <ConoceTuHogar width={250} />
+  <div
+    class="border-t-8 px-5 flex gap-10 flex-row flex-wrap justify-center items-center border-t-verde-lord w-screen"
+  >
+    <div
+      class="overflow-hidden flex flex-col justify-center items-start gap-10 py-10"
+    >
+      <ConoceTuHogar width={250} class="px-5 lg:w-[400px]" />
       <section
-        class="w-[90vw] lg:w-[50vw] mx-5 relative"
+        class="w-[90vw] lg:w-[35vw] mx-5 relative"
         id="embla"
-        style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 20px;  --button-size: 30px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
+        style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 15px;  --button-size: 30px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
       >
         <div class="" id="embla__viewport">
           <div
@@ -220,7 +225,7 @@ let final = beneficios.slice(mitad);
                   >
                     <Image
                       src={e}
-                      class=" w-[90vw] lg:w-[50vw] rounded-2xl"
+                      class=" w-[90vw] lg:w-[35vw] rounded-2xl"
                       inferSize
                       alt=""
                     />
@@ -233,12 +238,63 @@ let final = beneficios.slice(mitad);
 
         <div class="flex w-full justify-between">
           <div
-            class="absolute bottom-1 flex flex-row justify-center w-[90vw] lg:w-[50vw]"
+            class="flex justify-between invisible pointer-events-none items-center absolute w-full h-full top-0 z-50"
+          >
+            <button
+              class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+              id="embla__button--prev"
+              type="button"
+            >
+              <svg
+                style="width: var(--button-size); margin-left: var(--buton-margin);"
+                viewBox="0 0 532 532"
+              >
+                <path
+                  fill="currentColor"
+                  d="M355.66 11.354c13.793-13.805 36.208-13.805 50.001 0 13.785 13.804 13.785 36.238 0 50.034L201.22 266l204.442 204.61c13.785 13.805 13.785 36.239 0 50.044-13.793 13.796-36.208 13.796-50.002 0a5994246.277 5994246.277 0 0 0-229.332-229.454 35.065 35.065 0 0 1-10.326-25.126c0-9.2 3.393-18.26 10.326-25.2C172.192 194.973 332.731 34.31 355.66 11.354Z"
+                ></path>
+              </svg>
+            </button>
+
+            <button
+              class="pointer-events-auto drop-shadow-xl w-fit cursor-pointer text-verde-lord"
+              id="embla__button--next"
+              type="button"
+            >
+              <svg
+                style="width: var(--button-size); margin-right: var(--buton-margin);"
+                viewBox="0 0 532 532"
+              >
+                <path
+                  fill="currentColor"
+                  d="M176.34 520.646c-13.793 13.805-36.208 13.805-50.001 0-13.785-13.804-13.785-36.238 0-50.034L330.78 266 126.34 61.391c-13.785-13.805-13.785-36.239 0-50.044 13.793-13.796 36.208-13.796 50.002 0 22.928 22.947 206.395 206.507 229.332 229.454a35.065 35.065 0 0 1 10.326 25.126c0 9.2-3.393 18.26-10.326 25.2-45.865 45.901-206.404 206.564-229.332 229.52Z"
+                ></path>
+              </svg>
+            </button>
+          </div>
+
+          <div
+            class="absolute bottom-1 flex flex-row justify-center w-[90vw] lg:w-[35vw]"
             id="embla__dots"
           >
           </div>
         </div>
       </section>
+    </div>
+    <div class="flex flex-col justify-center items-center">
+      <Image src={modelo} class="w-[500px]" alt="" />
+      <div
+        class="bg-verde-lord relative gap-2 px-14 py-4 w-fit flex self-end mb-10 flex-col items-center justify-center text-white rounded-xl font font-medium"
+      >
+        <Arriba width={40} class="absolute bottom-[99%]" />
+        <div>¿Te gustó lo que viste?</div>
+        <div>¡Coordina una visita para conocer el proyecto!</div>
+        <a
+          href=""
+          class="flex justify-center items-center bg-naranja-lord rounded-lg py-2 px-8 w-fit font-semibold"
+          >Registrate aquí</a
+        >
+      </div>
     </div>
   </div>
 </Layout>
