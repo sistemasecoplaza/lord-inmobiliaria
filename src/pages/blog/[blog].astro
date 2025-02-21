@@ -1,0 +1,94 @@
+---
+import slug from "slug";
+import { getPosts } from "../../js/getPosts";
+import type { GetStaticPaths } from "astro";
+import Layout from "../../layouts/Layout.astro";
+import Arrow from "../../assets/arrow-left.svg";
+import { imageFetch } from "../../js/ImageFetch";
+import { Image } from "astro:assets";
+import { Marked } from "marked";
+import Markdown from "@astropub/md";
+const marked = new Marked({
+  async: true,
+  breaks: false,
+  extensions: null,
+  gfm: true,
+  hooks: null,
+  pedantic: false,
+  silent: false,
+  tokenizer: null,
+  walkTokens: null,
+});
+
+export const getStaticPaths = (async () => {
+  const blogs = (await getPosts("blog")).posts;
+  return blogs.map((blog: any) => ({
+    params: {
+      blog: slug(blog.titulo),
+    },
+    props: { blog: blog },
+  }));
+}) satisfies GetStaticPaths;
+const { blog } = Astro.props as { blog: any };
+const img = await imageFetch(blog.img);
+console.log("%csrc/pages/blog/[blog].astro:16 blog", "color: #007acc;", blog);
+---
+
+<Layout selected="4" title={blog.titulo}>
+  <div class="relative flex flex-col items-center overflow-hidden">
+    <a
+      href="/blog"
+      class="flex flex-row justify-center items-center self-start gap-2 bg-naranja-lord m-10 px-10 py-2 rounded-lg w-fit font-semibold text-white hover:scale-110 duration-500 ease-in-out"
+    >
+      <Arrow /> Volver</a
+    >
+    <div
+      class="flex lg:flex-row flex-col justify-center items-center gap-14 mb-10 max-w-[90vw]"
+    >
+      <Image
+        src={img}
+        class="opacity-0 intersect:opacity-100 shadow-xl rounded-2xl lg:w-[45%] object-center object-cover aspect-3/2 -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+        transition:name={slug(blog.titulo)}
+        inferSize
+        alt=""
+      />
+      <div class="lg:max-w-[45%]">
+        <h1
+          class="opacity-0 intersect:opacity-100 w-fit font-bold text-3xl text-wrap translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+          transition:name={blog.titulo}
+        >
+          {blog.titulo}
+        </h1>
+      </div>
+    </div>
+    <Markdown />
+    <!-- <div
+      set:html={marked.parse(blog.post)}
+      class="mt-10 mb-16 px-7 max-w-[1000px] animate-fade-in container"
+    /> -->
+  </div>
+</Layout>
+
+<!-- El turnover es una métrica que representa los indicadores de desempeño más importante de tu empresa. Estos indicadores sirven para evitar contratiempos que dificulten el progreso de un negocio. ¿Quieres saber más de este tema? Lee la nota completa:
+<br/><br/>
+**DEFINICIÓN**
+<br/><br/>
+El turnover es un indicador que mide el número de empleados que dejan una empresa durante un periodo determinado. Conociendo esta data, se puede descubrir la evolución del personal e indicar si la selección de la misma es eficiente. La palabra turnover es de origen inglés y significa “giro” o “renovación”.
+<br/><br/>
+**CAUSAS DE TURNOVER**<br/><br/>
+Alguno de los principales motivos de un turnover alto pueden ser:
+-  Mal ambiente de trabajo
+- Falta de plan de carrera
+- Ausencia de reconocimiento
+- Salarios inadecuados
+- Mal liderazgo
+- Carga de trabajo muy alta
+- Falta de estructura y recursos tecnológicos
+<br/><br/>
+**CONSECUENCIAS DE UN TURNOVER ALTO**
+<br/><br/>
+Una alta tasa de turnover puede dañar el presupuesto de una empresa, ya que el proceso requiere gastos en admisión y despido, capacitación e incorporación, así como gastos para nuevas vacantes.
+<br/><br/>
+También puede afectar la credibilidad de la empresa, ya que los desempleados motivados tienden a estar menos comprometidos. Esto se refleja en áreas importantes, como el servicio al cliente. Después de todo, los empleados insatisfechos pueden no trabajar como deberían para tratar bien al cliente y ofrecerle una buena experiencia.
+<br/><br/>
+Más importante que comprender qué es una rotación, es dirigir tus esfuerzos para tratar de reducirla. Uno de los grandes secretos es animar a tus empleados y ofrecerles un ambiente agradable valorando su desempeño. -->

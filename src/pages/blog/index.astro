@@ -19,21 +19,20 @@ for (const e of (await getPosts("blog")).posts) {
   });
 }
 blogs = blogs.reverse();
-console.log("%csrc/pages/blog/index.astro:8 blogs", "color: #007acc;", blogs); // enseña un array vacio
 ---
 
-<Layout selected="4">
+<Layout title="Blog - Lord Inmobiliaria" selected="4">
   <div class="relative overflow-x-hidden">
     <div
-      class="flex flex-row justify-center gap-4 flex-wrap pt-14 bg-verde-lord px-5"
+      class="flex flex-row flex-wrap justify-center gap-4 bg-verde-lord px-5 pt-14"
     >
       <div
-        class="max-w-[550px] flex my-auto fade-left-full flex-col gap-4 text-white"
+        class="fade-left-full flex flex-col gap-4 my-auto max-w-[550px] text-white"
       >
-        <h1 class="text-3xl font-bold">
+        <h1 class="font-bold text-3xl">
           Mantente informado en nuestro
           <br />
-          <font class="bg-naranja-lord py-1 mt-1 block w-fit"
+          <font class="block bg-naranja-lord mt-1 py-1 w-fit"
             >&nbsp;&nbsp;&nbsp;blog&nbsp;</font
           >
         </h1>
@@ -46,102 +45,117 @@ console.log("%csrc/pages/blog/index.astro:8 blogs", "color: #007acc;", blogs); /
         </p>
       </div>
       <Image
-        class="max-w-[500px] fade-right-full w-full"
+        class="fade-right-full w-full max-w-[500px]"
         src={familia1}
         alt=""
       />
     </div>
     <div class="flex flex-col gap-14 py-20">
-      <div class="flex flex-row flex-wrap items-center justify-center gap-10">
+      <div class="flex flex-row flex-wrap justify-center items-center gap-10">
         <Image
           src={blogs[0].img}
-          class="rounded-2xl object-cover object-center max-w-[600px] w-[90%] aspect-3/2"
+          transition:name={blogs[0].slug}
+          class="rounded-2xl w-[90%] max-w-[600px] object-center object-cover aspect-3/2"
           alt=""
           inferSize
         />
-        <div class="flex flex-col gap-5 max-w-[500px] w-[90%]">
+        <div class="flex flex-col gap-5 w-[90%] max-w-[500px]">
           <div
-            class="flex flex-row text-verde-lord font-semibold items-center gap-5"
+            class="flex flex-row items-center gap-5 font-semibold text-verde-lord"
           >
             <Calendar width={25} />
             {blogs[0].fecha}
           </div>
-          <p class="text-2xl font-bold">{blogs[0].titulo}</p>
+          <p class="font-bold text-2xl" transition:name={blogs[0].titulo}>
+            {blogs[0].titulo}
+          </p>
           <p class="text-gray-500 text-sm">{blogs[0].descripcion}</p>
           <a
             href=`/blog/${blogs[0].slug}`
-            class="bg-naranja-lord py-3 px-10 w-fit hover:scale-110 duration-500 ease-in-out text-white font-semibold rounded-xl"
+            class="bg-naranja-lord px-10 py-3 rounded-xl w-fit font-semibold text-white hover:scale-110 duration-500 ease-in-out"
             >Saber más</a
           >
         </div>
       </div>
       <div
-        class="flex flex-row flex-wrap-reverse items-center justify-center gap-10"
+        class="flex flex-row flex-wrap-reverse justify-center items-center gap-10"
       >
         <div
-          class="flex flex-col gap-5 max-w-[500px] -translate-x-[90%] opacity-0 duration-1000 ease-in-out intersect:translate-0 intersect:opacity-100 w-[90%]"
+          class="flex flex-col gap-5 opacity-0 intersect:opacity-100 w-[90%] max-w-[500px] -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
         >
           <div
-            class="flex flex-row text-verde-lord font-semibold items-center gap-5"
+            class="flex flex-row items-center gap-5 font-semibold text-verde-lord"
           >
             <Calendar width={25} />
             {blogs[1].fecha}
           </div>
-          <p class="text-2xl font-bold">{blogs[1].titulo}</p>
+          <p class="font-bold text-2xl" transition:name={blogs[1].titulo}>
+            {blogs[1].titulo}
+          </p>
           <p class="text-gray-500 text-sm">{blogs[1].descripcion}</p>
           <a
             href=`/blog/${blogs[1].slug}`
-            class="bg-naranja-lord py-3 px-10 hover:scale-110 duration-500 ease-in-out w-fit text-white font-semibold rounded-xl"
+            class="bg-naranja-lord px-10 py-3 rounded-xl w-fit font-semibold text-white hover:scale-110 duration-500 ease-in-out"
             >Saber más</a
           >
         </div>
         <Image
           src={blogs[1].img}
-          class="rounded-2xl object-cover object-center max-w-[600px] w-[90%] aspect-3/2 translate-x-[90%] opacity-0 duration-1000 ease-in-out intersect:translate-0 intersect:opacity-100"
+          class="opacity-0 intersect:opacity-100 rounded-2xl w-[90%] max-w-[600px] object-center object-cover aspect-3/2 translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
           alt=""
+          transition:name={blogs[1].slug}
           inferSize
         />
       </div>
       <div
-        class="flex flex-row gap-5 justify-center drop-shadow-xl items-center flex-wrap"
+        class="flex flex-row flex-wrap justify-center items-center gap-5 drop-shadow-xl"
       >
         <a
           href=`/blog/${blogs[2].slug}`
-          class="flex flex-col gap-3 max-w-[390px] -translate-x-[90%] opacity-0 intersect:translate-0 intersect:hover:-translate-y-5 intersect:opacity-100 w-[90%] ease-in-out duration-700 p-4 h-fit bg-white rounded-2xl"
+          class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit -translate-x-[90%] intersect:hover:-translate-y-5 intersect:translate-0 duration-700 ease-in-out"
         >
           <Image
             src={blogs[2].img}
-            class="object-cover object-center rounded-2xl"
+            class="rounded-2xl object-center object-cover"
+            transition:name={blogs[2].slug}
             alt=""
             inferSize
           />
-          <p class="font-semibold w-[90%]">{blogs[2].titulo}</p>
+          <p class="w-[90%] font-semibold" transition:name={blogs[2].titulo}>
+            {blogs[2].titulo}
+          </p>
           <p class="font-semibold text-verde-lord">{blogs[2].fecha}</p>
         </a>
         <a
           href=`/blog/${blogs[3].slug}`
-          class="flex flex-col gap-3 max-w-[390px] scale-75 opacity-0 intersect:opacity-100 intersect:scale-100 w-[90%] hover:-translate-y-5 ease-in-out duration-700 p-4 h-fit bg-white rounded-2xl"
+          class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit scale-75 intersect:scale-100 hover:-translate-y-5 duration-700 ease-in-out"
         >
           <Image
             src={blogs[3].img}
-            class="object-cover object-center rounded-2xl"
+            transition:name={blogs[3].slug}
+            class="rounded-2xl object-center object-cover"
             alt=""
             inferSize
           />
-          <p class="font-semibold w-[90%]">{blogs[3].titulo}</p>
+          <p class="w-[90%] font-semibold" transition:name={blogs[3].titulo}>
+            {blogs[3].titulo}
+          </p>
           <p class="font-semibold text-verde-lord">{blogs[3].fecha}</p>
         </a>
         <a
           href=`/blog/${blogs[4].slug}`
-          class="flex flex-col gap-3 max-w-[390px] translate-x-[90%] opacity-0 intersect:translate-0 intersect:opacity-100 intersect:hover:-translate-y-5 ease-in-out duration-700 w-[90%] p-4 h-fit bg-white rounded-2xl"
+          class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit translate-x-[90%] intersect:hover:-translate-y-5 intersect:translate-0 duration-700 ease-in-out"
         >
           <Image
             src={blogs[4].img}
-            class="object-cover object-center rounded-2xl"
+            transition:name={blogs[4].slug}
+            class="rounded-2xl object-center object-cover"
             alt=""
             inferSize
           />
-          <p class="font-semibold w-[90%]">{blogs[4].titulo}</p>
+          <p class="w-[90%] font-semibold" transition:name={blogs[4].titulo}>
+            {blogs[4].titulo}
+          </p>
           <p class="font-semibold text-verde-lord">{blogs[4].fecha}</p>
         </a>
       </div>

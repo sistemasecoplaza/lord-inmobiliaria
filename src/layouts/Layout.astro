@@ -4,6 +4,7 @@ import NavBar from "../components/NavBar.astro";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
 const { title, selected } = Astro.props;
+console.log("%csrc/layouts/Layout.astro:7 title", "color: #007acc;", title);
 ---
 
 <!doctype html>
@@ -46,7 +47,7 @@ const { title, selected } = Astro.props;
       src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
     ></script>
   </head>
-  <body class="relative bg-gray-50 font-display w-screen">
+  <body class="relative bg-gray-50 w-screen font-display">
     <NavBar selected={selected} />
     <slot />
     <Footer />

@@ -60,8 +60,10 @@ let inicio = beneficios.slice(0, mitad);
 let final = beneficios.slice(mitad);
 ---
 
-<Layout>
-  <header class="relative flex flex-row justify-center items-end">
+<Layout title={proyecto.card.nombre} selected="3">
+  <header
+    class="relative flex flex-row justify-center items-end overflow-hidden"
+  >
     <Image
       src={fondo_head}
       alt=""
@@ -74,20 +76,20 @@ let final = beneficios.slice(mitad);
       <a
         href=`${brochure}`
         target="_blank"
-        class="flex flex-row flex-nowrap items-center gap-2 bg-white px-10 py-3 rounded-xl font-bold cursor-pointer select-none"
+        class="flex flex-row flex-nowrap items-center gap-2 bg-white px-10 py-3 rounded-xl font-bold animate-fade-left-full cursor-pointer select-none"
       >
         <Pdf width={30} />
         <p>Descargar Brochure</p>
       </a>
       <a
         href=""
-        class="right-0 flex flex-row justify-center items-center bg-verde-lord px-10 py-3 rounded-xl font-bold text-white"
+        class="right-0 flex flex-row justify-center items-center bg-verde-lord px-10 py-3 rounded-xl font-bold text-white animate-fade-right-full"
         >Adquirir ¡AHORA!</a
       >
     </div>
   </header>
   <div
-    class="relative flex flex-row justify-center items-center bg-verde-proyecto py-5"
+    class="relative flex flex-row justify-center items-center bg-verde-proyecto py-5 overflow-hidden"
   >
     <LordMitadInferior
       width={200}
@@ -96,8 +98,8 @@ let final = beneficios.slice(mitad);
     <div
       class="z-20 flex flex-row flex-wrap justify-between items-center gap-5 w-[80vw] max-w-[1000px]"
     >
-      <div class="flex flex-col gap-3">
-        <h1 class="font-medium text-white text-3xl lg:text-4xl text-nowrap">
+      <div class="flex flex-col gap-3 animate-fade-left-full">
+        <h1 class="font-medium text-white text-3xl lg:text-4xl">
           proyecto <br />
           <font class="font-extrabold">{proyecto.pag.titulo}</font>
         </h1>
@@ -107,7 +109,9 @@ let final = beneficios.slice(mitad);
           {capitalizar(proyecto.card.estado)}
         </p>
       </div>
-      <div class="flex flex-row justify-start gap-2 w-fit h-fit text-white">
+      <div
+        class="flex flex-row justify-start gap-2 w-fit h-fit text-white animate-fade-right-full"
+      >
         <Location width={20} />
         <p class="w-fit h-fit font-medium text-lg">{proyecto.card.ubi}</p>
       </div>
@@ -117,35 +121,43 @@ let final = beneficios.slice(mitad);
     class="flex flex-row flex-wrap justify-center items-center gap-10 px-4 lg:px-10 py-16 overflow-hidden"
   >
     <div
-      class="flex flex-col justify-center items-center gap-5 w-[85%] lg:w-[45%] max-w-[500px] [&>p]:text-gray-700 [&>p]:text-start"
+      class="flex flex-col -translate-x-[90%] opacity-0 intersect:translate-0 intersect:opacity-100 duration-1000 ease-in-out justify-center items-center gap-5 w-[85%] lg:w-[45%] max-w-[500px] [&>p]:text-gray-700 [&>p]:text-start"
     >
       <Image src={logo} class="w-[70%]" alt="" inferSize />
       <p set:html={marked(proyecto.pag.descripcion)} />
     </div>
     <Form />
   </div>
-  <div class="relative flex justify-center">
+  <div class="relative flex justify-center overflow-hidden">
     <div
       class="text-center flex flex-col justify-center items-center gap-5 [&>p]:w-[90%] lg:[&>p]:w-[80%] max-w-[1200px] [&>p]:text-gray-700 [&>p]:text-lg [&>p]:text-start"
     >
-      <h2 class="font-bold text-verde-lord text-4xl">
+      <h2
+        class="opacity-0 intersect:opacity-100 font-bold text-verde-lord text-4xl -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
         {proyecto.pag.ventajas.titulo}
       </h2>
       <p set:html={marked(proyecto.pag.ventajas.descripcion)} />
       <div class="flex flex-row flex-wrap justify-between gap-5 w-[80%]">
-        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+        <div
+          class="flex flex-row justify-center items-center gap-3 opacity-0 intersect:opacity-100 w-[300px] -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+        >
           <Image src={iconoUbicacion} alt="" inferSize />
           <div class="font-normal text-gray-500 text-lg text-start">
             {proyecto.pag.ventajas.ubicacion.texto}
           </div>
         </div>
-        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+        <div
+          class="flex flex-row justify-center items-center gap-3 opacity-0 intersect:opacity-100 w-[300px] scale-0 intersect:scale-100 duration-1000 ease-in-out"
+        >
           <Image src={iconoTamaño} alt="" inferSize />
           <div class="font-normal text-gray-500 text-lg text-start">
             {proyecto.pag.ventajas.tamano.texto}
           </div>
         </div>
-        <div class="flex flex-row justify-center items-center gap-3 w-[300px]">
+        <div
+          class="flex flex-row justify-center items-center gap-3 opacity-0 intersect:opacity-100 w-[300px] translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+        >
           <Image src={iconoLocalizacion} alt="" inferSize />
           <div class="font-normal text-gray-500 text-lg text-start">
             {proyecto.pag.ventajas.localizacion.texto}
@@ -154,17 +166,23 @@ let final = beneficios.slice(mitad);
       </div>
     </div>
   </div>
-  <div class="mt-10 px-5 text-center">
-    <p class="font-bold text-verde-lord text-4xl">
+  <div class="mt-10 px-5 overflow-hidden text-center">
+    <p
+      class="opacity-0 intersect:opacity-100 font-bold text-verde-lord text-4xl -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+    >
       {proyecto.pag.beneficios.titulo}
     </p>
-    <p class="mt-2 mb-10 text-2xl">{proyecto.pag.beneficios.sub_titulo}</p>
+    <p
+      class="opacity-0 intersect:opacity-100 mt-2 mb-10 text-2xl translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+    >
+      {proyecto.pag.beneficios.sub_titulo}
+    </p>
     <div class="flex flex-col gap-7">
       <div class="flex flex-row flex-wrap justify-center gap-7 lg:gap-10">
         {
           inicio.map((e: any) => {
             return (
-              <div class="flex flex-col justify-center items-center gap-2 bg-[#8DD267] p-2 rounded-2xl w-[170px] h-[150px]">
+              <div class="flex flex-col justify-center items-center gap-2 bg-[#8DD267] opacity-0 intersect:opacity-100 p-2 rounded-2xl w-[170px] h-[150px] scale-0 intersect:scale-100 duration-1000 ease-in-out">
                 <Image
                   src={e.icon}
                   alt=""
@@ -181,7 +199,7 @@ let final = beneficios.slice(mitad);
         {
           final.map((e: any) => {
             return (
-              <div class="flex flex-col justify-center items-center gap-2 bg-[#8DD267] p-2 rounded-2xl w-[170px] h-[150px]">
+              <div class="flex flex-col justify-center items-center gap-2 bg-[#8DD267] opacity-0 intersect:opacity-100 p-2 rounded-2xl w-[170px] h-[150px] scale-0 intersect:scale-100 duration-1000 ease-in-out">
                 <Image
                   src={e.icon}
                   alt=""
@@ -197,22 +215,27 @@ let final = beneficios.slice(mitad);
     </div>
   </div>
   <div
-    class="flex [&>p]:w-[95%] [&>p]:text-[17px] lg:[&>p]:w-[80%] flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16"
+    class="flex [&>p]:w-[95%] [&>p]:text-[17px] lg:[&>p]:w-[80%] flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16 overflow-hidden"
   >
-    <h2 class="mt-10 font-bold text-verde-lord text-4xl text-center">
+    <h2
+      class="opacity-0 intersect:opacity-100 mt-10 font-bold text-verde-lord text-4xl text-center -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+    >
       {proyecto.pag.razon_de_inversion.titulo}
     </h2>
     <p set:html={marked(proyecto.pag.razon_de_inversion.descripcion)} />
   </div>
   <div
-    class="flex flex-row flex-wrap justify-center items-center gap-10 px-5 py-5 border-y-8 border-y-verde-lord w-screen"
+    class="flex flex-row flex-wrap justify-center items-center gap-10 px-5 py-5 border-y-8 border-y-verde-lord w-screen overflow-hidden"
   >
     <div
       class="flex flex-col justify-center items-start gap-10 py-10 overflow-hidden"
     >
-      <ConoceTuHogar width={250} class="px-5 lg:w-[400px]" />
+      <ConoceTuHogar
+        width={250}
+        class="opacity-0 intersect:opacity-100 px-5 lg:w-[400px] -translate-x-[90%] intersect:translate-0 duration-1000"
+      />
       <section
-        class="relative lg:mx-5 w-[90vw] lg:w-[35vw]"
+        class="relative lg:mx-5 w-[85vw] lg:w-[35vw]"
         id="embla"
         style="--slide-height: auto; --slide-spacing: 5px; --dot-size: 15px;  --button-size: 30px; --buton-margin: 10px; --slide-size: calc(100% / 1);"
       >
@@ -230,7 +253,7 @@ let final = beneficios.slice(mitad);
                   >
                     <Image
                       src={e}
-                      class="rounded-2xl w-[90vw] lg:w-[35vw]"
+                      class="rounded-2xl w-[85vw] lg:w-[35vw]"
                       inferSize
                       alt=""
                     />
@@ -279,19 +302,25 @@ let final = beneficios.slice(mitad);
           </div>
 
           <div
-            class="bottom-1 absolute flex flex-row justify-center w-[90vw] lg:w-[35vw]"
+            class="bottom-1 absolute flex flex-row justify-center w-[85vw] lg:w-[35vw]"
             id="embla__dots"
           >
           </div>
         </div>
       </section>
     </div>
-    <div class="flex flex-col justify-center items-center">
+    <div
+      class="flex flex-col justify-center items-center opacity-0 intersect:opacity-100 translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+    >
       <Image src={modelo} class="w-[500px]" alt="" />
       <div
         class="relative flex flex-col justify-center items-center self-end gap-2 bg-verde-lord mb-10 px-14 py-4 rounded-xl w-fit font-medium text-white font"
       >
-        <Arriba width={40} class="bottom-[99%] absolute" />
+        <Arriba
+          width={40}
+          fill={"#04b71e"}
+          class="bottom-[99%] absolute fill-verde-lord text-verde-lord"
+        />
         <div>¿Te gustó lo que viste?</div>
         <div>¡Coordina una visita para conocer el proyecto!</div>
         <a
@@ -314,25 +343,64 @@ let final = beneficios.slice(mitad);
     <div
       class="z-20 relative flex flex-col justify-center items-start max-w-[550px] text-[16px] text-white text-start"
     >
-      <p class="mb-4 font-bold text-2xl">Ubícanos</p>
-      <p class="font-semibold text-verde-lord text-lg">Oficina de ventas</p>
-      <p class="mb-2">
+      <p
+        class="opacity-0 intersect:opacity-100 mb-4 font-bold text-2xl -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Ubícanos
+      </p>
+      <p
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Oficina de ventas
+      </p>
+      <p
+        class="opacity-0 intersect:opacity-100 mb-2 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
         Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco.
       </p>
-      <p class="font-semibold text-verde-lord text-lg">Oficina principal</p>
-      <p class="mb-2">
+      <p
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Oficina principal
+      </p>
+      <p
+        class="opacity-0 intersect:opacity-100 mb-2 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
         Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco.
       </p>
-      <p class="font-semibold text-verde-lord text-lg">Horarios de atención</p>
-      <p>Lunes a Viernes - 08:30am a 06:00pm</p>
+      <p
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Horarios de atención
+      </p>
+      <p
+        class="opacity-0 intersect:opacity-100 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Lunes a Viernes - 08:30am a 06:00pm
+      </p>
       <p class="mb-2">Sábados - 08:30am a 1:00pm</p>
-      <p class="font-semibold text-verde-lord text-lg">Teléfonos</p>
-      <p class="mb-4">940 923 345</p>
-      <Image src={logoUbicanos} class="w-xs" alt="" inferSize />
+      <p
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        Teléfonos
+      </p>
+      <p
+        class="opacity-0 intersect:opacity-100 mb-4 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+      >
+        940 923 345
+      </p>
+      <Image
+        src={logoUbicanos}
+        class="opacity-0 intersect:opacity-100 w-xs -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        alt=""
+        inferSize
+      />
     </div>
-    <div class="z-20 relative my-10">
+    <div
+      class="z-20 relative opacity-0 intersect:opacity-100 my-10 max-w-[90vw] translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+    >
       <Image src={mapa} class="mb-5 rounded-2xl" alt="" inferSize />
-      <div class="flex flex-row gap-5">
+      <div class="flex flex-row flex-wrap gap-5">
         <a
           href=""
           class="flex flex-row items-center gap-2 bg-naranja-lord px-8 py-3 rounded-xl text-white text-nowrap"

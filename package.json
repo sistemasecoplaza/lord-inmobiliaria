@@ -11,7 +11,9 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
     "@astrojs/vercel": "^8.0.6",
+    "@astropub/md": "^1.0.0",
     "@tailwindcss/vite": "^4.0.6",
+    "@types/marked": "^5.0.2",
     "astro": "^5.2.5",
     "dotenv": "^16.4.7",
     "embla-carousel": "^8.5.2",
@@ -22,6 +24,7 @@
     "tailwindcss-intersect": "^2.1.0"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.16",
     "@types/slug": "^5.0.9"
   }
 }

@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@plugin '@tailwindcss/typography';
 @import "tailwindcss-intersect";
 
 @theme {
@@ -8,7 +8,11 @@
   --color-naranja-lord: #ec8221;
   --shadow-form: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   --animate-wiggle: wiggle 1s ease-in-out infinite;
-
+  --animate-fade-in: fade-in 1s ease-in-out;
+  --animate-fade-left-full: fade-left-full 1s ease-in-out;
+  --animate-fade-right-full: fade-right-full 1s ease-in-out;
+  --animate-fade-up: fade-up 1s ease-in-out;
+  
 }
 .bg-verde-proyecto{
   background: rgb(107,187,57);
