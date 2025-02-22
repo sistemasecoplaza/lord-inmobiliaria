@@ -14,7 +14,7 @@ import foco from "../assets/foco.svg";
 
 <Layout title="Contactanos - Lord Inmobiliaria" selected="5">
   <div class="relative">
-    <div class="z-50 absolute w-full h-full">
+    <div class="z-50 absolute w-full h-full pointer-events-none select-none">
       <Image
         src={hoja2}
         alt=""
@@ -32,7 +32,7 @@ import foco from "../assets/foco.svg";
       />
     </div>
     <div
-      class="z-10 relative flex flex-row flex-wrap-reverse justify-center xl:gap-10 lg:px-5 pt-5 overflow-hidden bg_form"
+      class="z-10 relative flex flex-row flex-wrap-reverse justify-center xl:gap-10 lg:px-5 pt-5 overflow-hidden pointer-events-none select-none bg_form"
     >
       <div class="fade-left-full xl:my-auto mb-20 xl:w-[40%]"><Form /></div>
       <div class="fade-right-full relative w-fit h-fit">
@@ -61,7 +61,11 @@ import foco from "../assets/foco.svg";
         >
           <Image src={foco} class="z-20 w-full" alt="" />
         </div>
-        <Image src={beneficios_modelo} class="mt-20 w-[700px]" alt="" />
+        <Image
+          src={beneficios_modelo}
+          class="mt-20 w-[700px] pointer-events-none select-none"
+          alt=""
+        />
       </div>
     </div>
   </div>

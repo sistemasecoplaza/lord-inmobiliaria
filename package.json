@@ -15,6 +15,7 @@
     "@tailwindcss/vite": "^4.0.6",
     "@types/marked": "^5.0.2",
     "astro": "^5.2.5",
+    "astro-remote": "^0.3.3",
     "dotenv": "^16.4.7",
     "embla-carousel": "^8.5.2",
     "embla-carousel-autoplay": "^8.5.2",

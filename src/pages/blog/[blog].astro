@@ -7,7 +7,7 @@ import Arrow from "../../assets/arrow-left.svg";
 import { imageFetch } from "../../js/ImageFetch";
 import { Image } from "astro:assets";
 import { Marked } from "marked";
-import Markdown from "@astropub/md";
+import { Markdown } from "astro-remote";
 const marked = new Marked({
   async: true,
   breaks: false,
@@ -63,31 +63,7 @@ console.log("%csrc/pages/blog/[blog].astro:16 blog", "color: #007acc;", blog);
     </div>
     <div
       set:html={marked.parse(blog.post)}
-      class="mt-10 mb-16 px-7 max-w-[1000px] animate-fade-in container"
+      class="mt-10 mb-16 px-7 max-w-[1000px] animate-fade-in [&>*]:list-inside [&>*]:list-disc container"
     />
   </div>
 </Layout>
-
-<!-- El turnover es una métrica que representa los indicadores de desempeño más importante de tu empresa. Estos indicadores sirven para evitar contratiempos que dificulten el progreso de un negocio. ¿Quieres saber más de este tema? Lee la nota completa:
-<br/><br/>
-**DEFINICIÓN**
-<br/><br/>
-El turnover es un indicador que mide el número de empleados que dejan una empresa durante un periodo determinado. Conociendo esta data, se puede descubrir la evolución del personal e indicar si la selección de la misma es eficiente. La palabra turnover es de origen inglés y significa “giro” o “renovación”.
-<br/><br/>
-**CAUSAS DE TURNOVER**<br/><br/>
-Alguno de los principales motivos de un turnover alto pueden ser:
--  Mal ambiente de trabajo
-- Falta de plan de carrera
-- Ausencia de reconocimiento
-- Salarios inadecuados
-- Mal liderazgo
-- Carga de trabajo muy alta
-- Falta de estructura y recursos tecnológicos
-<br/><br/>
-**CONSECUENCIAS DE UN TURNOVER ALTO**
-<br/><br/>
-Una alta tasa de turnover puede dañar el presupuesto de una empresa, ya que el proceso requiere gastos en admisión y despido, capacitación e incorporación, así como gastos para nuevas vacantes.
-<br/><br/>
-También puede afectar la credibilidad de la empresa, ya que los desempleados motivados tienden a estar menos comprometidos. Esto se refleja en áreas importantes, como el servicio al cliente. Después de todo, los empleados insatisfechos pueden no trabajar como deberían para tratar bien al cliente y ofrecerle una buena experiencia.
-<br/><br/>
-Más importante que comprender qué es una rotación, es dirigir tus esfuerzos para tratar de reducirla. Uno de los grandes secretos es animar a tus empleados y ofrecerles un ambiente agradable valorando su desempeño. -->

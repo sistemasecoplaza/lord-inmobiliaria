@@ -11,52 +11,52 @@ const nombres: string[] = proyectos.map((e: any) => {
 ---
 
 <form
-  class="w-fit flex flex-col h-fit bg-white px-8 py-3 xl:py-4 2xl:py-6 mx-1 translate-x-[90%] intersect:translate-0 intersect:opacity-100 ease-in-out delay-100 duration-700 opacity-0 z-40 relative rounded-[20px]"
+  class="z-[1000] relative flex flex-col bg-white opacity-0 intersect:opacity-100 mx-1 px-8 py-3 xl:py-4 2xl:py-6 rounded-[20px] w-fit h-fit translate-x-[90%] intersect:translate-0 duration-700 ease-in-out delay-100 pointer-events-auto select-auto"
   style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
 >
-  <p class="text-verde-lord text-[20px] 2xl:text-2xl mb-3.5 font-extrabold">
+  <p class="mb-3.5 font-extrabold text-[20px] text-verde-lord 2xl:text-2xl">
     ¿Cómo podemos ayudarte?
   </p>
   <p class="text-[15px] 2xl:text-[16px]">
     Déjanos tus datos y un asesor se contactará a la brevedad posible
   </p>
-  <div class="flex mt-3.5 flex-col md:flex-row xl:gap-1.5 2xl:gap-2 w-full">
+  <div class="flex md:flex-row flex-col md:gap-1.5 2xl:gap-2 mt-3.5 w-full">
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] w-full"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] w-full"
+      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       placeholder="Nombres*"
     />
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] w-full"
+      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       placeholder="Apellidos*"
     />
   </div>
-  <div class="flex flex-col md:flex-row xl:gap-1.5 2xl:gap-2 w-full">
+  <div class="flex md:flex-row flex-col md:gap-1.5 2xl:gap-2 w-full">
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] w-full"
+      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       placeholder="Dni*"
     />
     <input
       required
       type="text"
-      class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] w-full"
+      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       placeholder="Celular*"
     />
   </div>
   <input
     required
     type="email"
-    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666] mb-[7px] xl:mb-[8px] 2xl:mb-[10px]"
+    class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
     placeholder="Correo electrónico*"
   />
   <select
-    class="bg-[#f5f5f5] border-[1px] border-[#b8b8b8] px-[15px] py-[10px] text-[13px] 2xl:text-[15px] font-medium rounded-xl appearance-none text-[#666]"
+    class="bg-[#f5f5f5] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
     name=""
     id=""
   >
@@ -75,12 +75,12 @@ const nombres: string[] = proyectos.map((e: any) => {
   </p>
   <button
     type="submit"
-    class="bg-naranja-lord rounded-2xl text-[16px] 2xl:text-lg font-semibold hover:shadow-form duration-300 cursor-pointer py-3 text-white"
+    class="bg-naranja-lord hover:shadow-form py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg duration-300 cursor-pointer"
     >Envíar datos</button
   >
   <a
     href=""
-    class="bg-[#25d366] rounded-2xl mb-3 my-2.5 justify-center gap-2 hover:shadow-form duration-300 text-center flex items-center text-[16px] 2xl:text-lg font-semibold cursor-pointer py-3 text-white"
-    ><Image src={whatsapp} class="h-5 w-fit" alt="" />Contáctanos por Whatsapp.</a
+    class="flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
+    ><Image src={whatsapp} class="w-fit h-5" alt="" />Contáctanos por Whatsapp.</a
   >
 </form>
