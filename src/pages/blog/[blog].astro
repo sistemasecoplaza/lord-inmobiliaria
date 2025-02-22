@@ -61,11 +61,10 @@ console.log("%csrc/pages/blog/[blog].astro:16 blog", "color: #007acc;", blog);
         </h1>
       </div>
     </div>
-    <Markdown />
-    <!-- <div
+    <div
       set:html={marked.parse(blog.post)}
       class="mt-10 mb-16 px-7 max-w-[1000px] animate-fade-in container"
-    /> -->
+    />
   </div>
 </Layout>
 
