@@ -1,0 +1,22 @@
+---
+import { marked } from "marked";
+import { getPosts } from "../js/getPosts";
+import Layout from "../layouts/Layout.astro";
+
+const politicas_de_privacidad = await getPosts("politicas_privacidad");
+---
+
+<Layout
+  title="Políticas de privacidad - Lord Inmobiliaria"
+  descripcion="Política de privacidad y código de protección al consumidor"
+>
+  <div class="flex flex-col justify-center items-center py-20 w-screen h-fit">
+    <h1 class="mb-16 px-4 font-bold text-3xl xl:text-4xl text-center">
+      Política de privacidad y código de protección al consumidor
+    </h1>
+    <div
+      class="px-5 [&>h2]:font-bold [&>h2]:text-verde-lord-text [&>h2]:text-2xl [&>*]:list-disc [&>*]:list-inside [&>p>a]:text-blue-500 container"
+      set:html={marked(politicas_de_privacidad.politicas_privacidad)}
+    />
+  </div>
+</Layout>

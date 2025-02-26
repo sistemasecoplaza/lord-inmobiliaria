@@ -22,8 +22,13 @@ export default defineConfig({
         context: "client",
         access: "public",
       }),
+      API_KEY_SPERANT: envField.string({
+        context: "server",
+        access: "secret",
+      }),
     },
   },
+  output: "server",
   integrations: [sitemap()],
   adapter: vercel(),
 });

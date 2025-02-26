@@ -15,6 +15,7 @@ import Arriba from "../../assets/arriba.svg";
 import modelo from "../../assets/modelodedoscruzados.webp";
 import Waze from "../../assets/waze.svg";
 import Maps from "../../assets/maps.svg";
+export const prerender = true;
 export const getStaticPaths = (async () => {
   const proyectos = (await getPosts("proyectos")).proyectos;
   return proyectos.map((proyecto: any) => ({
@@ -60,7 +61,11 @@ let inicio = beneficios.slice(0, mitad);
 let final = beneficios.slice(mitad);
 ---
 
-<Layout title={proyecto.card.nombre} selected="3">
+<Layout
+  title={proyecto.card.nombre}
+  descripcion={proyecto.pag.descripcion}
+  selected="3"
+>
   <header
     class="relative flex flex-row justify-center items-end overflow-hidden"
   >
@@ -133,7 +138,7 @@ let final = beneficios.slice(mitad);
       class="text-center flex flex-col justify-center items-center gap-5 [&>p]:w-[90%] lg:[&>p]:w-[80%] max-w-[1200px] [&>p]:text-gray-700 [&>p]:text-lg [&>p]:text-start"
     >
       <h2
-        class="opacity-0 intersect:opacity-100 font-bold text-verde-lord text-4xl -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        class="opacity-0 intersect:opacity-100 font-bold text-verde-lord-text text-4xl -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
         {proyecto.pag.ventajas.titulo}
       </h2>
@@ -168,7 +173,7 @@ let final = beneficios.slice(mitad);
   </div>
   <div class="mt-10 px-5 overflow-hidden text-center">
     <p
-      class="opacity-0 intersect:opacity-100 font-bold text-verde-lord text-4xl -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+      class="opacity-0 intersect:opacity-100 font-bold text-verde-lord-text text-4xl -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
     >
       {proyecto.pag.beneficios.titulo}
     </p>
@@ -218,7 +223,7 @@ let final = beneficios.slice(mitad);
     class="flex [&>p]:w-[95%] [&>p]:text-[17px] lg:[&>p]:w-[80%] flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16 overflow-hidden"
   >
     <h2
-      class="opacity-0 intersect:opacity-100 mt-10 font-bold text-verde-lord text-4xl text-center -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
+      class="opacity-0 intersect:opacity-100 mt-10 font-bold text-verde-lord-text text-4xl text-center -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
     >
       {proyecto.pag.razon_de_inversion.titulo}
     </h2>
@@ -269,7 +274,7 @@ let final = beneficios.slice(mitad);
             class="invisible top-0 z-50 absolute flex justify-between items-center w-full h-full pointer-events-none"
           >
             <button
-              class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+              class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
               id="embla__button--prev"
               type="button"
             >
@@ -285,7 +290,7 @@ let final = beneficios.slice(mitad);
             </button>
 
             <button
-              class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+              class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
               id="embla__button--next"
               type="button"
             >
@@ -319,7 +324,7 @@ let final = beneficios.slice(mitad);
         <Arriba
           width={40}
           fill={"#04b71e"}
-          class="bottom-[99%] absolute fill-verde-lord text-verde-lord"
+          class="bottom-[99%] absolute fill-verde-lord text-verde-lord-text"
         />
         <div>¿Te gustó lo que viste?</div>
         <div>¡Coordina una visita para conocer el proyecto!</div>
@@ -349,7 +354,7 @@ let final = beneficios.slice(mitad);
         Ubícanos
       </p>
       <p
-        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord-text text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
         Oficina de ventas
       </p>
@@ -359,7 +364,7 @@ let final = beneficios.slice(mitad);
         Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco.
       </p>
       <p
-        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord-text text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
         Oficina principal
       </p>
@@ -369,7 +374,7 @@ let final = beneficios.slice(mitad);
         Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco.
       </p>
       <p
-        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord-text text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
         Horarios de atención
       </p>
@@ -380,7 +385,7 @@ let final = beneficios.slice(mitad);
       </p>
       <p class="mb-2">Sábados - 08:30am a 1:00pm</p>
       <p
-        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
+        class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord-text text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
         Teléfonos
       </p>

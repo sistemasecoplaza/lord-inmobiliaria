@@ -31,10 +31,9 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 const { blog } = Astro.props as { blog: any };
 const img = await imageFetch(blog.img);
-console.log("%csrc/pages/blog/[blog].astro:16 blog", "color: #007acc;", blog);
 ---
 
-<Layout selected="4" title={blog.titulo}>
+<Layout selected="4" descripcion={blog.descripcion} title={blog.titulo}>
   <div class="relative flex flex-col items-center overflow-hidden">
     <a
       href="/blog"

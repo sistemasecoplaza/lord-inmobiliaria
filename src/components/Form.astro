@@ -2,19 +2,41 @@
 import { Image } from "astro:assets";
 import whatsapp from "../assets/whatsapp.svg";
 import { getPosts } from "../js/getPosts";
+import slug from "slug";
 
 const proyectos = (await getPosts("proyectos")).proyectos;
 
-const nombres: string[] = proyectos.map((e: any) => {
-  return e.card.nombre;
+let nombres: any[] = proyectos.map((e: any) => {
+  return { nombre: e.card.nombre, id: e.proyect_id };
 });
+
+let contactanos =
+  "https://web.whatsapp.com/send/?phone=51940923345&text=Hola%20quisiera%20saber%20mas%20sobre%20sus%20proyectos";
+let contactanos_mobil =
+  "https://wa.me/send/?phone=51940923345&text=Hola%20quisiera%20saber%20mas%20sobre%20sus%20proyectos";
+for (const el of proyectos) {
+  if (Astro.url.pathname.includes(slug(el.card.nombre))) {
+    console.log(
+      "%csrc/components/Form.astro:19 el.card.nombre",
+      "color: #007acc;",
+      el.card.nombre
+    );
+    contactanos = el.link_whatsapp;
+    contactanos_mobil = el.link_whatsapp_mobil;
+    nombres = [{ nombre: el.card.nombre, id: el.proyect_id }];
+  }
+}
 ---
 
 <form
-  class="z-[1000] relative flex flex-col bg-white opacity-0 intersect:opacity-100 mx-1 px-8 py-3 xl:py-4 2xl:py-6 rounded-[20px] w-fit h-fit translate-x-[90%] intersect:translate-0 duration-700 ease-in-out delay-100 pointer-events-auto select-auto"
+  class="z-[500] relative flex flex-col bg-white opacity-0 intersect:opacity-100 mx-1 px-8 py-3 xl:py-4 2xl:py-6 rounded-[20px] w-fit h-fit translate-x-[90%] intersect:translate-0 duration-700 ease-in-out delay-100 pointer-events-auto select-auto"
   style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
+  id="formulario_lord"
+  method="POST"
 >
-  <p class="mb-3.5 font-extrabold text-[20px] text-verde-lord 2xl:text-2xl">
+  <p
+    class="mb-3.5 font-extrabold text-[20px] text-verde-lord-text 2xl:text-2xl"
+  >
     ¿Cómo podemos ayudarte?
   </p>
   <p class="text-[15px] 2xl:text-[16px]">
@@ -24,14 +46,20 @@ const nombres: string[] = proyectos.map((e: any) => {
     <input
       required
       type="text"
+      id="nombres"
+      name="nombres"
       class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      aria-label="nombres"
       placeholder="Nombres*"
     />
     <input
       required
       type="text"
+      id="apellidos"
+      name="apellidos"
       class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      aria-label="apellidos"
       placeholder="Apellidos*"
     />
   </div>
@@ -39,48 +67,179 @@ const nombres: string[] = proyectos.map((e: any) => {
     <input
       required
       type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      id="dni"
+      name="dni"
       class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      aria-label="dni"
       placeholder="Dni*"
+      style="-moz-appearance:textfield; -webkit-appearance: none; appearance: textfield;"
     />
     <input
       required
-      type="text"
+      type="tel"
+      id="celular"
+      name="celular"
       class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      autocomplete="tel"
+      aria-label="celular"
       placeholder="Celular*"
     />
   </div>
   <input
     required
+    id="email"
+    name="email"
     type="email"
     class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+    aria-label="email"
+    autocomplete="email"
     placeholder="Correo electrónico*"
   />
   <select
     class="bg-[#f5f5f5] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
-    name=""
+    name="proyectos"
+    aria-label="proyectos"
+    required
     id=""
   >
     {
+      nombres.length > 1 && (
+        <option
+          value=""
+          disabled
+          selected
+          hidden
+          aria-label="Elige el proyecto de tus sueños"
+        >
+          Elige el proyecto de tus sueños
+        </option>
+      )
+    }
+    {
       nombres.map((e) => {
-        return <option value={e}>{e}</option>;
+        return (
+          <option aria-label={e.nombre} value={e.id}>
+            {e.nombre}
+          </option>
+        );
       })
     }
   </select>
   <p class="my-3.5 xl:my-4 2xl:my-6 w-[90%] text-[15px] 2xl:text-[16px]">
     Al enviar este formulario estás aceptando nuestras <font
-      class="text-verde-lord"
+      class="text-verde-lord-text"
     >
-      <a href="/" class="cursor-pointer"> políticas de privacidad</a></font
+      <a href="/politicas-de-privacidad" class="cursor-pointer">
+        políticas de privacidad</a
+      ></font
     >
   </p>
   <button
     type="submit"
-    class="bg-naranja-lord hover:shadow-form py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg duration-300 cursor-pointer"
-    >Envíar datos</button
+    class="flex flex-row justify-center items-center bg-naranja-lord hover:shadow-form py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg duration-300 cursor-pointer"
   >
+    <svg
+      id="loadingForm"
+      class="hidden mr-3 -ml-1 size-5 text-white animate-spin"
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      ><circle
+        class="opacity-25"
+        cx="12"
+        cy="12"
+        r="10"
+        stroke="currentColor"
+        stroke-width="4"></circle><path
+        class="opacity-75"
+        fill="currentColor"
+        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+      ></path></svg
+    >Envíar datos
+  </button>
   <a
-    href=""
-    class="flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
+    href={contactanos}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="hidden md:flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
     ><Image src={whatsapp} class="w-fit h-5" alt="" />Contáctanos por Whatsapp.</a
   >
+  <a
+    href={contactanos_mobil}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="md:hidden flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
+    ><Image src={whatsapp} class="w-fit h-5" alt="" />Contáctanos por Whatsapp.</a
+  >
+  <p
+    id="successForm"
+    class="hidden self-center max-w-[400px] text-center text-wrap"
+  >
+    ¡Gracias por tu mensaje! Hemos recibido tus datos correctamente y pronto nos
+    pondremos en contacto contigo.
+  </p>
+  <p
+    id="errorForm"
+    class="hidden self-center max-w-[400px] text-center text-wrap"
+  >
+    Hubo un problema al enviar tus datos. Por favor, intenta de nuevo o
+    contáctanos si el problema persiste.
+  </p>
 </form>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const form = document.getElementById("formulario_lord") as HTMLFormElement;
+    const loading_form = document.getElementById("loadingForm");
+
+    form?.addEventListener("submit", (e) => {
+      loading_form?.classList.remove("hidden");
+      e.preventDefault();
+      const data = Object.fromEntries(
+        new FormData(e.target as HTMLFormElement)
+      );
+      const successForm = document.getElementById("successForm");
+      const errorForm = document.getElementById("errorForm");
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+
+      // {"nombres":"Khalid Mathias","apellidos":"Samanamud Rojas","dni":"77572797","celular":"+51981203309","email":"khalidsamanamud@gmail.com","proyectos":"527"}
+
+      var raw = JSON.stringify({
+        fname: data.nombres,
+        lname: data.apellidos,
+        document: data.dni,
+        phone: data.celular,
+        email: data.email,
+        project_id: data.proyectos,
+        inputChannelId: 2,
+        sourceId: 2,
+        interestTypeId: 2,
+      });
+
+      fetch("http://localhost:3000/form", {
+        method: "POST",
+        headers: myHeaders,
+        body: raw,
+      })
+        .then((response) => response.text())
+        .then((result) => {
+          successForm?.classList.remove("hidden");
+          loading_form?.classList.add("hidden");
+          if (!errorForm?.classList.contains("hidden")) {
+            errorForm?.classList.add("hidden");
+          }
+          form.reset();
+        })
+        .catch((error) => {
+          errorForm?.classList.remove("hidden");
+          loading_form?.classList.add("hidden");
+          if (!successForm?.classList.contains("hidden")) {
+            successForm?.classList.add("hidden");
+          }
+          form.reset();
+        });
+    });
+  });
+</script>

@@ -21,7 +21,11 @@ for (const e of (await getPosts("blog")).posts) {
 blogs = blogs.reverse();
 ---
 
-<Layout title="Blog - Lord Inmobiliaria" selected="4">
+<Layout
+  title="Blog - Lord Inmobiliaria"
+  descripcion="En esta sección, hablaremos de temas relacionados con las inversiones inmobiliarias. Exploraremos las diferentes opciones de inversión disponibles, los factores que hay que tener en cuenta a la hora de invertir en bienes raíces, y los consejos para tener éxito en esta actividad."
+  selected="4"
+>
   <div class="relative overflow-x-hidden">
     <div
       class="flex flex-row flex-wrap justify-center gap-4 bg-verde-lord px-5 pt-14"
@@ -61,7 +65,7 @@ blogs = blogs.reverse();
         />
         <div class="flex flex-col gap-5 w-[90%] max-w-[500px]">
           <div
-            class="flex flex-row items-center gap-5 font-semibold text-verde-lord"
+            class="flex flex-row items-center gap-5 font-semibold text-verde-lord-text"
           >
             <Calendar width={25} />
             {blogs[0].fecha}
@@ -84,7 +88,7 @@ blogs = blogs.reverse();
           class="flex flex-col gap-5 opacity-0 intersect:opacity-100 w-[90%] max-w-[500px] -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
         >
           <div
-            class="flex flex-row items-center gap-5 font-semibold text-verde-lord"
+            class="flex flex-row items-center gap-5 font-semibold text-verde-lord-text"
           >
             <Calendar width={25} />
             {blogs[1].fecha}
@@ -124,7 +128,7 @@ blogs = blogs.reverse();
           <p class="w-[90%] font-semibold" transition:name={blogs[2].titulo}>
             {blogs[2].titulo}
           </p>
-          <p class="font-semibold text-verde-lord">{blogs[2].fecha}</p>
+          <p class="font-semibold text-verde-lord-text">{blogs[2].fecha}</p>
         </a>
         <a
           href=`/blog/${blogs[3].slug}`
@@ -140,7 +144,7 @@ blogs = blogs.reverse();
           <p class="w-[90%] font-semibold" transition:name={blogs[3].titulo}>
             {blogs[3].titulo}
           </p>
-          <p class="font-semibold text-verde-lord">{blogs[3].fecha}</p>
+          <p class="font-semibold text-verde-lord-text">{blogs[3].fecha}</p>
         </a>
         <a
           href=`/blog/${blogs[4].slug}`
@@ -156,7 +160,7 @@ blogs = blogs.reverse();
           <p class="w-[90%] font-semibold" transition:name={blogs[4].titulo}>
             {blogs[4].titulo}
           </p>
-          <p class="font-semibold text-verde-lord">{blogs[4].fecha}</p>
+          <p class="font-semibold text-verde-lord-text">{blogs[4].fecha}</p>
         </a>
       </div>
     </div>

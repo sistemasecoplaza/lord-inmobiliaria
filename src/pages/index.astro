@@ -9,7 +9,7 @@ import coronamin from "../assets/coronamin.svg";
 import { imageFetch } from "../js/ImageFetch";
 import financia from "../assets/Soporte-2.png";
 import familia_lord from "../assets/familia-lord.png";
-import arriba from "../assets/arriba.svg";
+import Arriba from "../assets/arriba.svg";
 import check from "../assets/check.svg";
 import izquierda from "../assets/izquierda.svg";
 import { marked } from "marked";
@@ -32,7 +32,11 @@ const testimonios = await Promise.all(
 );
 ---
 
-<Layout title="Inicio - Lord Inmobiliaria" selected="1">
+<Layout
+  title="Inicio - Lord Inmobiliaria"
+  descripcion="Descubre todo lo que tenemos para ti en la costa y la selva 🏖️. Proyectos que ofrecen ubicación, rentabilidad y calidad de vida. ¡Haz la mejor inversión!"
+  selected="1"
+>
   <section
     class="hidden xl:block relative w-screen touch-pan-y"
     id="embla"
@@ -63,9 +67,10 @@ const testimonios = await Promise.all(
         class="top-0 z-50 absolute flex justify-between items-center w-full h-full pointer-events-none"
       >
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--prev"
           type="button"
+          aria-label="slide anterior"
         >
           <svg
             style="width: var(--button-size); margin-left: var(--buton-margin);"
@@ -79,9 +84,10 @@ const testimonios = await Promise.all(
         </button>
 
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--next"
           type="button"
+          aria-label="siguiente slide"
         >
           <svg
             style="width: var(--button-size); margin-right: var(--buton-margin);"
@@ -132,9 +138,10 @@ const testimonios = await Promise.all(
         class="top-0 z-50 absolute flex justify-between items-center w-full h-full pointer-events-none"
       >
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--prev"
           type="button"
+          aria-label="slide anterior"
         >
           <svg
             style="width: var(--button-size); margin-left: var(--buton-margin);"
@@ -148,9 +155,10 @@ const testimonios = await Promise.all(
         </button>
 
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--next"
           type="button"
+          aria-label="siguiente slide"
         >
           <svg
             style="width: var(--button-size); margin-right: var(--buton-margin);"
@@ -201,9 +209,10 @@ const testimonios = await Promise.all(
         class="top-0 z-50 absolute flex justify-between items-center w-full h-full pointer-events-none"
       >
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--prev"
           type="button"
+          aria-label="slide anterior"
         >
           <svg
             style="width: var(--button-size); margin-left: var(--buton-margin);"
@@ -217,9 +226,10 @@ const testimonios = await Promise.all(
         </button>
 
         <button
-          class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+          class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
           id="embla__button--next"
           type="button"
+          aria-label="siguiente slide"
         >
           <svg
             style="width: var(--button-size); margin-right: var(--buton-margin);"
@@ -249,7 +259,7 @@ const testimonios = await Promise.all(
       <Image src={coronamin} class="w-[70%]" alt="" />
     </div>
     <h1
-      class="z-40 relative flex flex-col justify-center items-center font-extrabold text-verde-lord text-4xl"
+      class="z-40 relative flex flex-col justify-center items-center font-extrabold text-verde-lord-text text-4xl"
       style="margin-top: calc(-50svh + 60px);"
     >
       <p class="font-medium text-[15px] text-black tracking-[0]">
@@ -264,14 +274,7 @@ const testimonios = await Promise.all(
       <ProyectoCard data={proyectos[1]} />
       <ProyectoCard data={proyectos[2]} />
     </div>
-    <div
-      class="z-30 relative flex justify-center opacity-0 intersect:opacity-100 p-2 translate-y-20 intersect:translate-0 duration-700 intersect-once"
-    >
-      <a
-        class="bg-naranja-lord px-13 py-3 rounded-xl font-semibold text-white text-lg hover:scale-110 duration-200 ease-in-out cursor-pointer"
-        href="">Conoce nuestros proyectos</a
-      >
-    </div>
+
     <div
       class="relative flex flex-row justify-center items-start gap-10 py-16 overflow-hidden"
     >
@@ -355,9 +358,10 @@ const testimonios = await Promise.all(
           class="top-0 z-50 absolute flex justify-between items-center w-full h-full pointer-events-none"
         >
           <button
-            class="text-verde-lord cursor-pointer pointer-events-auto"
+            class="text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--prev"
             type="button"
+            aria-label="testimonio previo"
           >
             <svg
               style="width: var(--button-size); margin-left: var(--buton-margin);"
@@ -371,9 +375,10 @@ const testimonios = await Promise.all(
           </button>
 
           <button
-            class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+            class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--next"
             type="button"
+            aria-label="siguiente testimonio"
           >
             <svg
               style="width: var(--button-size); margin-right: var(--buton-margin);"
@@ -430,9 +435,10 @@ const testimonios = await Promise.all(
           style="gap: 75%;"
         >
           <button
-            class="text-verde-lord cursor-pointer pointer-events-auto"
+            class="text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--prev"
             type="button"
+            aria-label="testimonio previo"
           >
             <svg style="width: var(--button-size);" viewBox="0 0 532 532">
               <path
@@ -443,9 +449,10 @@ const testimonios = await Promise.all(
           </button>
 
           <button
-            class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+            class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--next"
             type="button"
+            aria-label="siguiente testimonio"
           >
             <svg style="width: var(--button-size);" viewBox="0 0 532 532">
               <path
@@ -499,9 +506,10 @@ const testimonios = await Promise.all(
           style="gap: 75%;"
         >
           <button
-            class="text-verde-lord cursor-pointer pointer-events-auto"
+            class="text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--prev"
             type="button"
+            aria-label="testimonio previo"
           >
             <svg style="width: var(--button-size);" viewBox="0 0 532 532">
               <path
@@ -512,9 +520,10 @@ const testimonios = await Promise.all(
           </button>
 
           <button
-            class="drop-shadow-xl w-fit text-verde-lord cursor-pointer pointer-events-auto"
+            class="drop-shadow-xl w-fit text-verde-lord-text cursor-pointer pointer-events-auto"
             id="embla__button--next"
             type="button"
+            aria-label="siguiente testimonio"
           >
             <svg style="width: var(--button-size);" viewBox="0 0 532 532">
               <path
@@ -548,10 +557,10 @@ const testimonios = await Promise.all(
         class="relative flex flex-row justify-center self-center bg-verde-lord xl:mt-14 px-8 py-4 rounded-2xl w-fit text-white text-xl text-start text-nowrap"
       >
         <div>
-          <Image
-            class="xl:hidden right-0 bottom-full left-0 z-50 absolute mx-auto w-10"
-            src={arriba}
-            alt=""
+          <Arriba
+            width={40}
+            fill={"#04b71e"}
+            class="xl:hidden right-0 bottom-[99%] left-0 absolute fill-verde-lord mx-auto text-verde-lord-text"
           />
           <Image
             src={izquierda}

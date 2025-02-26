@@ -1,10 +1,12 @@
 ---
 import { ClientRouter } from "astro:transitions";
+import { getSecret } from "astro:env/server";
 import NavBar from "../components/NavBar.astro";
 import "../styles/global.css";
 import Footer from "../components/Footer.astro";
-const { title, selected } = Astro.props;
-console.log("%csrc/layouts/Layout.astro:7 title", "color: #007acc;", title);
+const { title, selected, descripcion } = Astro.props;
+
+const form_key = getSecret("API_KEY_SPERANT");
 ---
 
 <!doctype html>
@@ -15,6 +17,7 @@ console.log("%csrc/layouts/Layout.astro:7 title", "color: #007acc;", title);
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta name="description" content={descripcion} />
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
     <meta name="generator" content={Astro.generator} />
     <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"
@@ -31,7 +34,7 @@ console.log("%csrc/layouts/Layout.astro:7 title", "color: #007acc;", title);
       is:inline
       src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"
     ></script>
-    <script is:inline>
+    <script>
       document.addEventListener("astro:page-load", () => {
         const menu = document.getElementById("menuOppener");
         const nav = document.querySelector("ul");
@@ -51,13 +54,12 @@ console.log("%csrc/layouts/Layout.astro:7 title", "color: #007acc;", title);
     <NavBar selected={selected} />
     <slot />
     <Footer />
-    <script src="../js/index.ts"></script>
-    <script>
-      import { Observer } from "tailwindcss-intersect";
+  </body><script src="../js/index.ts"></script>
+  <script>
+    import { Observer } from "tailwindcss-intersect";
+    Observer.start();
+    document.addEventListener("astro:page-load", () => {
       Observer.start();
-      document.addEventListener("astro:page-load", () => {
-        Observer.start();
-      });
-    </script>
-  </body>
+    });
+  </script>
 </html>

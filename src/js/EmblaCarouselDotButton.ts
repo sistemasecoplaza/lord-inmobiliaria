@@ -8,27 +8,40 @@ export const addDotBtnsAndClickHandlers = (
   let dotNodes: HTMLElement[] = [];
 
   const addDotBtnsWithClickHandlers = (): void => {
-    dotsNode.innerHTML = emblaApi
-      .scrollSnapList()
-      .map(() => '<button class="embla__dot" type="button"></button>')
-      .join("");
+    if (dotsNode) {
+      dotsNode.innerHTML = emblaApi
+        .scrollSnapList()
+        .map(
+          () =>
+            '<button aria-label="boton slider" class="embla__dot" type="button"></button>'
+        )
+        .join("");
+    }
 
     const scrollTo = (index: number): void => {
       emblaApi.scrollTo(index);
       if (onButtonClick) onButtonClick(emblaApi);
     };
 
-    dotNodes = Array.from(dotsNode.querySelectorAll(".embla__dot"));
-    dotNodes.forEach((dotNode, index) => {
-      dotNode.addEventListener("click", () => scrollTo(index), false);
-    });
+    if (dotsNode) {
+      dotNodes = Array.from(dotsNode.querySelectorAll(".embla__dot"));
+      dotNodes.forEach((dotNode: HTMLElement, index) => {
+        dotNode.addEventListener("click", () => scrollTo(index), false);
+      });
+    }
   };
 
   const toggleDotBtnsActive = (): void => {
     const previous = emblaApi.previousScrollSnap();
     const selected = emblaApi.selectedScrollSnap();
-    dotNodes[previous].classList.remove("embla__dot--selected");
-    dotNodes[selected].classList.add("embla__dot--selected");
+    if (dotNodes[previous] !== undefined) {
+      (dotNodes[previous] as HTMLElement).classList.remove(
+        "embla__dot--selected"
+      );
+    }
+    if (dotNodes[selected] !== undefined) {
+      (dotNodes[selected] as HTMLElement).classList.add("embla__dot--selected");
+    }
   };
 
   emblaApi
