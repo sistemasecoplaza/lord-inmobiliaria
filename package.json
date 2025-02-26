@@ -1,9 +1,9 @@
 {
-  "name": "",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "node ./dist/server/entry.mjs",
+    "init": "node ./dist/server/entry.mjs",
+    "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"

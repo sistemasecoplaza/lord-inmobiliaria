@@ -189,6 +189,8 @@ for (const el of proyectos) {
   </p>
 </form>
 <script>
+  import { FORM_URL_POST } from "astro:env/client";
+
   document.addEventListener("astro:page-load", () => {
     const form = document.getElementById("formulario_lord") as HTMLFormElement;
     const loading_form = document.getElementById("loadingForm");
@@ -204,8 +206,6 @@ for (const el of proyectos) {
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
 
-      // {"nombres":"Khalid Mathias","apellidos":"Samanamud Rojas","dni":"77572797","celular":"+51981203309","email":"khalidsamanamud@gmail.com","proyectos":"527"}
-
       var raw = JSON.stringify({
         fname: data.nombres,
         lname: data.apellidos,
@@ -218,7 +218,7 @@ for (const el of proyectos) {
         interestTypeId: 2,
       });
 
-      fetch("http://localhost:3000/form", {
+      fetch(FORM_URL_POST, {
         method: "POST",
         headers: myHeaders,
         body: raw,
