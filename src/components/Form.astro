@@ -190,6 +190,7 @@ for (const el of proyectos) {
 </form>
 <script>
   import { FORM_URL_POST } from "astro:env/client";
+  import { number } from "astro:schema";
 
   document.addEventListener("astro:page-load", () => {
     const form = document.getElementById("formulario_lord") as HTMLFormElement;
@@ -212,7 +213,7 @@ for (const el of proyectos) {
         document: data.dni,
         phone: data.celular,
         email: data.email,
-        project_id: data.proyectos,
+        project_id: Number(data.proyectos),
         inputChannelId: 2,
         sourceId: 2,
         interestTypeId: 2,
