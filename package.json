@@ -9,8 +9,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "^9.1.1",
     "@astrojs/sitemap": "^3.2.1",
-    "@astrojs/vercel": "^8.0.6",
     "@astropub/md": "^1.0.0",
     "@tailwindcss/vite": "^4.0.6",
     "@types/marked": "^5.0.2",
