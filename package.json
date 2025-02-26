@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "dev": "astro dev",
+    "dev": "node ./dist/server/entry.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -11,11 +11,10 @@
   "dependencies": {
     "@astrojs/node": "^9.1.1",
     "@astrojs/sitemap": "^3.2.1",
-    "@astropub/md": "^1.0.0",
     "@tailwindcss/vite": "^4.0.6",
     "@types/marked": "^5.0.2",
-    "astro": "^5.2.5",
-    "astro-remote": "^0.3.3",
+    "@types/slug": "^5.0.9",
+    "astro": "^5.3.1",
     "dotenv": "^16.4.7",
     "embla-carousel": "^8.5.2",
     "embla-carousel-autoplay": "^8.5.2",
@@ -23,9 +22,5 @@
     "slug": "^10.0.0",
     "tailwindcss": "^4.0.6",
     "tailwindcss-intersect": "^2.1.0"
-  },
-  "devDependencies": {
-    "@tailwindcss/typography": "^0.5.16",
-    "@types/slug": "^5.0.9"
   }
 }

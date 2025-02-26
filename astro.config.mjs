@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig, envField } from "astro/config";
+import { defineConfig } from "astro/config";
 
 import tailwindcss from "@tailwindcss/vite";
 
@@ -15,18 +15,12 @@ export default defineConfig({
   experimental: {
     svg: true,
   },
-  env: {
-    schema: {
-      WORDPRESS_URL: envField.string({ context: "client", access: "public" }),
-      WORDPRESS_URL_MEDIA: envField.string({
-        context: "client",
-        access: "public",
-      }),
-    },
-  },
   output: "server",
   integrations: [sitemap()],
   adapter: node({
     mode: "standalone",
   }),
+  server: {
+    host: "0.0.0.0",
+  },
 });
