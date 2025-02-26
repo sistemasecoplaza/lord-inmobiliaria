@@ -1,6 +1,5 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-
 import tailwindcss from "@tailwindcss/vite";
 
 import sitemap from "@astrojs/sitemap";
@@ -26,9 +25,14 @@ export default defineConfig({
         context: "client",
         access: "public",
       }),
+      SITE: envField.string({
+        context: "client",
+        access: "public",
+      }),
     },
   },
   output: "server",
+  site: "https://lord-inmobiliaria.up.railway.app/",
   integrations: [sitemap()],
   adapter: node({
     mode: "standalone",
