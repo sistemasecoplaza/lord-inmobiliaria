@@ -194,6 +194,8 @@ for (const el of proyectos) {
   document.addEventListener("astro:page-load", () => {
     const form = document.getElementById("formulario_lord") as HTMLFormElement;
     const loading_form = document.getElementById("loadingForm");
+    const successForm = document.getElementById("successForm");
+    const errorForm = document.getElementById("errorForm");
 
     form?.addEventListener("submit", (e) => {
       loading_form?.classList.remove("hidden");
@@ -201,10 +203,8 @@ for (const el of proyectos) {
       const data = Object.fromEntries(
         new FormData(e.target as HTMLFormElement)
       );
-      const successForm = document.getElementById("successForm");
-      const errorForm = document.getElementById("errorForm");
       var myHeaders = new Headers();
-      myHeaders.append("Content-Type", "application/json");
+      myHeaders.append("Content-Type", "application/json; charset=utf-8");
 
       var raw = JSON.stringify({
         fname: data.nombres,
