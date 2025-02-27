@@ -27,7 +27,7 @@ export default defineConfig({
       }),
     },
   },
-  output: "server",
+  output: "static",
   site: "https://lord-inmobiliaria.up.railway.app/",
   integrations: [sitemap()],
   adapter: node({
