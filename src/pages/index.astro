@@ -70,18 +70,12 @@ const testimonios = await Promise.all(
                   class="relative min-w-0 translate-3d embla__slide"
                   style="flex: 0 0 var(--slide-size); transform: translate3d(0, 0, 0); padding-left: var(--slide-spacing);"
                 >
-                  <Image
-                    src={e}
-                    class="w-full"
-                    loading="lazy"
-                    inferSize
-                    alt=""
-                  />
+                  <Image src={e} class="w-full" inferSize alt="" />
                 </div>
               );
             }
             // return (
-            //dawda   <div
+            //   <div
             //     class="relative min-w-0 translate-3d embla__slide"
             //     style="flex: 0 0 var(--slide-size); transform: translate3d(0, 0, 0); padding-left: var(--slide-spacing);"
             //   >
@@ -166,7 +160,7 @@ const testimonios = await Promise.all(
                   class="min-w-0 translate-3d embla__slide"
                   style="flex: 0 0 var(--slide-size); transform: translate3d(0, 0, 0); padding-left: var(--slide-spacing);"
                 >
-                  <Image src={e} inferSize loading="lazy" alt="" />
+                  <Image src={e} inferSize alt="" />
                 </div>
               );
             }
@@ -241,51 +235,39 @@ const testimonios = await Promise.all(
       >
         {
           slider_mobil.map((e, i) => {
-            // if (i == 0) {
-            //   return (
-            //     <div
-            //       class="min-w-0 translate-3d embla__slide"
-            //       style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
-            //     >
-            //       <Image
-            //         src={e}
-            //         inferSize
-            //         loading="eager"
-            //         fetchpriority="high"
-            //         alt=""
-            //       />
-            //     </div>
-            //   );
-            // } else {
-            //   return (
-            //     <div
-            //       class="min-w-0 translate-3d embla__slide"
-            //       style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
-            //     >
-            //       <Image
-            //         src={e}
-            //         inferSize
-            //         loading="lazy"
-            //         fetchpriority="low"
-            //         alt=""
-            //       />
-            //     </div>
-            //   );
-            // }
-            return (
-              <div
-                class="min-w-0 translate-3d embla__slide"
-                style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
-              >
-                <Image
-                  src={e}
-                  inferSize
-                  loading="eager"
-                  fetchpriority="high"
-                  alt=""
-                />
-              </div>
-            );
+            if (i == 0) {
+              return (
+                <div
+                  class="min-w-0 translate-3d embla__slide"
+                  style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+                >
+                  <Image src={e} inferSize loading="eager" alt="" />
+                </div>
+              );
+            } else {
+              return (
+                <div
+                  class="min-w-0 translate-3d embla__slide"
+                  style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+                >
+                  <Image src={e} inferSize alt="" />
+                </div>
+              );
+            }
+            // return (
+            //   <div
+            //     class="min-w-0 translate-3d embla__slide"
+            //     style="flex: 0 0 var(--slide-size); padding-left: var(--slide-spacing);"
+            //   >
+            //     <Image
+            //       src={e}
+            //       inferSize
+            //       loading="eager"
+            //       fetchpriority="high"
+            //       alt=""
+            //     />
+            //   </div>
+            // );
           })
         }
       </div>
