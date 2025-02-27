@@ -27,6 +27,9 @@ export default defineConfig({
       }),
     },
   },
+  image: {
+    domains: ["headless-wordpress.lordinmobiliaria.pe"],
+  },
   output: "static",
   site: "https://lord-inmobiliaria.up.railway.app/",
   integrations: [sitemap()],
