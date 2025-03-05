@@ -17,6 +17,8 @@ export const getStaticPaths = (async () => {
   }));
 }) satisfies GetStaticPaths;
 const { proyecto } = Astro.props as { proyecto: any };
+
+let proyecto_form = { nombre: proyecto.card.nombre, id: proyecto.proyect_id };
 const videoFondo = await imageFetch(proyecto.landing.video_fondo);
 const logo = await imageFetch(proyecto.pag.logo);
 const video_yt = proyecto.landing.video_yt;
@@ -54,7 +56,7 @@ const title_yt = video_yt.split('"')[7];
           <div
             class="flex justify-center items-center bg-[#0008] lg:m-0 mt-10 py-20 w-full lg:w-[50%] lg:h-svh min-h-full"
           >
-            <form method="post" class="max-w-[80%]">
+            <form method="post" id="formulario_lord" class="max-w-[80%]">
               <p class="drop-shadow-xl mb-5 text-xl">
                 {proyecto.landing.text_form}
               </p>
@@ -110,6 +112,24 @@ const title_yt = video_yt.split('"')[7];
                 placeholder="Dni*"
                 style="-moz-appearance:textfield; -webkit-appearance: none; appearance: textfield;"
               />
+              <select
+                class="hidden bg-[#f5f5f5] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+                name="proyectos"
+                aria-label="proyectos"
+                required
+                id=""
+              >
+                {
+                  (
+                    <option
+                      aria-label={proyecto_form.nombre}
+                      value={proyecto_form.id}
+                    >
+                      {proyecto_form.nombre}
+                    </option>
+                  )
+                }
+              </select>
               <p
                 class="my-3.5 xl:my-4 2xl:my-6 w-full text-[15px] 2xl:text-[16px]"
               >
@@ -144,6 +164,22 @@ const title_yt = video_yt.split('"')[7];
                   ></path></svg
                 >Envíar datos
               </button>
+              <div class="my-5">
+                <p
+                  id="successForm"
+                  class="hidden self-center text-start text-wrap"
+                >
+                  ¡Gracias por tu mensaje! Hemos recibido tus datos
+                  correctamente y pronto nos pondremos en contacto contigo.
+                </p>
+                <p
+                  id="errorForm"
+                  class="hidden self-center text-start text-wrap"
+                >
+                  Hubo un problema al enviar tus datos. Por favor, intenta de
+                  nuevo o contáctanos si el problema persiste.
+                </p>
+              </div>
             </form>
           </div>
         </div>
@@ -190,5 +226,61 @@ const title_yt = video_yt.split('"')[7];
     </div> -->
     </div>
     <Footer />
-  </body>
+  </body><script>
+    import { FORM_URL_POST } from "astro:env/client";
+
+    document.addEventListener("astro:page-load", () => {
+      const form = document.getElementById(
+        "formulario_lord"
+      ) as HTMLFormElement;
+      const loading_form = document.getElementById("loadingForm");
+      const successForm = document.getElementById("successForm");
+      const errorForm = document.getElementById("errorForm");
+
+      form?.addEventListener("submit", (e) => {
+        loading_form?.classList.remove("hidden");
+        e.preventDefault();
+        const data = Object.fromEntries(
+          new FormData(e.target as HTMLFormElement)
+        );
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+        var raw = JSON.stringify({
+          fname: data.nombres,
+          lname: data.apellidos,
+          document: data.dni,
+          phone: data.celular,
+          email: data.email,
+          project_id: parseInt(data.proyectos.toString()),
+          inputChannelId: 3,
+          sourceId: 1,
+          interestTypeId: 5,
+        });
+
+        fetch(FORM_URL_POST, {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            successForm?.classList.remove("hidden");
+            loading_form?.classList.add("hidden");
+            if (!errorForm?.classList.contains("hidden")) {
+              errorForm?.classList.add("hidden");
+            }
+            form.reset();
+          })
+          .catch((error) => {
+            errorForm?.classList.remove("hidden");
+            loading_form?.classList.add("hidden");
+            if (!successForm?.classList.contains("hidden")) {
+              successForm?.classList.add("hidden");
+            }
+            form.reset();
+          });
+      });
+    });
+  </script>
 </html>
