@@ -6,13 +6,13 @@
   --color-verde-lord: #04b71e;
   --color-verde-lord-text: #04b71e;
   --color-naranja-lord: #ec8221;
+  --drop-shadow-strong: 1px 1px 10px rgba(0, 0, 0, 0.60);
   --shadow-form: 0px 0px 20px 0px rgba(0, 0, 0, 0.2);
   --animate-wiggle: wiggle 1s ease-in-out infinite;
   --animate-fade-in: fade-in 1s ease-in-out;
   --animate-fade-left-full: fade-left-full 1s ease-in-out;
   --animate-fade-right-full: fade-right-full 1s ease-in-out;
   --animate-fade-up: fade-up 1s ease-in-out;
-  
 }
 
 .bg-verde-proyecto{

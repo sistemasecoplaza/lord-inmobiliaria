@@ -1,15 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import logolord from "../assets/logolord.svg";
-import yt from "../assets/yt.svg";
-import fb from "../assets/fb.svg";
-import ig from "../assets/ig.svg";
+import logolord from "../../assets/logolord.svg";
+import yt from "../../assets/yt.svg";
+import fb from "../../assets/fb.svg";
+import ig from "../../assets/ig.svg";
 ---
 
 <footer
-  class="bg-[#252324] text-white font-medium relative flex flex-row justify-center gap-10 flex-wrap w-screen py-14 px-3"
+  class="relative flex flex-row flex-wrap justify-center gap-10 bg-[#252324] px-3 py-14 w-screen font-medium text-white"
 >
-  <div class="flex px-2 flex-col items-center text-center gap-5 max-w-[250px]">
+  <div class="flex flex-col items-center gap-5 px-2 max-w-[250px] text-center">
     <Image src={logolord} class="w-28" alt="" />
     <p>
       Somos una inmobiliaria que cuenta con proyectos en zonas rentables y
@@ -18,16 +18,16 @@ import ig from "../assets/ig.svg";
   </div>
   <div class="px-2">
     <ul class="">
-      <li class="hover:text-verde-lord py-2 transition-colors">
+      <li class="py-2 hover:text-verde-lord transition-colors">
         <a href="/nosotros">¿Quiénes somos?</a>
       </li>
-      <li class="hover:text-verde-lord py-2 transition-colors">
+      <li class="py-2 hover:text-verde-lord transition-colors">
         <a href="/#proyectos">Lotes</a>
       </li>
-      <li class="hover:text-verde-lord py-2 transition-colors">
+      <li class="py-2 hover:text-verde-lord transition-colors">
         <a href="/blog">Blog</a>
       </li>
-      <li class="hover:text-verde-lord py-2 transition-colors">
+      <li class="py-2 hover:text-verde-lord transition-colors">
         <a href="/politicas-de-privacidad">Politicas de privacidad</a>
       </li>
     </ul>
@@ -39,7 +39,7 @@ import ig from "../assets/ig.svg";
     <p>940 923 345</p>
     <p>atencion@lordinmobiliaria.pe</p>
   </div>
-  <div class="px-2 flex flex-col gap-4">
+  <div class="flex flex-col gap-4 px-2">
     <p>Síguenos en:</p>
     <div class="flex flex-row gap-3">
       <a href="https://www.facebook.com/lordinmobiliaria.peru" target="_blank"
@@ -58,7 +58,7 @@ import ig from "../assets/ig.svg";
   </div>
 </footer>
 <div
-  class="bg-naranja-lord px-20 py-6 text-center md:text-start text-white text-lg font-medium"
+  class="bg-naranja-lord px-20 py-6 font-medium text-white text-lg text-center md:text-start"
 >
   <p>© 2023 lordinmobiliaria.pe | Todos los derechos Reservados.</p>
 </div>

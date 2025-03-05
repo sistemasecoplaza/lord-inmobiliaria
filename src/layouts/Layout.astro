@@ -1,54 +1,13 @@
 ---
-import { ClientRouter } from "astro:transitions";
-import { getSecret } from "astro:env/server";
-import NavBar from "../components/NavBar.astro";
-import "../styles/global.css";
-import Footer from "../components/Footer.astro";
+import NavBar from "../components/layout/NavBar.astro";
+import Footer from "../components/layout/Footer.astro";
+import Head from "../components/layout/Head.astro";
 const { title, selected, descripcion } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es" class="w-screen">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta name="description" content={descripcion} />
-    <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"
-    ></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
-    <title>{title}</title>
-    <ClientRouter />
-    <script
-      is:inline
-      src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"
-    ></script>
-    <script>
-      document.addEventListener("astro:page-load", () => {
-        const menu = document.getElementById("menuOppener");
-        const nav = document.querySelector("ul");
-        menu?.addEventListener("click", () => {
-          nav?.classList.contains("hidden")
-            ? nav?.classList.replace("hidden", "flex")
-            : nav?.classList.replace("flex", "hidden");
-        });
-      });
-    </script>
-    <script
-      is:inline
-      src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
-    ></script>
-  </head>
+  <Head title={title} descripcion={descripcion} />
   <body class="relative bg-gray-50 w-screen font-display">
     <NavBar selected={selected} />
     <slot />
