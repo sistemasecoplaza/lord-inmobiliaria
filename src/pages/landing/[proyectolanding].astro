@@ -2,10 +2,10 @@
 import type { GetStaticPaths } from "astro";
 import { getPosts } from "../../js/getPosts";
 import slug from "slug";
-import Head from "../../components/layout/Head.astro";
 import Footer from "../../components/layout/Footer.astro";
 import { imageFetch } from "../../js/ImageFetch";
 import { Image } from "astro:assets";
+import Head from "../../components/layout/Head.astro";
 export const prerender = true;
 export const getStaticPaths = (async () => {
   const proyectos = (await getPosts("proyectos")).proyectos;
@@ -21,14 +21,17 @@ const { proyecto } = Astro.props as { proyecto: any };
 let proyecto_form = { nombre: proyecto.card.nombre, id: proyecto.proyect_id };
 const videoFondo = await imageFetch(proyecto.landing.video_fondo);
 const logo = await imageFetch(proyecto.pag.logo);
-const video_yt = proyecto.landing.video_yt;
-const src_yt = video_yt.split('"')[5];
-const title_yt = video_yt.split('"')[7];
+// const video_yt = proyecto.landing.video_yt;
+// const src_yt = video_yt.split('"')[5];
+// const title_yt = video_yt.split('"')[7];
 ---
 
 <!doctype html>
 <html lang="es">
-  <Head title={proyecto.pag.titulo} />
+  <Head
+    title={proyecto.pag.titulo}
+    descripcion={proyecto.landing.descripcion}
+  />
   <body>
     <div class="relative">
       <div class="relative">
