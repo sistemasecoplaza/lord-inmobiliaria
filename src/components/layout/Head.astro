@@ -10,7 +10,6 @@ import "../../styles/global.css";
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
-  <meta name="description" content={descripcion} />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="generator" content={Astro.generator} />
   <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
@@ -21,7 +20,24 @@ import "../../styles/global.css";
     href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet"
   />
+  <!-- Primary Meta Tags -->
   <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={descripcion} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={descripcion} />
+  <meta property="og:image" content="/meta.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={descripcion} />
+  <meta property="twitter:image" content="/meta.png" />
+
+  <!-- Meta Tags Generated with https://metatags.io -->
   <ClientRouter />
   <script
     is:inline

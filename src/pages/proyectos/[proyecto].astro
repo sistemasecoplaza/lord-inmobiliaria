@@ -87,12 +87,13 @@ let final = beneficios.slice(mitad);
         <p>Descargar Brochure</p>
       </a>
       <a
-        href=""
+        href="#formRegistro"
         class="right-0 flex flex-row justify-center items-center bg-verde-lord px-10 py-3 rounded-xl font-bold text-white animate-fade-right-full"
         >Adquirir ¡AHORA!</a
       >
     </div>
   </header>
+  <div id="formRegistro"></div>
   <div
     class="relative flex flex-row justify-center items-center bg-verde-proyecto py-5 overflow-hidden"
   >
@@ -329,7 +330,7 @@ let final = beneficios.slice(mitad);
         <div>¿Te gustó lo que viste?</div>
         <div>¡Coordina una visita para conocer el proyecto!</div>
         <a
-          href=""
+          href="#formRegistro"
           class="flex justify-center items-center bg-naranja-lord px-8 py-2 rounded-lg w-fit font-semibold"
           >Registrate aquí</a
         >
@@ -407,13 +408,15 @@ let final = beneficios.slice(mitad);
       <Image src={mapa} class="mb-5 rounded-2xl" alt="" inferSize />
       <div class="flex flex-row flex-wrap gap-5">
         <a
-          href=""
+          href={proyecto.pag.ubicanos.url_waze}
+          target="_blank"
           class="flex flex-row items-center gap-2 bg-naranja-lord px-8 py-3 rounded-xl text-white text-nowrap"
         >
           <Waze width={25} /> Ver en Waze
         </a>
         <a
-          href=""
+          href={proyecto.pag.ubicanos.url_google_maps}
+          target="_blank"
           class="flex flex-row items-center gap-2 bg-naranja-lord px-8 py-3 rounded-xl text-white text-nowrap"
         >
           <Maps width={20} /> Google Maps

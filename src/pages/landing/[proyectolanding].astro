@@ -21,6 +21,7 @@ const { proyecto } = Astro.props as { proyecto: any };
 let proyecto_form = { nombre: proyecto.card.nombre, id: proyecto.proyect_id };
 const videoFondo = await imageFetch(proyecto.landing.video_fondo);
 const logo = await imageFetch(proyecto.pag.logo);
+const primerFrame = await imageFetch(proyecto.landing.primer_frame);
 // const video_yt = proyecto.landing.video_yt;
 // const src_yt = video_yt.split('"')[5];
 // const title_yt = video_yt.split('"')[7];
@@ -186,6 +187,12 @@ const logo = await imageFetch(proyecto.pag.logo);
             </form>
           </div>
         </div>
+        <Image
+          src={primerFrame}
+          alt=""
+          inferSize
+          class="top-0 z-10 absolute w-screen h-full object-center object-cover"
+        />
         <video
           class="top-0 z-10 absolute w-screen h-full object-center object-cover"
           autoplay
