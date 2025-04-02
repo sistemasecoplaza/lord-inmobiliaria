@@ -1,0 +1,379 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Libro de reclamaciones - Lord Inmobiliaria">
+  <div class="p-5 sm:p-8 md:p-11 lg:p-16 2xl:p-20 h-fit overflow-clip">
+    <b class="text-2xl"> Libro de reclamaciones </b>
+    <p class="mt-2 w-full max-w-[90vw] text-gray-600 text-md">
+      Conforme a lo establecido con el código de protección y defensea del
+      consumidor, esta institución cuenta con un libro de reclamaciones a su
+      disposición
+    </p>
+    <form
+      action="POST"
+      id="formularioLibroReclamaciones"
+      class="flex flex-col gap-5 px-5 py-5 w-full max-w-[90vw]"
+    >
+      <div
+        class="flex flex-row flex-wrap justify-between gap-5 md:gap-0 w-full"
+      >
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label class="font-medium text-gray-600" for="ruc">RUC:</label>
+          <input
+            class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            type="text"
+            value="20604720215"
+            name="ruc"
+            id="ruc"
+            placeholder="20604720215"
+            readonly=""
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label class="font-medium text-gray-600" for="razonsocial"
+            >RAZON SOCIAL:</label
+          >
+          <input
+            class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            type="text"
+            value=" CENTRO COMERCIAL ECO PLAZA S.A.C. - C.C ECO PLAZA"
+            name="razonsocial"
+            id="razonsocial"
+            placeholder=" CENTRO COMERCIAL ECO PLAZA S.A.C. - C.C ECO PLAZA"
+            readonly=""
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="direccion" class="font-medium text-gray-600"
+          >DIRECCIÓN:</label
+        >
+        <input
+          type="text"
+          class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          name="direccioninmueble"
+          id="direccion"
+          placeholder="CAL.TEGUCIGALPA MZA. D2 LOTE. 21 URB. STA PATRICIA 1RA ETAPA LIMA - LIMA - LA MOLINA"
+          value="CAL.TEGUCIGALPA MZA. D2 LOTE. 21 URB. STA PATRICIA 1RA ETAPA LIMA - LIMA - LA MOLINA"
+          readonly=""
+        />
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="proyecto" class="font-medium text-gray-600">
+          PROYECTOS<font class="text-red-600"> (*)</font> :
+        </label>
+        <select
+          name="proyectos"
+          id="proyectos"
+          required=""
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          value="Paraíso de Santa Clara (Santa Clara - Ate)"
+        >
+          <option
+            value=""
+            disabled=""
+            selected=""
+            hidden=""
+            aria-label="Seleccionar"
+          >
+            --Seleccionar--
+          </option>
+          <option value="Paraíso de Santa Clara (Santa Clara - Ate)"
+            >Paraíso de Santa Clara (Santa Clara - Ate)</option
+          ><option value="Oasis de Guadalupe (Ica)">
+            Oasis de Guadalupe (Ica)</option
+          ><option value="Campo Verde (Pucallpa)">Campo Verde (Pucallpa)</option
+          >
+        </select>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label for="tipoDocumento" class="font-medium text-gray-600"
+            >Tipo de Documento<font class="text-red-600"> (*) </font>:</label
+          >
+          <select
+            name="tipoDocumento"
+            id="tipoDocumento"
+            required=""
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          >
+            <option
+              value=""
+              disabled=""
+              selected=""
+              hidden=""
+              aria-label="Seleccionar"
+            >
+              Seleccionar
+            </option>
+            <option aria-label="DNI" value="DNI">DNI</option>
+            <option
+              aria-label="Carnet de extranjeria"
+              value="Carnet-de-extranjeria">Carnet de extranjeria</option
+            >
+            <option aria-label="Pasaporte" value="Pasaporte">Pasaporte</option>
+            <option aria-label="Otro" value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label for="documento"
+            >Documento<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            required=""
+            class="bg-gray-100 px-5 py-1.5 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            maxlength="20"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="nombres" class="font-medium text-gray-600"
+            >Nombres<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="nombres"
+            required=""
+            name="nombres"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="apellidopaterno" class="font-medium text-gray-600"
+            >Apellido Paterno<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="apellidopaterno"
+            required=""
+            name="apellidopaterno"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="apellidomaterno" class="font-medium text-gray-600"
+            >Apellido Materno<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="apellidomaterno"
+            required=""
+            name="apellidomaterno"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="Celular" class="font-medium text-gray-600"
+            >Celular<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="tel"
+            id="Celular"
+            required=""
+            name="Celular"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="telefonoFijo" class="font-medium text-gray-600"
+            >Telefono Fijo:</label
+          >
+          <input
+            type="tel"
+            id="telefonoFijo"
+            name="telefonoFijo"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="email" class="font-medium text-gray-600"
+            >Email<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required=""
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="departamento" class="font-medium text-gray-600"
+            >Departamento<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="departamento"
+            required=""
+            name="departamento"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="provincia" class="font-medium text-gray-600"
+            >Provincia<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="provincia"
+            required=""
+            name="provincia"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="distrito" class="font-medium text-gray-600"
+            >Distrito<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            required=""
+            id="distrito"
+            name="distrito"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="direccion" class="font-medium text-gray-600"
+          >Dirección<font class="text-red-600"> (*) </font>:</label
+        >
+        <input
+          type="text"
+          required=""
+          id="direccion"
+          name="direccion"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        />
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="monto" class="font-medium text-gray-600"
+          >Monto Reclamado<font class="text-red-600"> (*) </font>:</label
+        >
+        <input
+          type="number"
+          required=""
+          id="monto"
+          name="monto"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        />
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="descripcionbien" class="font-medium text-gray-600"
+          >Descripción del bien Inmbueble<font class="text-red-600">
+            (*)
+          </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="descripcionbien"
+          name="descripcionbien"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="reclamo"
+          name="reclamo"
+          class="text-sm"
+          checked=""
+        />
+        <label for="reclamo" class="select-none">
+          <b>Reclamo</b> (Disconformidad relacionada a los productos y/o servicios)</label
+        >
+      </div>
+      <div>
+        <input type="radio" id="queja" name="queja" class="text-sm" />
+        <label for="queja" class="select-none">
+          <b>Queja</b> (Disconformidad no relacionada a los productos y/o servicios
+          . malestar o descontento respecto a la atencion al público)</label
+        >
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="descripcion"
+          >Descripción<font class="text-red-600"> (*) </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="descripcion"
+          name="descripcion"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="pedido"
+          >Pedido del Consumidor<font class="text-red-600"> (*) </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="pedido"
+          name="pedido"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="bg-verde-lord py-3 rounded-lg font-bold text-white cursor-pointer"
+      >
+        ENVIAR RECLAMO</button
+      >
+    </form>
+  </div>
+</Layout>
+<script>
+  import { getPosts } from "../js/getPosts";
+  document.addEventListener("astro:page-load", async () => {
+    (document.getElementById("queja") as HTMLInputElement).addEventListener(
+      "click",
+      () => {
+        (document.getElementById("reclamo") as HTMLInputElement).checked = !1;
+      }
+    ),
+      (document.getElementById("reclamo") as HTMLInputElement).addEventListener(
+        "click",
+        () => {
+          (document.getElementById("queja") as HTMLInputElement).checked = !1;
+        }
+      );
+    const c = (await getPosts("proyectos")).proyectos.map((e: any) => ({
+      ruc: e.ruc,
+      nombre: e.nombre,
+      direccion_fiscal: e.direccion_fiscal,
+      razon_social: e.razon_social,
+    }));
+    (
+      document.getElementById("proyectos") as HTMLSelectElement
+    ).addEventListener("change", async (e: any) => {
+      const o = e.target.value,
+        n = c.find((a: any) => a.ruc == o);
+      ((document.getElementById("razonsocial") as HTMLInputElement).value =
+        n.razon_social),
+        ((document.getElementById("direccion") as HTMLInputElement).value =
+          n.direccion_fiscal),
+        ((document.getElementById("ruc") as HTMLInputElement).value = o);
+    });
+    document
+      .getElementById("formularioLibroReclamaciones")
+      ?.addEventListener("submit", (e: any) => {
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        console.log(
+          "%csrc/pages/libro-de-reclamaciones.astro:371 data",
+          "color: #007acc;",
+          data
+        );
+      });
+  });
+</script>

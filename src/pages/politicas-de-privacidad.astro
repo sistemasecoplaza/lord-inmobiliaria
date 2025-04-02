@@ -15,7 +15,7 @@ const politicas_de_privacidad = await getPosts("politicas_privacidad");
       Política de privacidad y código de protección al consumidor
     </h1>
     <div
-      class="px-5 [&>h2]:font-bold [&>h2]:text-verde-lord-text [&>h2]:text-2xl [&>*]:list-disc [&>*]:list-inside [&>p>a]:text-blue-500 container"
+      class="px-5 [&>h2]:font-bold [&>h2]:text-verde-lord-text [&>p>a]:text-blue-500 [&>h2]:text-2xl [&>*]:list-disc [&>*]:list-inside container"
       set:html={marked(politicas_de_privacidad.politicas_privacidad)}
     />
   </div>
