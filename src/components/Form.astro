@@ -29,7 +29,7 @@ for (const el of proyectos) {
 ---
 
 <form
-  class="z-[500] relative flex flex-col bg-white opacity-0 intersect:opacity-100 mx-1 px-8 py-3 xl:py-4 2xl:py-6 rounded-[20px] w-fit h-fit translate-x-[90%] intersect:translate-0 duration-700 ease-in-out delay-100 pointer-events-auto select-auto"
+  class="z-[500] relative flex flex-col bg-white opacity-0 intersect:opacity-100 mx-1 px-8 py-3 2xl:py-6 xl:py-4 rounded-[20px] w-fit h-fit translate-x-[90%] intersect:translate-0 duration-700 ease-in-out delay-100 pointer-events-auto select-auto"
   style="box-shadow: 0px 0px 20px 0px rgba(0,0,0,.2);"
   id="formulario_lord"
   method="POST"
@@ -48,8 +48,8 @@ for (const el of proyectos) {
       type="text"
       id="nombres"
       name="nombres"
-      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
-      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       aria-label="nombres"
       placeholder="Nombres*"
     />
@@ -58,7 +58,7 @@ for (const el of proyectos) {
       type="text"
       id="apellidos"
       name="apellidos"
-      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       aria-label="apellidos"
       placeholder="Apellidos*"
     />
@@ -71,7 +71,7 @@ for (const el of proyectos) {
       pattern="[0-9]*"
       id="dni"
       name="dni"
-      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       aria-label="dni"
       placeholder="Dni*"
       style="-moz-appearance:textfield; -webkit-appearance: none; appearance: textfield;"
@@ -81,7 +81,7 @@ for (const el of proyectos) {
       type="tel"
       id="celular"
       name="celular"
-      class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+      class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl w-full font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
       autocomplete="tel"
       aria-label="celular"
       placeholder="Celular*"
@@ -92,7 +92,7 @@ for (const el of proyectos) {
     id="email"
     name="email"
     type="email"
-    class="bg-[#f5f5f5] mb-[7px] xl:mb-[8px] 2xl:mb-[10px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
+    class="bg-[#f5f5f5] mb-[7px] 2xl:mb-[10px] xl:mb-[8px] px-[15px] py-[10px] border-[#b8b8b8] border-[1px] rounded-xl font-medium text-[#666] text-[13px] 2xl:text-[15px] appearance-none"
     aria-label="email"
     autocomplete="email"
     placeholder="Correo electrónico*"
@@ -127,7 +127,7 @@ for (const el of proyectos) {
       })
     }
   </select>
-  <p class="my-3.5 xl:my-4 2xl:my-6 w-[90%] text-[15px] 2xl:text-[16px]">
+  <p class="my-3.5 2xl:my-6 xl:my-4 w-[90%] text-[15px] 2xl:text-[16px]">
     Al enviar este formulario estás aceptando nuestras <font
       class="text-verde-lord-text"
     >
@@ -218,7 +218,7 @@ for (const el of proyectos) {
         interestTypeId: 5,
       });
 
-      fetch(FORM_URL_POST, {
+      fetch(`${FORM_URL_POST}/form`, {
         method: "POST",
         headers: myHeaders,
         body: raw,
