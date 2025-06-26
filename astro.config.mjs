@@ -31,7 +31,7 @@ export default defineConfig({
     domains: ["headless-wordpress.lordinmobiliaria.pe"],
   },
   output: "static",
-  site: "https://lord-inmobiliaria.up.railway.app/",
+  site: "https://www.lordinmobiliaria.pe/",
   integrations: [sitemap()],
   adapter: node({
     mode: "standalone",

@@ -335,15 +335,37 @@ const testimonios = await Promise.all(
   </section>
 
   <div class="relative my-20">
-    <div class="-top-[calc(50svh+100px)] absolute" id="proyectos"></div>
     <div
       class="top-[50svh] z-10 sticky flex flex-row justify-center items-center mt-[50svh] w-screen h-px"
     >
       <Image src={coronamin} class="w-[70%]" alt="" />
     </div>
+
+    <div
+      class="relative flex flex-row justify-center items-start gap-10 py-16 overflow-hidden"
+      style="margin-top: calc(-50svh + 60px);"
+    >
+      <div
+        class="hidden z-50 relative lg:flex flex-col justify-center items-center opacity-0 intersect:opacity-100 drop-shadow-xl h-full -translate-x-full intersect:translate-x-0 duration-700 select-none"
+      >
+        <Image
+          src={img_form}
+          class="h-[590px] object-contain"
+          inferSize
+          alt=""
+        />
+        <p
+          class="bg-verde-lord p-5 border-[#01ca60] border-[6px] rounded-[20px] w-fit font-medium text-white text-3xl xl:text-4xl"
+        >
+          <font class="font-extrabold text-3xl xl:text-4xl">Descubre</font> todo
+          <br />sobre tu
+          <font class="font-extrabold text-4xl xl:text-5xl">próximo lote</font>
+        </p>
+      </div>
+      <div class="self-center lg:w-[45%]"><Form /></div>
+    </div>
     <h1
       class="z-40 relative flex flex-col justify-center items-center font-extrabold text-verde-lord-text text-4xl"
-      style="margin-top: calc(-50svh + 60px);"
     >
       <p class="font-medium text-[15px] text-black tracking-[0]">
         CONOCE LO QUE ESPERA POR TI
@@ -351,45 +373,22 @@ const testimonios = await Promise.all(
       Nuestros Lotes
     </h1>
     <div
-      class="z-30 relative flex flex-row flex-wrap justify-center items-center w-screen"
+      class="z-30 relative flex flex-row flex-wrap justify-center items-center pb-20 w-screen"
     >
+      <div class="-top-[10svh] md:-top-[25svh] absolute" id="proyectos"></div>
+
       <ProyectoCard data={proyectos[0]} />
       <ProyectoCard data={proyectos[1]} />
       <ProyectoCard data={proyectos[2]} />
-    </div>
-
-    <div
-      class="relative flex flex-row justify-center items-start gap-10 py-16 overflow-hidden"
-    >
-      <div
-        class="hidden z-50 relative lg:flex flex-col justify-center items-center opacity-0 intersect:opacity-100 drop-shadow-xl h-full -translate-x-full intersect:translate-x-0 duration-700 select-none"
-      >
-        <Image
-          src={img_form}
-          class="mt-14 h-[590px] object-contain"
-          inferSize
-          alt=""
-        />
-        <p
-          class="bg-verde-lord p-5 border-[#01ca60] border-[6px] rounded-[20px] w-fit font-medium text-white text-3xl xl:text-4xl"
-        >
-          Ellos ya <br />
-          <font class="font-extrabold text-4xl xl:text-5xl">confían</font> en <font
-            class="font-extrabold text-4xl xl:text-5xl">nosotros</font
-          >
-        </p>
-      </div>
-      <div class="lg:w-[45%]"><Form /></div>
     </div>
   </div>
   <div class="flex justify-center w-screen">
     <p
       class="lg:hidden z-50 relative bg-verde-lord mb-20 p-5 border-[#01ca60] border-[6px] rounded-[20px] w-fit font-medium text-[28px] text-white xl:text-4xl"
     >
-      Ellos ya <br />
-      <font class="font-extrabold text-3xl xl:text-5xl">confían</font> en <font
-        class="font-extrabold text-3xl xl:text-5xl">nosotros</font
-      >
+      <font class="font-extrabold text-2xl xl:text-4xl">Descubre</font> todo <br
+      />sobre tu
+      <font class="font-extrabold text-3xl xl:text-5xl">próximo lote</font>
     </p>
   </div>
   <div
@@ -572,7 +571,7 @@ const testimonios = await Promise.all(
                   </div>
                   <Image
                     src={e.img}
-                    class="rounded-2xl w-full h-auto"
+                    class="rounded-2xl w-full h-auto select-none"
                     inferSize
                     alt=""
                   />

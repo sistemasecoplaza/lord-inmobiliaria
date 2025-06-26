@@ -127,7 +127,7 @@ let final = beneficios.slice(mitad);
     class="flex flex-row flex-wrap justify-center items-center gap-10 px-4 lg:px-10 py-16 overflow-hidden"
   >
     <div
-      class="flex flex-col -translate-x-[90%] opacity-0 intersect:translate-0 intersect:opacity-100 duration-1000 ease-in-out justify-center items-center gap-5 w-[85%] lg:w-[45%] max-w-[500px] [&>p]:text-gray-700 [&>p]:text-start"
+      class="flex flex-col justify-center items-center gap-5 opacity-0 intersect:opacity-100 w-[85%] lg:w-[45%] max-w-[500px] [&>p]:text-gray-700 [&>p]:text-start -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
     >
       <Image src={logo} class="w-[70%]" alt="" inferSize />
       <p set:html={marked(proyecto.pag.descripcion)} />
@@ -136,7 +136,7 @@ let final = beneficios.slice(mitad);
   </div>
   <div class="relative flex justify-center overflow-hidden">
     <div
-      class="text-center flex flex-col justify-center items-center gap-5 [&>p]:w-[90%] lg:[&>p]:w-[80%] max-w-[1200px] [&>p]:text-gray-700 [&>p]:text-lg [&>p]:text-start"
+      class="flex flex-col justify-center items-center gap-5 [&>p]:w-[90%] lg:[&>p]:w-[80%] max-w-[1200px] [&>p]:text-gray-700 [&>p]:text-lg text-center [&>p]:text-start"
     >
       <h2
         class="opacity-0 intersect:opacity-100 font-bold text-verde-lord-text text-4xl -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
@@ -221,7 +221,7 @@ let final = beneficios.slice(mitad);
     </div>
   </div>
   <div
-    class="flex [&>p]:w-[95%] [&>p]:text-[17px] lg:[&>p]:w-[80%] flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16 overflow-hidden"
+    class="flex flex-col justify-center items-center gap-5 px-4 lg:px-10 py-16 [&>p]:w-[95%] lg:[&>p]:w-[80%] overflow-hidden [&>p]:text-[17px]"
   >
     <h2
       class="opacity-0 intersect:opacity-100 mt-10 font-bold text-verde-lord-text text-4xl text-center -translate-x-[90%] intersect:translate-0 duration-1000 ease-in-out"
@@ -393,7 +393,7 @@ let final = beneficios.slice(mitad);
       <p
         class="opacity-0 intersect:opacity-100 mb-4 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
-        940 923 345
+        {proyecto.numero_de_cel}
       </p>
       <Image
         src={logoUbicanos}
