@@ -1,11 +1,10 @@
 // @ts-check
 import { defineConfig, envField } from "astro/config";
-
 import tailwindcss from "@tailwindcss/vite";
 
 import sitemap from "@astrojs/sitemap";
 
-import vercel from "@astrojs/vercel";
+import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,13 +21,24 @@ export default defineConfig({
         context: "client",
         access: "public",
       }),
-      API_KEY_SPERANT: envField.string({
-        context: "server",
-        access: "secret",
+      FORM_URL_POST: envField.string({
+        context: "client",
+        access: "public",
       }),
     },
   },
-  output: "server",
+  image: {
+    domains: ["headless-wordpress.lordinmobiliaria.pe"],
+  },
+  output: "static",
+  site: "https://www.lordinmobiliaria.pe/",
   integrations: [sitemap()],
-  adapter: vercel(),
+  adapter: node({
+    mode: "standalone",
+  }),
+  server: {
+    host: "0.0.0.0",
+  },
 });
+
+// http://lord-backend.railway.internal:3000/form

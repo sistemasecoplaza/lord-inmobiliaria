@@ -1,0 +1,468 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Libro de reclamaciones - Lord Inmobiliaria">
+  <div class="p-5 sm:p-8 md:p-11 lg:p-16 2xl:p-20 h-fit overflow-clip">
+    <b class="text-2xl"> Libro de reclamaciones </b>
+    <p class="mt-2 w-full max-w-[90vw] text-gray-600 text-md">
+      Conforme a lo establecido con el código de protección y defensea del
+      consumidor, esta institución cuenta con un libro de reclamaciones a su
+      disposición
+    </p>
+    <form
+      action="POST"
+      id="formularioLibroReclamaciones"
+      class="flex flex-col gap-5 px-5 py-5 w-full max-w-[90vw]"
+    >
+      <div class="flex flex-col gap-1">
+        <label for="proyectos" class="font-medium text-gray-600">
+          PROYECTOS<font class="text-red-600"> (*)</font> :
+        </label>
+        <select
+          id="proyectos"
+          required=""
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          value="Paraíso de Santa Clara (Santa Clara - Ate)"
+        >
+          <option
+            value=""
+            disabled=""
+            selected=""
+            hidden=""
+            aria-label="Seleccionar"
+          >
+            --Seleccionar--
+          </option>
+        </select>
+      </div>
+      <div
+        class="flex flex-row flex-wrap justify-between gap-5 md:gap-0 w-full"
+      >
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label class="font-medium text-gray-600" for="ruc">RUC:</label>
+          <input
+            class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            type="text"
+            value=""
+            name="ruc"
+            id="ruc"
+            placeholder="--Elige un proyecto--"
+            readonly=""
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label class="font-medium text-gray-600" for="razonsocial"
+            >RAZON SOCIAL:</label
+          >
+          <input
+            class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            type="text"
+            value=""
+            name="razonsocial"
+            id="razonsocial"
+            placeholder="--Elige un proyecto--"
+            readonly=""
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-1">
+        <label for="direccioninmueble" class="font-medium text-gray-600"
+          >DIRECCIÓN:</label
+        >
+        <input
+          type="text"
+          class="bg-gray-200 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          name="direccioninmueble"
+          id="direccioninmueble"
+          placeholder="--Elige un proyecto--"
+          value=""
+          readonly=""
+        />
+      </div>
+
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label for="tipoDocumento" class="font-medium text-gray-600"
+            >Tipo de Documento<font class="text-red-600"> (*) </font>:</label
+          >
+          <select
+            name="tipoDocumento"
+            id="tipoDocumento"
+            required=""
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          >
+            <option
+              value=""
+              disabled=""
+              selected=""
+              hidden=""
+              aria-label="Seleccionar"
+            >
+              Seleccionar
+            </option>
+            <option aria-label="DNI" value="DNI">DNI</option>
+            <option
+              aria-label="Carnet de extranjeria"
+              value="Carnet-de-extranjeria">Carnet de extranjeria</option
+            >
+            <option aria-label="Pasaporte" value="Pasaporte">Pasaporte</option>
+            <option aria-label="Otro" value="Otro">Otro</option>
+          </select>
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[49%]">
+          <label for="documento"
+            >Nº Documento<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            required=""
+            id="documento"
+            name="documento"
+            class="bg-gray-100 px-5 py-1.5 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+            maxlength="20"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="nombres" class="font-medium text-gray-600"
+            >Nombres<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="nombres"
+            required=""
+            name="nombres"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="apellidopaterno" class="font-medium text-gray-600"
+            >Apellido Paterno<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="apellidopaterno"
+            required=""
+            name="apellidopaterno"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="apellidomaterno" class="font-medium text-gray-600"
+            >Apellido Materno<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="apellidomaterno"
+            required=""
+            name="apellidomaterno"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="celular" class="font-medium text-gray-600"
+            >Celular<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="tel"
+            id="celular"
+            required=""
+            name="celular"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="telefonoFijo" class="font-medium text-gray-600"
+            >Telefono Fijo:</label
+          >
+          <input
+            type="tel"
+            id="telefonoFijo"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="email" class="font-medium text-gray-600"
+            >Email<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="email"
+            id="email"
+            name="email"
+            autocomplete="email"
+            required=""
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-row flex-wrap justify-between gap-5 md:gap-0">
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="departamento" class="font-medium text-gray-600"
+            >Departamento<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="departamento"
+            required=""
+            name="departamento"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="provincia" class="font-medium text-gray-600"
+            >Provincia<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            id="provincia"
+            required=""
+            name="provincia"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+        <div class="flex flex-col gap-1 w-full md:w-[32%]">
+          <label for="distrito" class="font-medium text-gray-600"
+            >Distrito<font class="text-red-600"> (*) </font>:</label
+          >
+          <input
+            type="text"
+            required=""
+            id="distrito"
+            name="distrito"
+            class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+          />
+        </div>
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="direccion" class="font-medium text-gray-600"
+          >Dirección<font class="text-red-600"> (*) </font>:</label
+        >
+        <input
+          type="text"
+          required=""
+          id="direccion"
+          name="direccion"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        />
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="monto" class="font-medium text-gray-600"
+          >Monto Reclamado <font class="text-[12px]"
+            >(en soles)(si no hay monto dejar en 0)</font
+          ><font class="text-red-600"> (*) </font>:</label
+        >
+        <input
+          type="number"
+          required=""
+          id="monto"
+          name="monto"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        />
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="descripcionbien" class="font-medium text-gray-600"
+          >Descripción del bien Inmbueble<font class="text-red-600">
+            (*)
+          </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="descripcionbien"
+          name="descripcionbien"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <div>
+        <input
+          type="radio"
+          id="reclamo"
+          name="reclamo"
+          class="text-sm"
+          checked=""
+        />
+        <label for="reclamo" class="select-none">
+          <b>Reclamo</b> (Disconformidad relacionada a los productos o servicios.)</label
+        >
+      </div>
+      <div>
+        <input type="radio" id="queja" name="queja" class="text-sm" />
+        <label for="queja" class="select-none">
+          <b>Queja</b> (Disconformidad no relacionada a los productos o servicios;
+          o, malestar o descontento respecto a la atención al público.)</label
+        >
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="descripcion"
+          >Descripción<font class="text-red-600"> (*) </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="descripcion"
+          name="descripcion"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <div class="flex flex-col gap-1 w-full">
+        <label for="pedido"
+          >Pedido del Consumidor<font class="text-red-600"> (*) </font>:</label
+        >
+        <textarea
+          rows="7"
+          required=""
+          id="pedido"
+          name="pedido"
+          class="bg-gray-100 px-5 py-2 rounded-lg outline-1 outline-gray-400 w-full font-semibold text-gray-500"
+        ></textarea>
+      </div>
+      <button
+        type="submit"
+        class="flex flex-row justify-center items-center bg-verde-lord hover:shadow-form py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg duration-300 cursor-pointer"
+      >
+        <svg
+          id="loadingForm"
+          class="hidden mr-3 -ml-1 size-5 text-white animate-spin"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          ><circle
+            class="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            stroke-width="4"></circle><path
+            class="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+          ></path></svg
+        >Envíar reclamo
+      </button>
+      <p
+        id="successForm"
+        class="hidden self-center max-w-[400px] text-center text-wrap"
+      >
+        Hemos recibido tus datos correctamente y pronto nos pondremos en
+        contacto contigo.
+      </p>
+      <p
+        id="errorForm"
+        class="hidden self-center max-w-[400px] text-center text-wrap"
+      >
+        Hubo un problema al enviar tus datos. Por favor, intenta de nuevo o
+        contáctanos si el problema persiste.
+      </p>
+    </form>
+  </div>
+</Layout>
+<script>
+  import { FORM_URL_POST } from "astro:env/client";
+  import { getPosts } from "../js/getPosts";
+
+  document.addEventListener("astro:page-load", async () => {
+    const loading_form = document.getElementById("loadingForm");
+    const successForm = document.getElementById("successForm");
+    const errorForm = document.getElementById("errorForm");
+    const form = document.getElementById(
+      "formularioLibroReclamaciones"
+    ) as HTMLFormElement;
+    (document.getElementById("queja") as HTMLInputElement).addEventListener(
+      "click",
+      () => {
+        (document.getElementById("reclamo") as HTMLInputElement).checked = !1;
+      }
+    ),
+      (document.getElementById("reclamo") as HTMLInputElement).addEventListener(
+        "click",
+        () => {
+          (document.getElementById("queja") as HTMLInputElement).checked = !1;
+        }
+      );
+    const c = (await getPosts("proyectos")).proyectos.map((e: any) => {
+      (document.getElementById("proyectos") as HTMLInputElement).innerHTML +=
+        `<option value="${e.nombre}">${e.nombre}</option>`;
+      return {
+        ruc: e.ruc,
+        nombre: e.nombre,
+        direccion_fiscal: e.direccion_fiscal,
+        razon_social: e.razon_social,
+      };
+    });
+    (
+      document.getElementById("proyectos") as HTMLSelectElement
+    ).addEventListener("change", async (e: any) => {
+      const o = e.target.value;
+      console.log(
+        "%csrc/pages/libro-de-reclamaciones.astro:361 c",
+        "color: #007acc;",
+        c
+      );
+      const proyecto = c.find((e: any) => e.nombre === o);
+      (document.getElementById("ruc") as HTMLInputElement).value = proyecto.ruc;
+      (document.getElementById("ruc") as HTMLInputElement).placeholder =
+        proyecto.ruc;
+      (document.getElementById("razonsocial") as HTMLInputElement).value =
+        proyecto.razon_social;
+      (document.getElementById("razonsocial") as HTMLInputElement).placeholder =
+        proyecto.razon_social;
+      (document.getElementById("direccioninmueble") as HTMLInputElement).value =
+        proyecto.direccion_fiscal;
+      (
+        document.getElementById("direccioninmueble") as HTMLInputElement
+      ).placeholder = proyecto.direccion_fiscal;
+    });
+    document
+      .getElementById("formularioLibroReclamaciones")
+      ?.addEventListener("submit", (e: any) => {
+        loading_form?.classList.remove("hidden");
+        e.preventDefault();
+        const formData = new FormData(e.target);
+        const data = Object.fromEntries(formData.entries());
+        if (data.reclamo == "on") {
+        } else {
+          data.reclamo = "off";
+        }
+        if (data.queja == "on") {
+        } else {
+          data.queja = "off";
+        }
+        console.log(
+          "%csrc/pages/libro-de-reclamaciones.astro:371 data",
+          "color: #007acc;",
+          JSON.stringify(data)
+        );
+        var myHeaders = new Headers();
+        myHeaders.append("Content-Type", "application/json; charset=utf-8");
+
+        var raw = JSON.stringify(data);
+
+        fetch(`${FORM_URL_POST}/reclamaciones`, {
+          method: "POST",
+          headers: myHeaders,
+          body: raw,
+        })
+          .then((response) => response.text())
+          .then((result) => {
+            successForm?.classList.remove("hidden");
+            loading_form?.classList.add("hidden");
+            if (!errorForm?.classList.contains("hidden")) {
+              errorForm?.classList.add("hidden");
+            }
+            form.reset();
+          })
+          .catch((error) => {
+            errorForm?.classList.remove("hidden");
+            loading_form?.classList.add("hidden");
+            if (!successForm?.classList.contains("hidden")) {
+              successForm?.classList.add("hidden");
+            }
+            form.reset();
+          });
+      });
+  });
+</script>

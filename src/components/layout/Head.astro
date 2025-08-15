@@ -1,0 +1,72 @@
+---
+import { ClientRouter } from "astro:transitions";
+const { title, descripcion } = Astro.props;
+import "../../styles/global.css";
+---
+
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+  <link rel="icon" type="image/svg+xml" href="/logo.svg" />
+  <meta name="generator" content={Astro.generator} />
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNL63Y7QL5"
+  ></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "G-JNL63Y7QL5");
+  </script>
+  <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet"
+  />
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={descripcion} />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={descripcion} />
+  <meta property="og:image" content="/meta.png" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={descripcion} />
+  <meta property="twitter:image" content="/meta.png" />
+
+  <!-- Meta Tags Generated with https://metatags.io -->
+  <ClientRouter />
+  <script
+    is:inline
+    src="https://unpkg.com/embla-carousel-autoplay/embla-carousel-autoplay.umd.js"
+  ></script>
+  <script>
+    document.addEventListener("astro:page-load", () => {
+      const menu = document.getElementById("menuOppener");
+      const nav = document.querySelector("ul");
+      menu?.addEventListener("click", () => {
+        nav?.classList.contains("hidden")
+          ? nav?.classList.replace("hidden", "flex")
+          : nav?.classList.replace("flex", "hidden");
+      });
+    });
+  </script><script
+    is:inline
+    src="https://unpkg.com/tailwindcss-intersect@2.x.x/dist/observer.min.js"
+  ></script></head
+>

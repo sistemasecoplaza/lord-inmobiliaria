@@ -7,7 +7,7 @@ import Arrow from "../../assets/arrow-left.svg";
 import { imageFetch } from "../../js/ImageFetch";
 import { Image } from "astro:assets";
 import { Marked } from "marked";
-import { Markdown } from "astro-remote";
+export const prerender = true;
 const marked = new Marked({
   async: true,
   breaks: false,
