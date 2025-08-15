@@ -45,7 +45,7 @@ const mapa = await imageFetch(proyecto.pag.ubicanos.mapa);
 const iconoUbicacion = await imageFetch(proyecto.pag.ventajas.ubicacion.icono);
 const iconoTamaño = await imageFetch(proyecto.pag.ventajas.tamano.icono);
 const iconoLocalizacion = await imageFetch(
-  proyecto.pag.ventajas.localizacion.icono
+  proyecto.pag.ventajas.localizacion.icono,
 );
 
 let beneficios: any = [];
@@ -123,6 +123,15 @@ let final = beneficios.slice(mitad);
       </div>
     </div>
   </div>
+  {
+    proyecto.pag.video_yt_proyecto && (
+      <div
+        class="flex justify-center mt-16 [&>iframe]:rounded-2xl w-full [&>iframe]:w-[90vw] [&>iframe]:max-w-[900px] [&>iframe]:h-auto [&>iframe]:aspect-video overflow-hidden"
+        set:html={proyecto.pag.video_yt_proyecto}
+      />
+    )
+  }
+
   <div
     class="flex flex-row flex-wrap justify-center items-center gap-10 px-4 lg:px-10 py-16 overflow-hidden"
   >
@@ -362,7 +371,7 @@ let final = beneficios.slice(mitad);
       <p
         class="opacity-0 intersect:opacity-100 mb-2 -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"
       >
-        Edificio Capital Golf - Av. Club Golf Los Incas 154, Santiago de Surco.
+        {proyecto.pag.oficina_de_ventas}
       </p>
       <p
         class="opacity-0 intersect:opacity-100 font-semibold text-verde-lord-text text-lg -translate-x-[90%] intersect:translate-x-0 duration-1000 ease-in-out"

@@ -28,7 +28,7 @@ const testimonios = await Promise.all(
       texto: e.texto,
       img: await imageFetch(e.img),
     };
-  })
+  }),
 );
 ---
 
@@ -376,10 +376,7 @@ const testimonios = await Promise.all(
       class="z-30 relative flex flex-row flex-wrap justify-center items-center pb-20 w-screen"
     >
       <div class="-top-[10svh] md:-top-[25svh] absolute" id="proyectos"></div>
-
-      <ProyectoCard data={proyectos[0]} />
-      <ProyectoCard data={proyectos[1]} />
-      <ProyectoCard data={proyectos[2]} />
+      {proyectos.map((proyecto: any) => <ProyectoCard data={proyecto} />)}
     </div>
   </div>
   <div class="flex justify-center w-screen">
