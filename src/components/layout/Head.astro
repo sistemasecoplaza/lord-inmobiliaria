@@ -1,7 +1,13 @@
 ---
 import { ClientRouter } from "astro:transitions";
-const { title, descripcion } = Astro.props;
 import "../../styles/global.css";
+
+interface Props {
+  title: string;
+  descripcion: string;
+}
+
+const { title, descripcion } = Astro.props as Props;
 ---
 
 <head>
@@ -13,16 +19,18 @@ import "../../styles/global.css";
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="generator" content={Astro.generator} />
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-JNL63Y7QL5"
-  ></script>
-  <script>
+  <script
+    is:inline
+    async
+    src="https://www.googletagmanager.com/gtag/js?id=GT-M3SH3WW"></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag() {
       dataLayer.push(arguments);
     }
     gtag("js", new Date());
 
-    gtag("config", "G-JNL63Y7QL5");
+    gtag("config", "GT-M3SH3WW");
   </script>
   <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />

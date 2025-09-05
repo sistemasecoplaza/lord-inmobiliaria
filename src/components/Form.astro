@@ -19,7 +19,7 @@ for (const el of proyectos) {
     console.log(
       "%csrc/components/Form.astro:19 el.card.nombre",
       "color: #007acc;",
-      el.card.nombre
+      el.card.nombre,
     );
     contactanos = el.link_whatsapp;
     contactanos_mobil = el.link_whatsapp_mobil;
@@ -159,20 +159,20 @@ for (const el of proyectos) {
       ></path></svg
     >Envíar datos
   </button>
-  <a
+  <!-- <a
     href={contactanos}
     target="_blank"
     rel="noopener noreferrer"
     class="hidden md:flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
     ><Image src={whatsapp} class="w-fit h-5" alt="" />Contáctanos por Whatsapp.</a
-  >
-  <a
+  > -->
+  <!-- <a
     href={contactanos_mobil}
     target="_blank"
     rel="noopener noreferrer"
     class="md:hidden flex justify-center items-center gap-2 bg-[#25d366] hover:shadow-form my-2.5 mb-3 py-3 rounded-2xl font-semibold text-[16px] text-white 2xl:text-lg text-center duration-300 cursor-pointer"
     ><Image src={whatsapp} class="w-fit h-5" alt="" />Contáctanos por Whatsapp.</a
-  >
+  > -->
   <p
     id="successForm"
     class="hidden self-center max-w-[400px] text-center text-wrap"
@@ -201,7 +201,7 @@ for (const el of proyectos) {
       loading_form?.classList.remove("hidden");
       e.preventDefault();
       const data = Object.fromEntries(
-        new FormData(e.target as HTMLFormElement)
+        new FormData(e.target as HTMLFormElement),
       );
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json; charset=utf-8");

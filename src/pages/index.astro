@@ -7,7 +7,6 @@ import Form from "../components/Form.astro";
 import ProyectoCard from "../components/ProyectoCard.astro";
 import coronamin from "../assets/coronamin.svg";
 import { imageFetch } from "../js/ImageFetch";
-import financia from "../assets/Soporte-2.png";
 import familia_lord from "../assets/familia-lord.png";
 import Arriba from "../assets/arriba.svg";
 import check from "../assets/check.svg";
@@ -20,6 +19,8 @@ const slider_desktop = await arrImageFetch(inicio.slider_header.slider_desktop);
 const slider_mobil = await arrImageFetch(inicio.slider_header.slider_mobil);
 const slider_tablet = await arrImageFetch(inicio.slider_header.slider_tablet);
 const img_form = await imageFetch(inicio.img_form);
+const financia = await imageFetch(inicio.financia.fondo);
+const titulo = await imageFetch(inicio.financia.titulo);
 const beneficios = inicio.financia.beneficios;
 
 const testimonios = await Promise.all(
@@ -624,7 +625,7 @@ const testimonios = await Promise.all(
     class="relative flex xl:flex-row flex-col justify-center items-center w-screen h-fit overflow-hidden"
   >
     <Image
-      class="z-20 opacity-0 intersect:opacity-100 pl-5 h-full -translate-x-full intersect:translate-0 duration-1000"
+      class="z-20 opacity-0 intersect:opacity-100 mb-[-60px] sm:mb-[-90px] xl:mb-0 pl-5 h-full -translate-x-full intersect:translate-0 duration-1000"
       src={familia_lord}
       alt=""
     />
@@ -632,34 +633,19 @@ const testimonios = await Promise.all(
     <div
       class="z-30 flex flex-col gap-3 opacity-0 intersect:opacity-100 mb-10 w-fit translate-x-[80%] intersect:translate-0 duration-1000"
     >
-      <div
-        class="relative flex flex-row justify-center self-center bg-verde-lord xl:mt-14 px-8 py-4 rounded-2xl w-fit text-white text-xl text-start text-nowrap"
+      <!-- <div
+        class="relative flex flex-row justify-center self-center xl:mt-14 px-8 py-4 rounded-2xl w-fit text-white text-xl text-start text-nowrap"
       >
-        <div>
-          <Arriba
-            width={40}
-            fill={"#04b71e"}
-            class="xl:hidden right-0 bottom-[99%] left-0 absolute fill-verde-lord mx-auto text-verde-lord-text"
-          />
-          <Image
-            src={izquierda}
-            class="hidden xl:block top-0 right-full bottom-0 absolute my-auto w-fit h-10"
-            alt=""
-          />
-          <div class="xl:text-2xl">
-            ¡No esperes más! <br />
-            <font class="font-bold">Financia tu lote HOY MISMO</font>
-          </div>
-        </div>
-      </div>
+    </div> -->
+      <Image src={titulo} class="w-full xl:max-w-[35vw]" inferSize alt="" />
       {
         beneficios.map((e: any) => {
           return (
             <div
               class="flex flex-row flex-nowrap gap-1 px-3 text-sm"
-              style="color: rgba(82, 104, 64, 0.75);"
+              style="color: rgb(255, 255, 255);"
             >
-              <Image src={check} class="w-5" alt="" />
+              <Image src={check} class="w-7" alt="" />
               <div
                 set:html={marked.parse(e.texto)}
                 class="flex items-center w-fit **:w-fit xl:text-lg"
@@ -669,7 +655,7 @@ const testimonios = await Promise.all(
         })
       }
       <a
-        class="self-start bg-naranja-lord mt-3 ml-10 px-10 py-3 rounded-lg w-fit font-medium text-white text-center"
+        class="self-start bg-[#f0b020] shadow-xl mt-3 ml-10 px-10 py-3 rounded-xl w-fit font-extrabold text-[17px] text-white text-center"
         href="/contactanos"
       >
         Solicitar información
@@ -677,6 +663,7 @@ const testimonios = await Promise.all(
     </div>
     <Image
       src={financia}
+      inferSize
       class="bottom-0 absolute w-screen h-[90%] object-cover object-top"
       alt=""
     />
