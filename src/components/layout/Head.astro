@@ -18,20 +18,20 @@ const { title, descripcion } = Astro.props as Props;
   />
   <link rel="icon" type="image/svg+xml" href="/logo.svg" />
   <meta name="generator" content={Astro.generator} />
-  <!-- Google tag (gtag.js) -->
-  <script
-    is:inline
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=GT-M3SH3WW"></script>
+  <!-- Google Tag Manager -->
   <script is:inline>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
-
-    gtag("config", "GT-M3SH3WW");
+    (function (w, d, s, l, i) {
+      w[l] = w[l] || [];
+      w[l].push({ "gtm.start": new Date().getTime(), event: "gtm.js" });
+      var f = d.getElementsByTagName(s)[0],
+        j = d.createElement(s),
+        dl = l != "dataLayer" ? "&l=" + l : "";
+      j.async = true;
+      j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+      f.parentNode.insertBefore(j, f);
+    })(window, document, "script", "dataLayer", "GTM-TFNFGKQ3");
   </script>
+  <!-- End Google Tag Manager -->
   <script src="https://unpkg.com/embla-carousel/embla-carousel.umd.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
