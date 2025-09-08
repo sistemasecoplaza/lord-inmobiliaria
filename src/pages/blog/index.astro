@@ -114,54 +114,27 @@ blogs = blogs.reverse();
       <div
         class="flex flex-row flex-wrap justify-center items-center gap-5 drop-shadow-xl"
       >
+      
+       {  blogs.map((a:any)=>{
+        return(blogs[0].slug != a.slug && blogs[1].slug != a.slug ? (
         <a
-          href=`/blog/${blogs[2].slug}`
+          href=`/blog/${a.slug}`
           class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit -translate-x-[90%] intersect:hover:-translate-y-5 intersect:translate-0 duration-700 ease-in-out"
         >
           <Image
-            src={blogs[2].img}
+            src={a.img}
             class="rounded-2xl object-center object-cover"
-            transition:name={blogs[2].slug}
+            transition:name={a.slug}
             alt=""
             inferSize
           />
-          <p class="w-[90%] font-semibold" transition:name={blogs[2].titulo}>
-            {blogs[2].titulo}
+          <p class="w-[90%] font-semibold" transition:name={a.titulo}>
+            {a.titulo}
           </p>
-          <p class="font-semibold text-verde-lord-text">{blogs[2].fecha}</p>
-        </a>
-        <a
-          href=`/blog/${blogs[3].slug}`
-          class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit scale-75 intersect:scale-100 hover:-translate-y-5 duration-700 ease-in-out"
-        >
-          <Image
-            src={blogs[3].img}
-            transition:name={blogs[3].slug}
-            class="rounded-2xl object-center object-cover"
-            alt=""
-            inferSize
-          />
-          <p class="w-[90%] font-semibold" transition:name={blogs[3].titulo}>
-            {blogs[3].titulo}
-          </p>
-          <p class="font-semibold text-verde-lord-text">{blogs[3].fecha}</p>
-        </a>
-        <a
-          href=`/blog/${blogs[4].slug}`
-          class="flex flex-col gap-3 bg-white opacity-0 intersect:opacity-100 p-4 rounded-2xl w-[90%] max-w-[390px] h-fit translate-x-[90%] intersect:hover:-translate-y-5 intersect:translate-0 duration-700 ease-in-out"
-        >
-          <Image
-            src={blogs[4].img}
-            transition:name={blogs[4].slug}
-            class="rounded-2xl object-center object-cover"
-            alt=""
-            inferSize
-          />
-          <p class="w-[90%] font-semibold" transition:name={blogs[4].titulo}>
-            {blogs[4].titulo}
-          </p>
-          <p class="font-semibold text-verde-lord-text">{blogs[4].fecha}</p>
-        </a>
+          <p class="font-semibold text-verde-lord-text">{a.fecha}</p>
+        </a>) : null
+        )
+       })}
       </div>
     </div>
   </div>
