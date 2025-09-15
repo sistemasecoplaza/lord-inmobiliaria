@@ -7,7 +7,7 @@ import hoja1 from "../assets/hoja1.png";
 import hoja2 from "../assets/hoja2.png";
 import Diana from "../assets/diana.svg";
 import { marked } from "marked";
-import check from "../assets/check.svg";
+import check from "../assets/greencheck.svg";
 import LordCentroMitadInferior from "../assets/lordcentromitadinferior.svg";
 import Familias from "../assets/familias.svg";
 import AreasVerdes from "../assets/areas-verdes.svg";
@@ -113,7 +113,7 @@ const imagen_modelo = await imageFetch(nosotros.proyectos.imagen_modelo);
             proyectos.map((e: string) => {
               return (
                 <div class="flex flex-row flex-nowrap items-center gap-1">
-                  <Image src={check} alt="" />
+                  <Image src={check} class="w-4" alt="" />
                   <p class="text-[#7B8C6F]" set:html={marked.parse(e)} />
                 </div>
               );
