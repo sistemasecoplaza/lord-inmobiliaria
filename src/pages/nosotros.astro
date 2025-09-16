@@ -13,7 +13,9 @@ import Familias from "../assets/familias.svg";
 import AreasVerdes from "../assets/areas-verdes.svg";
 import Experiencia from "../assets/experiencia.svg";
 const nosotros = await getPosts("nosotros");
-const fondo = await imageFetch(nosotros.fondo_img);
+const fondo_desktop = await imageFetch(nosotros.fondo_img_desktop);
+const fondo_tablet = await imageFetch(nosotros.fondo_img_tablet);
+const fondo_mobil = await imageFetch(nosotros.fondo_img_mobil);
 const img_objetivo = await imageFetch(nosotros.img_objetivo);
 const proyectos = nosotros.proyectos.proyectos.map((e: any) => {
   return e.nombre;
@@ -30,9 +32,23 @@ const imagen_modelo = await imageFetch(nosotros.proyectos.imagen_modelo);
 >
   <div class="relative overflow-hidden text-[#898888]">
     <Image
-      src={fondo}
+      src={fondo_desktop}
       loading="eager"
-      class="z-40 relative w-screen h-[500px] object-center object-cover"
+      class="hidden xl:block z-30 relative w-screen touch-pan-y"
+      alt=""
+      inferSize
+    />
+    <Image
+      src={fondo_tablet}
+      loading="eager"
+      class="hidden xl:hidden md:block z-30 relative w-screen"
+      alt=""
+      inferSize
+    />
+    <Image
+      src={fondo_mobil}
+      loading="eager"
+      class="md:hidden z-30 relative w-screen"
       alt=""
       inferSize
     />
